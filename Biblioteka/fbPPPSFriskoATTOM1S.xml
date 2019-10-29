@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://www.plcopen.org/xml/tc6_0200">
-  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.6877552" />
-  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:37:19.6730838" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-29T12:36:39.3744516" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
     <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
     <coordinateInfo>
       <fbd>
@@ -1098,11 +1098,7 @@ IF fbInicjalizacyjnyTimer.Q THEN
 	rTemperaturaZasilaniaObieguCOZaraportowana := rTemperaturaZasilaniaObieguCO;
 	rTemperaturaZadanaObieguCOZaraportowana := rTemperaturaZadanaObieguCO;
 	rTemperaturaZasilaniaZaraportowana := rTemperaturaZasilania;
-	rTemperaturaZewnetrznaZaraportowana := rTemperaturaZewnetrzna;
-	rTemperaturaZewnetrznaSredniaZaraportowana := rTemperaturaZewnetrznaSrednia;
-	wProgramZaraportowana := wProgram;
-	rTemperaturaZasilaniaZadanaObieguCOKomfortZaraportowana := rTemperaturaZasilaniaZadanaObieguCOKomfort;
-	rTemperaturaZasilaniaZadanaObieguCOEkonomicznaZaraportowana := rTemperaturaZasilaniaZadanaObieguCOEkonomiczna;
+	rTemperalaniaZadanaObieguCOEkonomiczna;
 	rTemperaturaProguZimaLatoZaraportowana := rTemperaturaProguZimaLato;
 	rMinimalnaTemperaturaZasilaniaObieguCOZaraportowana := rMinimalnaTemperaturaZasilaniaObieguCO;
 	rMaksymalnaTemperaturaZasilaniaObieguCOZaraportowana := rMaksymalnaTemperaturaZasilaniaObieguCO;
@@ -1130,9 +1126,7 @@ ELSE
 END_IF
 
 IF xAutonomizacja THEN
-	xBrakKomunikacjiIZE := TRUE;
-ELSE
-	xBrakKomunikacjiIZE := FALSE;
+	xBrakKoxxdf
 END_IF
 
 // Deklaracja rejestrów Modbusa
@@ -1144,38 +1138,29 @@ IF xPierwszySkan THEN
 
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
-	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4002;
-	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbudfgsdfntPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wCzasMinuta);
 	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
 	
-	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
-	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
-	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4003;
+	arModbusOdczytCyklifdgdfgy[intPetlaPierwszySkan].uiAdresRejestru := 4003;
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wCzasGodzina);
 	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
 	
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
-	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4004;
-	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
-	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wAktualnyDzien);
+	arModfPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wAktualnyDzien);
 	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;		
 
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4205;
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
-	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaZasilaniaZadanaObieguCOKomfort);
-	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
-	
-	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
-	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intsdfYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4206;
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaZasilaniaZadanaObieguCOEkonomiczna);
-	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	intPetlaPierwszySkan := ffff + 1;
 	
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
 	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
@@ -1862,7 +1847,7 @@ IF sKomunikat &lt;&gt; sKomunikatPamiec AND xPoInicjalizacji THEN
 								sTypKomunikatu := 'A' ,
 								sMnemonik := sMnemonik ,
 								sMACAdres := sMACAdres ,
-								sIDNadawcy := sIdInstancji ,
+								sIDNadawcy := sIdInstancji .
 								sIDOdbiorcy := sIdAplikacji ,
 								sDaneZapasowe := sDaneZapasowe ,
 								sDane := sDane ,
