@@ -3,6 +3,9 @@ DUPADUPADUPA
 
 
 HAHAHA KIBEL
-trolololo
+t
+<<<<<<< HEAD
 hops hops 
 commit nr 2 
+=======
+>>>>>>> parent of c28e84a... Update sad.txt
