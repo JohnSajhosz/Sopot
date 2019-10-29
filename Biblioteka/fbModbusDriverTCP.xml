@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.6508536" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fbModbusDriverTCP" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="intOdczytZapisZadanieRozmiarBufora">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="arTCPParametryKomunikacji">
+              <type>
+                <derived name="typModbusTCPParametryKomunikacji" />
+              </type>
+            </variable>
+          </inputVars>
+          <inOutVars>
+            <variable name="arOdczytCykliczny">
+              <type>
+                <array>
+                  <dimension lower="1" upper="1000" />
+                  <baseType>
+                    <derived name="typModbusOdczytCykliczny" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arOdczytZapisZadanie">
+              <type>
+                <array>
+                  <dimension lower="1" upper="1000" />
+                  <baseType>
+                    <derived name="typModbusOdczytZapisZadanie" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arStatusKomunikacji">
+              <type>
+                <array>
+                  <dimension lower="1" upper="256" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="intZnacznikOdczytuZapisuZadanie">
+              <type>
+                <INT />
+              </type>
+            </variable>
+          </inOutVars>
+          <localVars>
+            <variable name="ModbusMasterTCP">
+              <type>
+                <derived name="FbMbMasterTcp" />
+              </type>
+            </variable>
+            <variable name="utZapytanie">
+              <type>
+                <derived name="typMBQuery" />
+              </type>
+            </variable>
+            <variable name="utOdpowiedz">
+              <type>
+                <derived name="typMbResponse" />
+              </type>
+            </variable>
+            <variable name="xStatusPolaczenia">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBladKomunikacji">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="typStatusKomunikacji">
+              <type>
+                <derived name="WagoSysErrorBase.FbResult" />
+              </type>
+            </variable>
+            <variable name="fbTimerRestartuPolaczenia">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="tCzasRestartuPolaczenia">
+              <type>
+                <TIME />
+              </type>
+              <initialValue>
+                <simpleValue value="TIME#15s0ms" />
+              </initialValue>
+            </variable>
+            <variable name="tCzasPonowienia">
+              <type>
+                <derived name="LTIME" />
+              </type>
+              <initialValue>
+                <simpleValue value="LTIME#15s0ms0us0ns" />
+              </initialValue>
+            </variable>
+            <variable name="tCzasStabilnosciKomunikacji">
+              <type>
+                <derived name="LTIME" />
+              </type>
+              <initialValue>
+                <simpleValue value="LTIME#30s0ms0us0ns" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> czas po jakim driver raportuje poprawną komunikację po jej faktycznym odzyskaniu - czas powinien być większy niż czas tCzasPonawiania</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xDriverWykonajKomunikacje">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="arStatusKomunikacjiTimestampOstatniaProba">
+              <type>
+                <array>
+                  <dimension lower="1" upper="256" />
+                  <baseType>
+                    <derived name="LTIME" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arStatusKomunikacjiTimestampOstatniBlad">
+              <type>
+                <array>
+                  <dimension lower="1" upper="256" />
+                  <baseType>
+                    <derived name="LTIME" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="negWykonaj">
+              <type>
+                <derived name="F_TRIG" />
+              </type>
+            </variable>
+            <variable name="intZnacznikDriveraOdczytuCyklicznego">
+              <type>
+                <INT />
+              </type>
+              <initialValue>
+                <simpleValue value="1" />
+              </initialValue>
+            </variable>
+            <variable name="intZnacznikDriveraOdczytuZapisuZadanie">
+              <type>
+                <INT />
+              </type>
+              <initialValue>
+                <simpleValue value="1" />
+              </initialValue>
+            </variable>
+            <variable name="intZnacznikOdczytuCyklicznegoReferencja">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intZnacznikOdczytuCyklicznegoPoczatek">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intZnacznikOdczytuZapisuZadanieReferencja">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intZnacznikPomocniczy">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intOdczytZadanieTablica">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intOdczytCyklicznyTablica">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intOdczytCyklicznyTablicaIlosc">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intLoop">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intDebugZnacznik">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> debug</xhtml>
+              </documentation>
+            </variable>
+            <variable name="arDebugZapytanie">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1000" />
+                  <baseType>
+                    <derived name="typMBQuery" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arDebugOdpowiedz">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1000" />
+                  <baseType>
+                    <derived name="typMbResponse" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="typDebugOdczytZapisZadanie">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1000" />
+                  <baseType>
+                    <derived name="typModbusOdczytZapisZadanie" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arDebugCzas">
+              <type>
+                <array>
+                  <dimension lower="0" upper="1000" />
+                  <baseType>
+                    <DT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">// obsługa odczytu zapisu danych na żądanie
+
+IF intZnacznikDriveraOdczytuZapisuZadanie &lt;&gt; intZnacznikOdczytuZapisuZadanie AND NOT xDriverWykonajKomunikacje THEN
+	fnTablicaKomunikatowInkrementacja(intRozmiarTablicy := intOdczytZapisZadanieRozmiarBufora, intWskaznik := intZnacznikDriveraOdczytuZapisuZadanie);
+	IF arStatusKomunikacji[arOdczytZapisZadanie[intZnacznikDriveraOdczytuZapisuZadanie].bAdresUrzadzenia] = enumModbusStatus.KomunikacjaPrawidlowa  AND xStatusPolaczenia THEN
+		xDriverWykonajKomunikacje := TRUE;
+		utZapytanie.bUnitId := arOdczytZapisZadanie[intZnacznikDriveraOdczytuZapisuZadanie].bAdresUrzadzenia;
+		utZapytanie.bFunctionCode := arOdczytZapisZadanie[intZnacznikDriveraOdczytuZapisuZadanie].bFunkcja;
+		utZapytanie.uiReadQuantity := 1;
+		utZapytanie.uiReadAddress := arOdczytZapisZadanie[intZnacznikDriveraOdczytuZapisuZadanie].uiAdresRejestru;
+		utZapytanie.uiWriteAddress := arOdczytZapisZadanie[intZnacznikDriveraOdczytuZapisuZadanie].uiAdresRejestru;
+		utZapytanie.awWriteData[0] := arOdczytZapisZadanie[intZnacznikDriveraOdczytuZapisuZadanie].wWartoscDoZapisania;
+		utZapytanie.uiWriteQuantity := 1;
+		intOdczytZadanieTablica := intZnacznikDriveraOdczytuZapisuZadanie;
+	END_IF
+END_IF
+
+// obsługa odczytu zmiennych zapisanych w tabeli
+
+IF NOT xDriverWykonajKomunikacje AND xStatusPolaczenia AND NOT xBladKomunikacji THEN
+
+	intZnacznikOdczytuCyklicznegoReferencja := intZnacznikDriveraOdczytuCyklicznego;
+	intZnacznikDriveraOdczytuCyklicznego := intZnacznikDriveraOdczytuCyklicznego + 1;
+	IF arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].bAdresUrzadzenia = 0 THEN
+		intZnacznikDriveraOdczytuCyklicznego := 1;
+	END_IF
+
+	WHILE intZnacznikOdczytuCyklicznegoReferencja &lt;&gt; intZnacznikDriveraOdczytuCyklicznego AND _GetLongTime() - arStatusKomunikacjiTimestampOstatniaProba[arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].bAdresUrzadzenia] &lt; tCzasPonowienia AND
+			_GetLongTime() - arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].ltZnacznikCzasuWyslania &lt; arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].ltCzestotliwosc DO
+		intZnacznikDriveraOdczytuCyklicznego := intZnacznikDriveraOdczytuCyklicznego + 1;
+		IF arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].bAdresUrzadzenia = 0 THEN
+			intZnacznikDriveraOdczytuCyklicznego := 1;
+		END_IF
+	END_WHILE
+
+// zapis adresu startowego rejestrów do zapisu
+
+	IF intZnacznikOdczytuCyklicznegoReferencja &lt;&gt; intZnacznikDriveraOdczytuCyklicznego THEN
+		xDriverWykonajKomunikacje := TRUE;
+		arStatusKomunikacjiTimestampOstatniaProba[arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].bAdresUrzadzenia] := _GetLongTime();
+		utZapytanie.bUnitId := arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].bAdresUrzadzenia;
+		utZapytanie.bFunctionCode := arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].bFunkcja;
+		utZapytanie.uiReadAddress := arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].uiAdresRejestru;
+		utZapytanie.uiReadQuantity := 1;
+		intOdczytCyklicznyTablica := intZnacznikDriveraOdczytuCyklicznego;
+		intZnacznikOdczytuCyklicznegoReferencja := intZnacznikDriveraOdczytuCyklicznego;
+		intZnacznikPomocniczy := intZnacznikDriveraOdczytuCyklicznego + 1;
+		IF arOdczytCykliczny[intZnacznikPomocniczy].bAdresUrzadzenia = 0 THEN
+			intZnacznikPomocniczy := 1;
+		END_IF
+
+// sprawdzenie czy następne żądanie nie jest w kolejności do bieżącego jeśli tak to grupuje je w jedno zapytanie
+
+		WHILE (arOdczytCykliczny[intZnacznikPomocniczy].uiAdresRejestru - arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].uiAdresRejestru = 1 AND
+				arOdczytCykliczny[intZnacznikPomocniczy].bFunkcja = arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].bFunkcja AND
+				arOdczytCykliczny[intZnacznikPomocniczy].bAdresUrzadzenia = arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].bAdresUrzadzenia) DO
+				
+			utZapytanie.uiReadQuantity := utZapytanie.uiReadQuantity + 1;
+			intZnacznikDriveraOdczytuCyklicznego := intZnacznikDriveraOdczytuCyklicznego + 1;
+			IF arOdczytCykliczny[intZnacznikDriveraOdczytuCyklicznego].bAdresUrzadzenia = 0 THEN
+				intZnacznikDriveraOdczytuCyklicznego := 1;
+			END_IF
+			intZnacznikPomocniczy := intZnacznikDriveraOdczytuCyklicznego + 1;
+			IF arOdczytCykliczny[intZnacznikPomocniczy].bAdresUrzadzenia = 0 THEN
+				intZnacznikPomocniczy := 1;
+			END_IF
+		END_WHILE
+		intOdczytCyklicznyTablicaIlosc := UINT_TO_INT(utZapytanie.uiReadQuantity);
+	END_IF
+END_IF
+
+// restart połączenia jeśli brak komunikacji
+
+fbTimerRestartuPolaczenia(IN := (NOT xStatusPolaczenia OR xBladKomunikacji) AND NOT fbTimerRestartuPolaczenia.Q, PT := tCzasRestartuPolaczenia);
+
+// driver komunikacyjny MODBUS TCP
+
+ModbusMasterTCP(xConnect :=			NOT fbTimerRestartuPolaczenia.Q ,
+				sHost :=			arTCPParametryKomunikacji.sAdresTCP ,
+				wPort := 			arTCPParametryKomunikacji.wPortTCP ,
+				utKeepAlive := 		arTCPParametryKomunikacji.utPodtrzymajWtyczkeTCP ,
+				eFrameType := 		arTCPParametryKomunikacji.eTypRamki ,
+				tTimeOut := 		arTCPParametryKomunikacji.tTimeOut ,
+					
+				xIsOpen =&gt; 			xStatusPolaczenia ,
+				xError =&gt; 			xBladKomunikacji ,
+				oStatus =&gt; 			typStatusKomunikacji ,
+					
+				xTrigger := 		xDriverWykonajKomunikacje , 
+				utQuery := 			utZapytanie , 
+				utResponse := 		utOdpowiedz);
+
+// obługa akcji po zakończeniu zadania komunikacji (zapis wartości , zapis błędu itd)
+	
+negWykonaj(CLK := xDriverWykonajKomunikacje);
+
+IF negWykonaj.Q THEN
+// jeżeli był błąd komunikacji wpisz go do tablicy błędów
+
+	IF xBladKomunikacji THEN
+		arStatusKomunikacji[utZapytanie.bUnitId] := enumModbusStatus.BrakKomunikacji;
+		arStatusKomunikacjiTimestampOstatniBlad[utZapytanie.bUnitId] := _GetLongTime();
+		ELSE
+		IF _GetLongTime() - arStatusKomunikacjiTimestampOstatniBlad[utZapytanie.bUnitId] &gt; tCzasStabilnosciKomunikacji AND arStatusKomunikacji[utZapytanie.bUnitId] &lt;&gt; enumModbusStatus.KomunikacjaPrawidlowa THEN	
+			arStatusKomunikacji[utZapytanie.bUnitId] := enumModbusStatus.KomunikacjaPrawidlowa;
+		END_IF
+
+// jeżeli zapytanie było żądaniem  wysłania danych
+
+		IF utZapytanie.bFunctionCode = enumModbusKodyFunkcji.OdczytWejscBitowych OR utZapytanie.bFunctionCode = enumModbusKodyFunkcji.OdczytWyjscBitowych OR
+			utZapytanie.bFunctionCode = enumModbusKodyFunkcji.OdczytNRejestrow OR utZapytanie.bFunctionCode = enumModbusKodyFunkcji.OdczytNRejestrowWejsciowych THEN
+			intZnacznikOdczytuCyklicznegoPoczatek := 0;
+		
+// jeżeli był wykonany rozkaz odczytu danych z cyklu "na żądanie"
+
+			IF intOdczytZadanieTablica &lt;&gt; 0 THEN
+				arDebugZapytanie[intDebugZnacznik] := utZapytanie;
+				arDebugOdpowiedz[intDebugZnacznik] := utOdpowiedz;
+				typDebugOdczytZapisZadanie[intDebugZnacznik] := arOdczytZapisZadanie[intZnacznikDriveraOdczytuZapisuZadanie];				
+				arDebugCzas[intDebugZnacznik] := FuGetDateAndTime();
+				fnTablicaKomunikatowInkrementacja(intRozmiarTablicy := 900, intWskaznik := intDebugZnacznik);
+//				arOdczytZapisZadanie[intZnacznikDriveraOdczytuZapisuZadanie].pZmiennaDoOdczytu^ := utOdpowiedz.awData[0];
+			END_IF
+
+// jeżeli był wykonany rozkaz odczytu danych z cyklu "cykliczny"
+
+			IF intOdczytCyklicznyTablica &lt;&gt; 0 THEN
+				FOR intLoop := 1 TO intOdczytCyklicznyTablicaIlosc DO
+					arOdczytCykliczny[intOdczytCyklicznyTablica + intLoop - 1].pZmiennaReferencyjna^ := utOdpowiedz.awData[intLoop - 1];
+					arOdczytCykliczny[intOdczytCyklicznyTablica + intLoop - 1].ltZnacznikCzasuWyslania := _GetLongTime();
+				END_FOR
+			END_IF
+		END_IF
+	END_IF
+	intOdczytZadanieTablica := 0;
+	intOdczytCyklicznyTablica := 0;
+	intOdczytCyklicznyTablicaIlosc := 0;
+END_IF</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

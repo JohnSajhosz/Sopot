@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.9260843" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fnKonwersja2x16naFloat32BySchneider" pouType="function">
+        <interface>
+          <returnType>
+            <BOOL />
+          </returnType>
+          <inputVars>
+            <variable name="wRejestrMSW">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> MSW - Most Significant Word</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wRejestrLSW">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> LSW - Least Significant Word</xhtml>
+              </documentation>
+            </variable>
+          </inputVars>
+          <inOutVars>
+            <variable name="rWartoscFloat32">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+          </inOutVars>
+          <localVars>
+            <variable name="rZnak">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rTempMSW">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rTempMSW2">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wTempMSW">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wTempMSW2">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="dwTemp">
+              <type>
+                <DWORD />
+              </type>
+            </variable>
+            <variable name="lrStala1">
+              <type>
+                <LREAL />
+              </type>
+              <initialValue>
+                <simpleValue value="8388608.0" />
+              </initialValue>
+            </variable>
+            <variable name="lrStala2">
+              <type>
+                <LREAL />
+              </type>
+              <initialValue>
+                <simpleValue value="4194304.0" />
+              </initialValue>
+            </variable>
+            <variable name="lrTemp">
+              <type>
+                <LREAL />
+              </type>
+            </variable>
+            <variable name="rFaction">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rExponent">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(*			
+Autor:					Paweł Kąkol, 
+Prawa majątkowe: 		Solwena Sp. z o.o., 
+Aktualizacje:			2017-11-03-13:45-PK
+
+Opis:					Funkcja do konwersji 2 rejestrów modbusowych na zmienną Float32 by Schneider Electric
+*)
+wTempMSW := wRejestrMSW / 256; // wyciagniecie 8 starszych bitow
+//ustalanie znaku
+IF (wTempMSW AND 128) = 128 THEN
+	rZnak := -1.0;
+	wTempMSW := wTempMSW AND 127; // usuniecie bitu znaku
+ELSE
+	rZnak := 1.0;
+END_IF
+wTempMSW2 := wRejestrMSW MOD 256; // wyciagniecie 8 mlodszych bitow
+wTempMSW := (wTempMSW * 2) + ((wTempMSW2 AND 128) / 128); //przesuniecie bitowe o 1 w lewo wraz z dodaniem na najmlodsza pozycje najstarszego bitu z młodszych 8 bitow
+wTempMSW2 := wTempMSW2 AND 127;// usuniecie najstarszego bitu
+rExponent := WORD_TO_REAL(wTempMSW) - 127.0; // wyznaczanie wykladnika
+dwTemp := WORD_TO_DWORD(wTempMSW2); //konwersja zmiennej 16-bitowej na 32-bitowa
+dwTemp := dwTemp * 65536; //przesuniecie bitowe w lewo o 16 pozycji
+dwTemp := dwTemp + WORD_TO_DWORD(wRejestrLSW); // dostawienie na koncu 16 bitow zmiennej LSW
+lrTemp := DWORD_TO_LREAL(dwTemp);
+//wybieranie ulamka
+IF wTempMSW &gt; 0 THEN
+	rFaction := LREAL_TO_REAL((lrTemp / lrStala1) + 1.0);
+ELSE
+	rFaction := LREAL_TO_REAL(lrTemp / lrStala2);
+END_IF
+//obliczanie wartosci Float32
+rWartoscFloat32 := rZnak * rFaction * EXPT(2.0, rExponent);</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

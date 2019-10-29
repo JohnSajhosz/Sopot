@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.9859564" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fnZapiszKomunikat" pouType="function">
+        <interface>
+          <returnType>
+            <BOOL />
+          </returnType>
+          <inputVars>
+            <variable name="sCalyKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sTypKomunikatu">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="sMnemonik">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="sMACAdres">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="sIdNadawcy">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="sIdOdbiorcy">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="sDaneZapasowe">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="sDane">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowRozmiar">
+              <type>
+                <INT />
+              </type>
+            </variable>
+          </inputVars>
+          <inOutVars>
+            <variable name="intTablicaKomunikatowZnacznikZapisu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="arTablicaKomunikatow">
+              <type>
+                <derived name="alARRAYTablicaKomunikatow" />
+              </type>
+            </variable>
+            <variable name="sWyslanyKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+          </inOutVars>
+          <localVars>
+            <variable name="sKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="intBlad">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="typKomunikat">
+              <type>
+                <derived name="typKomunikat" />
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(* blok do zapisu nowego komunikatu w buforze do wysłania*)
+
+IF sCalyKomunikat = '' THEN
+	typKomunikat.sZnacznik := 'ˆ';
+	typKomunikat.sTypKomunikatu := sTypKomunikatu;
+	typKomunikat.sMnemonikWlasciciela := LEFT(sMnemonik , 3);
+	typKomunikat.sMnemonikWlascicielaExt := Right(sMnemonik , 1);
+	typKomunikat.sMACAdres := sMACAdres;
+	typKomunikat.sIDZrodla := sIdNadawcy;
+	typKomunikat.sIDPrzeznaczenia := sIdOdbiorcy;
+	typKomunikat.sRezerwa := sDaneZapasowe;
+	typKomunikat.sDane := sDane;
+	fnKomunikatInOut(	xStringNaStrukture := FALSE ,
+						xStringUpdateZeStruktury := FALSE ,
+						xStrukturyNaString := TRUE ,
+						xWyczyscStrukture := FALSE ,
+						xAktualizujZnacznikCzasu := TRUE ,
+						xAktualizujDlugoscDanych := TRUE ,
+						sKomunikat := sKomunikat ,
+						typKomunikat := typKomunikat ,
+						intBlad := intBlad);
+	ELSE
+	sKomunikat := sCalyKomunikat;
+END_IF
+fnTablicaKomunikatowInkrementacja(intWskaznik := intTablicaKomunikatowZnacznikZapisu , intRozmiarTablicy := intTablicaKomunikatowRozmiar);
+arTablicaKomunikatow[intTablicaKomunikatowZnacznikZapisu] := sKomunikat;
+sWyslanyKomunikat := sKomunikat;
+</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.326688" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes>
+      <dataType name="enumModbusStatus">
+        <baseType>
+          <enum>
+            <values>
+              <value name="BrakKomunikacji" value="1" />
+              <value name="KomunikacjaPrawidlowa" value="2" />
+            </values>
+          </enum>
+        </baseType>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/enumvaluedocumentation" handleUnknown="implementation">
+            <EnumValueDocumentation>
+              <EnumValue>
+                <Name>BrakKomunikacji</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> problem z komunikacją</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>KomunikacjaPrawidlowa</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> komunikacja przebiegła prawidłowo</xhtml>
+                </Documentation>
+              </EnumValue>
+            </EnumValueDocumentation>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+            <Attributes>
+              <Attribute Name="qualified_only" Value="" />
+              <Attribute Name="strict" Value="" />
+            </Attributes>
+          </data>
+        </addData>
+        <documentation>
+          <xhtml xmlns="http://www.w3.org/1999/xhtml">
+Nazwa bloku:			Enumeracja - definicja kodów błędów w komunikacji modbus
+			
+Projekt: 				Bałtyckie Centrum Biznesu Budynek 2
+Firma:					Solwena
+Autor:					Marcin Szumiło
+Wersja:					0.1.0.1 - 2017-01-10
+
+</xhtml>
+        </documentation>
+      </dataType>
+    </dataTypes>
+    <pous />
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

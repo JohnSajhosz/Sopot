@@ -1,0 +1,2591 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.6877552" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fbPPPSFriskoATTOM1S" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="sKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> komunikat z systemu zewnętrznego</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intTablicaKomunikatowRozmiar">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> rozmiar tablicy danych wysyłkowych</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intModbusOdczytZapisZadanieRozmiar">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> rozmiar tablicy danych modbusa</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xTablicaKomunikatowHold">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> wstrzymanie komunikacji mniej ważnych komunikatów</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sIdInstancji">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr ID rolety np NS02L*202IBM**** </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sIdAplikacji">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr ID aplikacji np SO*******ECL*000 </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMnemonik">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> mnemonik właściciela - BCB* </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMACAdres">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> MAC adres sterownika</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sDaneZapasowe">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> 6 znaków zapasu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="tCzasOpoznieniaRestartu">
+              <type>
+                <TIME />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> czas opóźnienia po którym zaczynają być raportowane wartości</xhtml>
+              </documentation>
+            </variable>
+            <variable name="tCzasOpoznieniaAlarmu">
+              <type>
+                <TIME />
+              </type>
+              <initialValue>
+                <simpleValue value="TIME#1m0s0ms" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> czas opóźnienia po którym zaczynają być raportowane wartości</xhtml>
+              </documentation>
+            </variable>
+            <variable name="bAdres">
+              <type>
+                <BYTE />
+              </type>
+            </variable>
+            <variable name="tMinimalnyCzasRaportowania">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+            <variable name="tMaksymalnyCzasRaportowania">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+            <variable name="xAutonomizacja">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xAutonomizacjaSztuczna">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xSezonGrzewczyCalyRok">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZasilaniaZadanaObieguCOKomfortAutonomizacja">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Domyślna wartość nastawy temperatury obiegu c.o. w trybie komfortowym</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaZasilaniaZadanaObieguCOEkonomicznaAutonomizacja">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Domyślna wartość nastawy temperatury obiegu c.o. w trybie ekonomicznym</xhtml>
+              </documentation>
+            </variable>
+          </inputVars>
+          <inOutVars>
+            <variable name="arModbusOdczytCykliczny">
+              <type>
+                <array>
+                  <dimension lower="1" upper="5000" />
+                  <baseType>
+                    <derived name="typModbusOdczytCykliczny" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arModbusStatusKomunikacji">
+              <type>
+                <array>
+                  <dimension lower="1" upper="256" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arModbusOdczytZapisZadanie">
+              <type>
+                <array>
+                  <dimension lower="1" upper="1000" />
+                  <baseType>
+                    <derived name="typModbusOdczytZapisZadanie" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="intModbusOdczytZapisZadanieZnacznikZapisu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="arTablicaKomunikatow">
+              <type>
+                <derived name="alARRAYTablicaKomunikatow" />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowZnacznikZapisu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="aTemperatury">
+              <type>
+                <array>
+                  <dimension lower="0" upper="96" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Tablica pomiarów temperatur bieżącego dnia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaSrednia1Dzien">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Średnia dzienna temperatura</xhtml>
+              </documentation>
+            </variable>
+            <variable name="iTemperaturyIndex">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Index tablicy </xhtml>
+              </documentation>
+            </variable>
+            <variable name="aTemperaturySrednie">
+              <type>
+                <array>
+                  <dimension lower="0" upper="2" />
+                  <baseType>
+                    <REAL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Tablica zawierająca średnie temperatury z trzech ostatnich dni</xhtml>
+              </documentation>
+            </variable>
+            <variable name="iTemperaturySrednieIndex">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Index tablicy śrenich temperatur</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaSrednia3Dni">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Średnia temperatura z trzech dni</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xTemperaturaSrednia3DniObliczona">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Prawda, jeśli obliczona została średnia temperatura z trzech dni</xhtml>
+              </documentation>
+            </variable>
+          </inOutVars>
+          <localVars>
+            <variable name="xPoInicjalizacji">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Inicjalizacja</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbInicjalizacyjnyTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="tCzasInicjalizacji">
+              <type>
+                <TIME />
+              </type>
+              <initialValue>
+                <simpleValue value="TIME#30s0ms" />
+              </initialValue>
+            </variable>
+            <variable name="xPierwszySkan">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Definicje zmiennych do odczytu wartości z modbusa</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intPetlaPierwszySkan">
+              <type>
+                <INT />
+              </type>
+              <initialValue>
+                <simpleValue value="1" />
+              </initialValue>
+            </variable>
+            <variable name="sDane">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Definicje do komunikacji z IZE</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sWyslanyKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sWyslanyKomunikatDummy">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="xZadanieRaportu">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="sKomunikatPamiec">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="intPetla">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="arErrorStan">
+              <type>
+                <array>
+                  <dimension lower="0" upper="10" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica przechowująca statusy alarmowe</xhtml>
+              </documentation>
+            </variable>
+            <variable name="arErrorKlasa">
+              <type>
+                <array>
+                  <dimension lower="0" upper="10" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica przechowująca klasy danych alarmów</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xRaport">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+            </variable>
+            <variable name="sTempWartoscAtrybutu">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="xOverFlow">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="rtrigPrzywrocDomyslne">
+              <type>
+                <derived name="R_TRIG" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Przywracanie domyślnych wartości nastaw</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rtrigZapisModbus">
+              <type>
+                <derived name="R_TRIG" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Triger zapisu danych po Modbusie</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbTaktowanieZapisywaniaModbus">
+              <type>
+                <derived name="TON" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Cykliczne żądanie zapisu danych do urządzenia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbTimerBrakuKomunikacji">
+              <type>
+                <derived name="TON" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Kontrola komunikacji urządzenia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBrakKomunikacjiPLC">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBrakKomunikacjiIZE">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="intBlokadaWykonywaniaRozkazow">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Parametry</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intBlokadaWykonywaniaRozkazowZaraportowana">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="wTemperaturaZasilaniaObieguCO">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zmierzona temperatura wody instalacyjnej w obwodzie CO.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaZasilaniaObieguCO">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="fbTemperaturaZasilaniaObieguCO">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZasilaniaObieguCOZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZasilaniaObieguCOPamiec">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Sprawdzanie sprawności czujnika temperatury zasilania obwodu CO.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBrakZmianyTemperaturyZasilaniaObieguCO">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="fbBrakZmianyTemperaturyZasilaniaObieguCOTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="xBladBrakZmianyTemperaturyZasilaniaObieguCO">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="wTemperaturaZadanaObieguCO">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wyliczona zadana temperatura wody instalacyjnej w obwodzie CO.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaZadanaObieguCO">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZadanaObieguCOZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="xBrakOsiagnieciaTemperauryZadanejCO">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Sprawdzanie czy została osiągnęta zadana temperatura zasilania obwodu CO.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbBrakOsiagnieciaTemperauryZadanejCOTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="xBladBrakOsiagnieciaTemperauryZadanejCO">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="wTemperaturaZasilania">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zmierzona temperatura zasilania w punkcie Tzas.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaZasilania">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="fbTemperaturaZasilania">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZasilaniaZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wTemperaturaZewnetrzna">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zmierzona temperatura zewnętrzna.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaZewnetrzna">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="fbTemperaturaZewnetrzna">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZewnetrznaZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZewnetrznaPamiec">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Sprawdzanie sprawności czujnika temperatury zewnętrznej.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBrakZmianyTemperaturyZewnetrznej">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="fbBrakZmianyTemperaturyZewnetrznejTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="xBladBrakZmianyTemperaturyZewnetrznej">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="wTemperaturaZewnetrznaSrednia">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Średnia krótkoterminowa temperatury zewnętrznej z ostatnich 2 godzin.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaZewnetrznaSrednia">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="fbTemperaturaZewnetrznaSrednia">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZewnetrznaSredniaZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wProgram">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Aktywny program pracy regulatora. 0-Tygodni., 1-Ferie, 2-Party.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wProgramZaraportowana">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wTemperaturaWewnetrznaZadanaKomfort">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zadana temperatura wewnętrzna komfortowa.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaWewnetrznaZadanaKomfort">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wTemperaturaWewnetrznaZadanaEkonomiczna">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zadana temperatura wewnętrzna ekonomiczna.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaWewnetrznaZadanaEkonomiczna">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wTemperaturaZasilaniaZadanaObieguCOKomfort">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zadana komfortowa temperatura wody instalacyjnej w trybie regulacji stałowartościowej.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaZasilaniaZadanaObieguCOKomfort">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZasilaniaZadanaObieguCOKomfortZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="xTemperaturaZasilaniaZadanaObieguCOKomfortZapisz">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Trigger zapisu wartości w pamięci urządzenia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaZasilaniaZadanaObieguCOKomfortZapis">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wartość do zapisania w pamięci urządzenia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wTemperaturaZasilaniaZadanaObieguCOEkonomiczna">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zadana ekonomiczna temperatura wody instalacyjnej w trybie regulacji stałowartościowej.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaZasilaniaZadanaObieguCOEkonomiczna">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZasilaniaZadanaObieguCOEkonomicznaZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="xTemperaturaZasilaniaZadanaObieguCOEkonomicznaZapisz">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Trigger zapisu wartości w pamięci urządzenia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaZasilaniaZadanaObieguCOEkonomicznaZapis">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wartość do zapisania w pamięci urządzenia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wAktualnyDzien">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Bieżący dzień tygodnia. 0 - Poniedziałek, 1 - Wtorek, ... 6 - Niedziela.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wCzasGodzina">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Bieżący czas - godziny.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wCzasMinuta">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Bieżący czas - minuty.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wTrybPracy">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Tryb pracy regulatora. 0 - Zima, 1 - Lato, 2 - Auto.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTrybPracy">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wTrybPracyZaraportowana">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="rTrybPracyAutonomizacja">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Domyślny tryb pracy</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xTrybPracyZapisz">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Trigger zapisu wartości w pamięci urządzenia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTrybPracyZapis">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wartość do zapisania w pamięci urządzenia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wTemperaturaProguZimaLato">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Temperatura progu Zima/Lato.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaProguZimaLato">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rTemperaturaProguZimaLatoZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wMinimalnaTemperaturaZasilaniaObieguCO">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Minimalna temperatura zasilania obwodu CO.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rMinimalnaTemperaturaZasilaniaObieguCO">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rMinimalnaTemperaturaZasilaniaObieguCOZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wKrzywaGrzewcza">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Numer krzywej grzewczej.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wPzesuniecieKrzywejGrzewczej">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Pionowe przesunięcie krzywej grzania.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wKontrolaTemperaturyZasilania">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Kontrola temperatury zasilania w punkcie Tzas. 0-Nie, 1-Tak. </xhtml>
+              </documentation>
+            </variable>
+            <variable name="wMaksymalnaTemperaturaZasilaniaObieguCO">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Maksymalna temperatura wody instalacyjnej w punkcie Tco.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rMaksymalnaTemperaturaZasilaniaObieguCO">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rMaksymalnaTemperaturaZasilaniaObieguCOZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wKpRegulatoraZaworu">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wzmocnienie regulatora PI sterującego siłownikiem zaworu mieszającego.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wTiRegulatoraZaworu">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Czas całkowania regulatora PI sterującego siłownikiem zaworu mieszającego wyrażony w sekundach.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wTpsRegulatoraZaworu">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Czas przejścia siłownika zaworu mieszającego, od pełnego otwarcia do całkowitego zamknięcia wyrażony w sekundach.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wStatusCO">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Parametr określa status obwodu CO. Parametr ma znaczenie, gdy regulator współpracuje z regulatorem MASTER sterującym źródłem ciepła. 0-Norm, 1-Prior </xhtml>
+              </documentation>
+            </variable>
+            <variable name="wZdalneSterowanie">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wykorzystanie zadajnika z czujnika temperatury wewnętrznej. 0 - Komfort, 1 - Ekonomiczny, 2 - Komfort + Ekonomiczny.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wTypRegulacji">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Typ regulacji temperatury wody instalacyjnej. 0 - Pogodowa, 1 - Stałowartościowa.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wTypRegulacjiZaraportowana">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wPompaCO">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Stan wyjścia sterującego pompą obiegową CO.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rPompaCO">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wPompaCOZaraportowana">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wZaworCOZamkniecie">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Stan wyjść sterujących siłownikiem zaworu mieszającego CO.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rZaworCOZamkniecie">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wZaworCOZamkniecieZaraportowana">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wZaworCOOtwarcie">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Stan wyjść sterujących siłownikiem zaworu mieszającego CO.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rZaworCOOtwarcie">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wZaworCOOtwarcieZaraportowana">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="fbWschodZachod">
+              <type>
+                <derived name="FbCalculateSunriseSunset" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Obliczanie wschodu i zachodu słońca</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbZegar15M">
+              <type>
+                <derived name="TON" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Timer taktujący zapisywanie temperatury</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xObliczSrednia3Dni">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Triger obliczania średniej dziennej temperatury z 3 ostatnich dni</xhtml>
+              </documentation>
+            </variable>
+            <variable name="iIloscPomiarow">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Ilość pomiarów dokonanych w ciągu dnia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaSrednia1DzienZaraportowana">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Średnia dzienna temperatura zaraporotawana</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xSezonGrzewczy">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Włączenie ogrzewania</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xSezonGrzewczyZaraportowana">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Włączenie ogrzewania zaraportowane</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBladIloscPomiarowTemperatury">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zbyt mała ilość pomiarów dokonanych w ciągu dnia do obliczenia średniej </xhtml>
+              </documentation>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(*			
+Autor:					Jan Bartczak, 2019-01-08 
+Prawa majątkowe: 		Solwena Sp. z o.o., 
+Aktualizacje:			2019-01-25-AWy: usunięcie buga: błędny odczyt wTemperaturaZadanaObieguCO
+						2019-01-31-AWy: powiększenie liczby odzcytywanych rejestrów, wysyłanie atrybutów do IZE, konwersja danych dla dataloggera
+						2019-02-05-AWy: kontrola komunikacji
+						2019-02-18-AWy: generowanie alarmów od czujnika temp. zew., zasilania CO oraz braku osiągnięcia temperatury zadanej.
+						2019-04-15-AWy: obsługa trybu pracy (zima/lato) z IZE
+						2019-04-18-AWy: - usunięcie buga z warunku na wysłanie ramki z deaktywacją alarmu o braku osiągnięcia temperatury zadanej. 
+										- dopisanie warunku pracy węzła w trybie ZIMA lub AUTO na gerenowanie w/w alarmu 
+						2019-05-14-AWy: - zmiana obsługi ramki C z nastawą temperatury komfortowej i ekonomicznej.
+										- zmiana adresu rejestrów temperatury zadanej CO komfort i ekonomicznej oraz tempearatury wewnętrznej komfort i ekonomicznej.
+						2019-05-16-AWy: modyfikacja warunku na raportowanie. Dopisane: AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa AND xPoInicjalizacji 
+						2019-05-17-AWy: usunięcie mnożenia *10 atrybutów TEMPNASCOKMF i TEMPNASCOEKO po otrzymaniu ramki C z tymi atrybutami.
+						2019-05-22-AWy: zapisywanie po MODBUSie trybu pracy na urządzenie.
+						2019-06-04-AWy: załadowanie domyślnych trybów pracy i nastaw po przejściu w tryb autonomizacji.
+						2019-08-05-AWy: wyznaczanie okresu grzewczego. Wysyłanie xSezonGrzewczy i rTemperaturaSrednia1Dzien do IZE. Przeniesie xTrybPracyAutonomizacja z VAR_INPUT do VAR.
+						2019-09-16-AWy: wysyłanie ramki z trybem pracy.
+						2019-10-11-AWy: wprowadzenie zabezpieczenia przed przekroczeniem rozmiaru tablicy w przypadku utrary zasilania przez sterownik na całą noc.
+						2019-10-22-AWy: - wydłużenie czasu fbTaktowanieZapisywaniaModbus oraz wprowadzenie trigera zapisu po Modbusie
+										- zmiana trigera fbTimerBrakuKomunikacji
+						
+Opis:					fb służy do komunikacji z sterownikami węzłów FRISKO ATTO-M1
+						W tej chwili możliwość sterowania (zapisu) rejestrów wTemperaturaZasilaniaZadanaObieguCOKomfort i wTemperaturaZasilaniaZadanaObieguCOEkonomiczna. Pozostałe tylko do odczytu.
+				
+*)
+
+// Inicjalizacja sterownika
+fbInicjalizacyjnyTimer(IN := (NOT xPoInicjalizacji AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa) , PT := tCzasOpoznieniaRestartu);
+IF fbInicjalizacyjnyTimer.Q THEN
+	rTemperaturaZasilaniaObieguCOZaraportowana := rTemperaturaZasilaniaObieguCO;
+	rTemperaturaZadanaObieguCOZaraportowana := rTemperaturaZadanaObieguCO;
+	rTemperaturaZasilaniaZaraportowana := rTemperaturaZasilania;
+	rTemperaturaZewnetrznaZaraportowana := rTemperaturaZewnetrzna;
+	rTemperaturaZewnetrznaSredniaZaraportowana := rTemperaturaZewnetrznaSrednia;
+	wProgramZaraportowana := wProgram;
+	rTemperaturaZasilaniaZadanaObieguCOKomfortZaraportowana := rTemperaturaZasilaniaZadanaObieguCOKomfort;
+	rTemperaturaZasilaniaZadanaObieguCOEkonomicznaZaraportowana := rTemperaturaZasilaniaZadanaObieguCOEkonomiczna;
+	rTemperaturaProguZimaLatoZaraportowana := rTemperaturaProguZimaLato;
+	rMinimalnaTemperaturaZasilaniaObieguCOZaraportowana := rMinimalnaTemperaturaZasilaniaObieguCO;
+	rMaksymalnaTemperaturaZasilaniaObieguCOZaraportowana := rMaksymalnaTemperaturaZasilaniaObieguCO;
+	wTypRegulacjiZaraportowana := wTypRegulacji;
+	wPompaCOZaraportowana := wPompaCO;
+	wZaworCOZamkniecieZaraportowana := wZaworCOZamkniecie;
+	wZaworCOOtwarcieZaraportowana := wZaworCOOtwarcie;
+	wTrybPracyZaraportowana := wTrybPracy;
+	xSezonGrzewczyZaraportowana := xSezonGrzewczy;
+	rTemperaturaSrednia1DzienZaraportowana := rTemperaturaSrednia1Dzien;
+	xPoInicjalizacji := TRUE;
+END_IF
+
+// Włącz autonomizację jeśli sterownik jest w stanie inicjalizacji lub nastąpiło wymuszenie autonomizacji
+IF NOT xPoInicjalizacji OR xAutonomizacjaSztuczna = TRUE THEN
+	xAutonomizacja := TRUE;
+END_IF 
+
+// Kontrola komunikacji
+fbTimerBrakuKomunikacji(IN := arModbusStatusKomunikacji[bAdres] &lt;&gt; enumModbusStatus.KomunikacjaPrawidlowa, PT := T#60S);
+IF fbTimerBrakuKomunikacji.Q THEN
+	xBrakKomunikacjiPLC := TRUE;
+ELSE
+	xBrakKomunikacjiPLC := FALSE;
+END_IF
+
+IF xAutonomizacja THEN
+	xBrakKomunikacjiIZE := TRUE;
+ELSE
+	xBrakKomunikacjiIZE := FALSE;
+END_IF
+
+// Deklaracja rejestrów Modbusa
+IF xPierwszySkan THEN
+	xPierwszySkan := FALSE;
+	WHILE arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia &lt;&gt; 0 DO
+		intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	END_WHILE
+
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4002;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wCzasMinuta);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4003;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wCzasGodzina);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4004;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wAktualnyDzien);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;		
+
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4205;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaZasilaniaZadanaObieguCOKomfort);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4206;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaZasilaniaZadanaObieguCOEkonomiczna);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4032;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaZasilaniaObieguCO);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4034;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaZewnetrzna);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4035;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaZasilania);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4047;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wPompaCO);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4048;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wZaworCOZamkniecie);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4049;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wZaworCOOtwarcie);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4088;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaZadanaObieguCO);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+		
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4092;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaZewnetrznaSrednia);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4124;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaWewnetrznaZadanaKomfort);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+		
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4125;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaWewnetrznaZadanaEkonomiczna);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4173;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTrybPracy);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4170;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wKrzywaGrzewcza);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4174;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaProguZimaLato);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4175;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wKpRegulatoraZaworu);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+			
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4176;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTiRegulatoraZaworu);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4183;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTpsRegulatoraZaworu);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4188;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wMinimalnaTemperaturaZasilaniaObieguCO);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+				
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4189;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wMaksymalnaTemperaturaZasilaniaObieguCO);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+		
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4191;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wKontrolaTemperaturyZasilania);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+		
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4194;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wPzesuniecieKrzywejGrzewczej);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4197;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wProgram);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4201;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wZdalneSterowanie);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+		
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4202;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wStatusCO);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;			
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4204;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTypRegulacji);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+END_IF
+
+// Przeliczenie zmiennych
+fbTemperaturaZasilaniaObieguCO(	rWartoscWejsciowa := WORD_TO_REAL(wTemperaturaZasilaniaObieguCO),
+								rDeadband := 0.5,
+								tCzasMinimalny := tMinimalnyCzasRaportowania,
+								tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+								rWynikMnoznik := 0.1,
+								rWynikOffset := 273.15,
+								rWartoscWejsciowaZaraportowana := rTemperaturaZasilaniaObieguCOZaraportowana,
+								rWartoscWyjsciowa =&gt; rTemperaturaZasilaniaObieguCO);
+								
+rTemperaturaZadanaObieguCO := WORD_TO_REAL(wTemperaturaZadanaObieguCO)*0.1 + 273.15;
+fbTemperaturaZasilania( rWartoscWejsciowa := WORD_TO_REAL(wTemperaturaZasilania),
+						rDeadband := 0.5,
+						tCzasMinimalny := tMinimalnyCzasRaportowania,
+						tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+						rWynikMnoznik := 0.1,
+						rWynikOffset := 273.15,
+						rWartoscWejsciowaZaraportowana := rTemperaturaZasilaniaZaraportowana,
+						rWartoscWyjsciowa =&gt; rTemperaturaZasilania);
+
+			
+fbTemperaturaZewnetrzna(	rWartoscWejsciowa := WORD_TO_REAL(wTemperaturaZewnetrzna),
+							rDeadband := 0.5,
+							tCzasMinimalny := tMinimalnyCzasRaportowania,
+							tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+							rWynikMnoznik := 0.1,
+							rWynikOffset := 273.15,
+							rWartoscWejsciowaZaraportowana := rTemperaturaZewnetrznaZaraportowana,
+							rWartoscWyjsciowa =&gt; rTemperaturaZewnetrzna);
+
+
+fbTemperaturaZewnetrznaSrednia(	rWartoscWejsciowa := WORD_TO_REAL(wTemperaturaZewnetrznaSrednia),
+								rDeadband := 0.5,
+								tCzasMinimalny := tMinimalnyCzasRaportowania,
+								tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+								rWynikMnoznik := 0.1,
+								rWynikOffset := 273.15,
+								rWartoscWejsciowaZaraportowana := rTemperaturaZewnetrznaSredniaZaraportowana,
+								rWartoscWyjsciowa =&gt; rTemperaturaZewnetrznaSrednia);
+
+rTemperaturaWewnetrznaZadanaKomfort := WORD_TO_REAL(wTemperaturaWewnetrznaZadanaKomfort) + 273.15;
+rTemperaturaWewnetrznaZadanaEkonomiczna := WORD_TO_REAL(wTemperaturaWewnetrznaZadanaEkonomiczna) + 273.15;
+rTemperaturaZasilaniaZadanaObieguCOKomfort := WORD_TO_REAL(wTemperaturaZasilaniaZadanaObieguCOKomfort) + 273.15;
+rTemperaturaZasilaniaZadanaObieguCOEkonomiczna := WORD_TO_REAL(wTemperaturaZasilaniaZadanaObieguCOEkonomiczna) + 273.15;
+rTemperaturaProguZimaLato := WORD_TO_REAL(wTemperaturaProguZimaLato) + 273.15;
+rMinimalnaTemperaturaZasilaniaObieguCO := WORD_TO_REAL(wMinimalnaTemperaturaZasilaniaObieguCO) + 273.15;
+rMaksymalnaTemperaturaZasilaniaObieguCO := WORD_TO_REAL(wMaksymalnaTemperaturaZasilaniaObieguCO) + 273.15;
+rPompaCO := WORD_TO_REAL(wPompaCO);
+rZaworCOZamkniecie := WORD_TO_REAL(wZaworCOZamkniecie);
+rZaworCOOtwarcie := WORD_TO_REAL(wZaworCOOtwarcie);
+rTrybPracy := WORD_TO_REAL(wTrybPracy);
+
+// Sprawdzanie czy pomiar temperatury zewnętrznej działa (alarm jest generowany, jeśli odczyt nie zmienił wartości w przeciągu 12h)
+IF rTemperaturaZewnetrznaPamiec = rTemperaturaZewnetrzna THEN
+	xBrakZmianyTemperaturyZewnetrznej := TRUE;
+ELSE
+	xBrakZmianyTemperaturyZewnetrznej := FALSE;	
+END_IF
+fbBrakZmianyTemperaturyZewnetrznejTimer(IN := xBrakZmianyTemperaturyZewnetrznej, PT := T#12H);
+rTemperaturaZewnetrznaPamiec := rTemperaturaZewnetrzna;
+IF fbBrakZmianyTemperaturyZewnetrznejTimer.Q THEN
+	xBladBrakZmianyTemperaturyZewnetrznej := TRUE;
+ELSE
+	xBladBrakZmianyTemperaturyZewnetrznej := FALSE;
+END_IF
+
+// Sprawdzanie czy pomiar temperatury zasilania Obiegu CO działa (alarm jest generowany, jeśli odczyt nie zmienił wartości w przeciągu 12h)
+IF rTemperaturaZasilaniaObieguCOPamiec = rTemperaturaZasilaniaObieguCO THEN
+	xBrakZmianyTemperaturyZasilaniaObieguCO := TRUE;
+ELSE
+	xBrakZmianyTemperaturyZasilaniaObieguCO := FALSE;	
+END_IF
+fbBrakZmianyTemperaturyZasilaniaObieguCOTimer(IN := xBrakZmianyTemperaturyZasilaniaObieguCO, PT := T#12H);
+rTemperaturaZasilaniaObieguCOPamiec := rTemperaturaZasilaniaObieguCO;
+IF fbBrakZmianyTemperaturyZasilaniaObieguCOTimer.Q THEN
+	xBladBrakZmianyTemperaturyZasilaniaObieguCO := TRUE;
+ELSE
+	xBladBrakZmianyTemperaturyZasilaniaObieguCO := FALSE;
+END_IF
+
+// Sprawdzanie czy została osiągnęta zadana temperatura zasilania Obiegu CO
+IF rTemperaturaZasilaniaObieguCO &lt; rTemperaturaZadanaObieguCO AND wTrybPracy &lt;&gt; enumPPPSFriskoATTOM1STrybPracy.Lato THEN
+	xBrakOsiagnieciaTemperauryZadanejCO := TRUE;
+ELSE
+	xBrakOsiagnieciaTemperauryZadanejCO := FALSE;	
+END_IF
+fbBrakOsiagnieciaTemperauryZadanejCOTimer(IN := xBrakOsiagnieciaTemperauryZadanejCO, PT := T#3H);
+IF fbBrakOsiagnieciaTemperauryZadanejCOTimer.Q THEN
+	xBladBrakOsiagnieciaTemperauryZadanejCO := TRUE;
+ELSE
+	xBladBrakOsiagnieciaTemperauryZadanejCO := FALSE;
+END_IF
+
+// Obsługa komunikatu przychodzacego z IZE
+IF sKomunikat &lt;&gt; sKomunikatPamiec AND xPoInicjalizacji THEN
+	sKomunikatPamiec := sKomunikat;
+	IF fnIDOdbiorcyMatch(sKomunikat , sIdInstancji) THEN
+		sDane := '';
+		// Rozkaz typu C
+		IF fnKomunikatTyp(sKomunikat) = 'C' AND NOT xAutonomizacja THEN
+			// Blokada wykonywania rozkazów
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat,'BLOK=') = '0' THEN
+				IF intBlokadaWykonywaniaRozkazow = 1 THEN
+					intBlokadaWykonywaniaRozkazow := 0;
+				ELSE	
+					IF sDane &lt;&gt; '' THEN
+						sDane := CONCAT(sDane , ';');
+					END_IF
+					sDane := CONCAT(sDane , 'BLOK=0');
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat,'BLOK=') = '1' THEN
+				IF intBlokadaWykonywaniaRozkazow = 0 THEN
+					intBlokadaWykonywaniaRozkazow := 1;
+				ELSE
+					IF sDane &lt;&gt; '' THEN
+						sDane := CONCAT(sDane , ';');
+					END_IF					
+					sDane := CONCAT(sDane , 'BLOK=1');
+				END_IF
+			END_IF
+			
+			IF intBlokadaWykonywaniaRozkazow = 0 THEN
+				// Tryby pracy 
+				fnKomunikatDaneZnajdzPorownajZapisz(sKomunikat := sKomunikat,
+					sAtrybut := 'TRYB=',
+					rAtrybutWartosc := rTrybPracyZapis,
+					sDane := sDane,
+					xAtrybutZapisz =&gt; xTrybPracyZapisz);		
+				// Temperatura nastawiona w trybie komfortowym
+				fnKomunikatDaneZnajdzPorownajZapisz(sKomunikat := sKomunikat,
+					sAtrybut := 'TEMPNASCOKMF=',
+					rAtrybutWartosc := rTemperaturaZasilaniaZadanaObieguCOKomfortZapis,
+					sDane := sDane,
+					xAtrybutZapisz =&gt; xTemperaturaZasilaniaZadanaObieguCOKomfortZapisz);
+				// Temperatura nastawiona w trybie ekonomicznym
+				fnKomunikatDaneZnajdzPorownajZapisz(sKomunikat := sKomunikat,
+					sAtrybut := 'TEMPNASCOEKO=',
+					rAtrybutWartosc := rTemperaturaZasilaniaZadanaObieguCOEkonomicznaZapis,
+					sDane := sDane,
+					xAtrybutZapisz =&gt; xTemperaturaZasilaniaZadanaObieguCOEkonomicznaZapisz);
+			END_IF
+		END_IF
+
+		// Zapytanie typu Q
+		IF fnKomunikatTyp(sKomunikat) = 'Q' AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'BLOK=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'BLOK=' , sWartosc := INT_TO_STRING(intBlokadaWykonywaniaRozkazow) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TRYB=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TRYB=' , sWartosc := REAL_TO_STRING(rTrybPracy) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPZASCO=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZASCO=' , sWartosc := REAL_TO_STRING(rTemperaturaZasilaniaObieguCO) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPZADCO=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZADCO=' , sWartosc := REAL_TO_STRING(rTemperaturaZadanaObieguCO) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPZAS=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZAS=' , sWartosc := REAL_TO_STRING(rTemperaturaZasilania) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPZEW=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZEW=' , sWartosc := REAL_TO_STRING(rTemperaturaZewnetrzna) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPZEWSR=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZEWSR=' , sWartosc := REAL_TO_STRING(rTemperaturaZewnetrznaSrednia) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'PROGRAM=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'PROGRAM=' , sWartosc := WORD_TO_STRING(wProgram) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPZASCOZADKMF=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZASCOZADKMF=' , sWartosc := REAL_TO_STRING(rTemperaturaZasilaniaZadanaObieguCOKomfort) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPZASCOZADEKO=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZASCOZADEKO=' , sWartosc := REAL_TO_STRING(rTemperaturaZasilaniaZadanaObieguCOEkonomiczna) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPZIMALATO=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZIMALATO=' , sWartosc := REAL_TO_STRING(rTemperaturaProguZimaLato) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPMINZASCO=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPMINZASCO=' , sWartosc := REAL_TO_STRING(rMinimalnaTemperaturaZasilaniaObieguCO) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPMAXZASCO=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPMAXZASCO=' , sWartosc := REAL_TO_STRING(rMaksymalnaTemperaturaZasilaniaObieguCO) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TYPREG=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TYPREG=' , sWartosc := WORD_TO_STRING(wTypRegulacji) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'POMPA=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'POMPA=' , sWartosc := WORD_TO_STRING(wPompaCO) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'ZAWORCOZAM=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'ZAWORCOZAM=' , sWartosc := WORD_TO_STRING(wZaworCOZamkniecie) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'ZAWORCOOTW=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'ZAWORCOOTW=' , sWartosc := WORD_TO_STRING(wZaworCOOtwarcie) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'SEZONGRZ=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'SEZONGRZ=' , sWartosc := BOOL_TO_STRING(xSezonGrzewczy) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPSR1DZ=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPSR1DZ=' , sWartosc := REAL_TO_STRING(rTemperaturaSrednia1Dzien + 273.15) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			// Pytanie o stany alarmów
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALARM=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				FOR intPetla := 1 TO 10 BY 1 DO
+					// Raportowanie typu E (stanów alarmów) na zapytanie typu Q
+					IF arErrorStan[intPetla] &lt;&gt; enumAlarmWartosc.StanNieznany THEN
+						fnZapiszKomunikat(	sCalyKomunikat := '' ,
+											sTypKomunikatu := 'E' ,
+											sMnemonik := sMnemonik ,
+											sMACAdres := sMACAdres ,
+											sIDNadawcy := sIdInstancji ,
+											sIDOdbiorcy := sIdAplikacji ,
+											sDaneZapasowe := sDaneZapasowe ,
+											sDane := fnKomunikatDaneErrorRetry(xAktywny := arErrorStan[intPetla] = enumAlarmWartosc.StanAlarmowy , intKlasa := arErrorKlasa[intPetla] , intNumer := intPetla),
+											arTablicaKomunikatow := arTablicaKomunikatow ,
+											intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+											intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+											sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					END_IF
+				END_FOR
+			END_IF
+		END_IF
+		
+		// Raportowanie typu A
+		IF sDane &lt;&gt; '' THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+		END_IF
+	END_IF
+END_IF
+
+// Przywrócenie wartości domyślnych nastaw krzywej grzewczej i trybów pracy w przypadku restartu sterownika lub przejścia w stan autonomizacji (brak komunikacji z IZE)
+rtrigPrzywrocDomyslne(CLK := xAutonomizacja);
+IF rtrigPrzywrocDomyslne.Q THEN	
+	IF rTrybPracy &lt;&gt; rTrybPracyAutonomizacja THEN
+		rTrybPracyZapis := rTrybPracyAutonomizacja;
+		xTrybPracyZapisz := TRUE;
+	END_IF
+	IF rTemperaturaZasilaniaZadanaObieguCOKomfort &lt;&gt; rTemperaturaZasilaniaZadanaObieguCOKomfortAutonomizacja THEN
+		rTemperaturaZasilaniaZadanaObieguCOKomfortZapis := rTemperaturaZasilaniaZadanaObieguCOKomfortAutonomizacja;
+		xTemperaturaZasilaniaZadanaObieguCOKomfortZapisz := TRUE;
+	END_IF
+	IF rTemperaturaZasilaniaZadanaObieguCOEkonomiczna &lt;&gt; rTemperaturaZasilaniaZadanaObieguCOEkonomicznaAutonomizacja THEN
+		rTemperaturaZasilaniaZadanaObieguCOEkonomicznaZapis := rTemperaturaZasilaniaZadanaObieguCOEkonomicznaAutonomizacja;
+		xTemperaturaZasilaniaZadanaObieguCOEkonomicznaZapisz := TRUE;
+	END_IF
+END_IF	
+
+// Trigger zapisu po Modbusie
+rtrigZapisModbus (CLK := xTrybPracyZapisz OR xTemperaturaZasilaniaZadanaObieguCOKomfortZapisz OR xTemperaturaZasilaniaZadanaObieguCOEkonomicznaZapisz);
+
+// Taktowanie zapisywania po Modbusie
+fbTaktowanieZapisywaniaModbus(IN := NOT fbTaktowanieZapisywaniaModbus.Q, PT := T#180S);
+				
+// Zapisywanie trybu pracy do pamięci urządzenia
+IF xTrybPracyZapisz AND (fbTaktowanieZapisywaniaModbus.Q OR rtrigZapisModbus.Q) THEN
+	fnModbusZapisRejestru(	bAdresUrzadzenia := bAdres,
+							bFunkcja := INT_TO_BYTE(enumModbusKodyFunkcji.ZapisRejestru),
+							uiAdresRejestru := 4173,
+							pZmiennaReferencyjna := 0,
+							wWartoscDoZapisania := REAL_TO_WORD(rTrybPracyZapis),
+							intModbusOdczytZapisZadanieRozmiar := intModbusOdczytZapisZadanieRozmiar,
+							arModbusOdczytZapisZadanie := arModbusOdczytZapisZadanie,
+							intModbusOdczytZapisZadanieZnacznikZapisu := intModbusOdczytZapisZadanieZnacznikZapisu);
+	IF rTrybPracy = rTrybPracyZapis THEN					
+		xTrybPracyZapisz := FALSE;
+	END_IF
+END_IF
+// Zapisywanie temperatury zasilania obiegu c.o. w trybie komfortowym do pamięci urządzenia
+IF xTemperaturaZasilaniaZadanaObieguCOKomfortZapisz AND (fbTaktowanieZapisywaniaModbus.Q OR rtrigZapisModbus.Q) THEN
+	fnModbusZapisRejestru(	bAdresUrzadzenia := bAdres,
+							bFunkcja := INT_TO_BYTE(enumModbusKodyFunkcji.ZapisRejestru),
+							uiAdresRejestru := 4205,
+							pZmiennaReferencyjna := 0,
+							wWartoscDoZapisania := REAL_TO_WORD(rTemperaturaZasilaniaZadanaObieguCOKomfortZapis - 273.15),
+							intModbusOdczytZapisZadanieRozmiar := intModbusOdczytZapisZadanieRozmiar,
+							arModbusOdczytZapisZadanie := arModbusOdczytZapisZadanie,
+							intModbusOdczytZapisZadanieZnacznikZapisu := intModbusOdczytZapisZadanieZnacznikZapisu);
+	IF rTemperaturaZasilaniaZadanaObieguCOKomfort = rTemperaturaZasilaniaZadanaObieguCOKomfortZapis THEN 						
+		xTemperaturaZasilaniaZadanaObieguCOKomfortZapisz := FALSE;
+	END_IF
+END_IF
+// Zapisywanie temperatury zasilania obiegu c.o. w trybie ekonomicznym do pamięci urządzenia
+IF xTemperaturaZasilaniaZadanaObieguCOEkonomicznaZapisz AND (fbTaktowanieZapisywaniaModbus.Q OR rtrigZapisModbus.Q) THEN
+	fnModbusZapisRejestru(	bAdresUrzadzenia := bAdres,
+							bFunkcja := INT_TO_BYTE(enumModbusKodyFunkcji.ZapisRejestru),
+							uiAdresRejestru := 4206,
+							pZmiennaReferencyjna := 0,
+							wWartoscDoZapisania := REAL_TO_WORD(rTemperaturaZasilaniaZadanaObieguCOEkonomicznaZapis - 273.15),
+							intModbusOdczytZapisZadanieRozmiar := intModbusOdczytZapisZadanieRozmiar,
+							arModbusOdczytZapisZadanie := arModbusOdczytZapisZadanie,
+							intModbusOdczytZapisZadanieZnacznikZapisu := intModbusOdczytZapisZadanieZnacznikZapisu);
+	IF rTemperaturaZasilaniaZadanaObieguCOEkonomiczna = rTemperaturaZasilaniaZadanaObieguCOEkonomicznaZapis THEN
+		xTemperaturaZasilaniaZadanaObieguCOEkonomicznaZapisz := FALSE;
+	END_IF
+END_IF
+
+// Wyznaczanie okresu grzewczego
+fbZegar15M(IN := NOT fbZegar15M.Q AND NOT xBladBrakZmianyTemperaturyZewnetrznej, PT := T#15M);
+
+	// Obliczenie wschodu i zachodu słońca
+fbWschodZachod(dtUTC_Time := WagoAppTime.FuGetDateAndTime(),
+	rTimeZone := 0,
+	xDST := FALSE,
+	rLatitude := 54.441944,
+	rLongitude := 18.559722);
+
+	// Zapisywanie tempratury z 15-minutowym okresem, oraz obliczanie średniej
+IF fbWschodZachod.dtUTC_Time &gt; fbWschodZachod.dtSunrise AND fbWschodZachod.dtUTC_Time &lt; fbWschodZachod.dtSunset THEN
+	IF fbZegar15M.Q OR xPierwszySkan THEN
+		aTemperatury[iTemperaturyIndex] := WORD_TO_REAL(wTemperaturaZewnetrzna) / 10;
+		iTemperaturyIndex := iTemperaturyIndex + 1;
+	END_IF	
+	xObliczSrednia3Dni := TRUE;
+ELSE 
+	// Obliczanie średniej temperatury dziennej
+	IF iTemperaturyIndex &gt;= 40 THEN		// Oblicz średnią temperaturę tylko, jeśli zebranych zostało przynajmniej 40 próbek
+		rTemperaturaSrednia1Dzien := 0;
+		iIloscPomiarow := iTemperaturyIndex;
+		FOR iTemperaturyIndex := 0 TO iIloscPomiarow BY 1 DO  
+			rTemperaturaSrednia1Dzien := rTemperaturaSrednia1Dzien + aTemperatury[iTemperaturyIndex];
+		END_FOR
+		rTemperaturaSrednia1Dzien := rTemperaturaSrednia1Dzien / iTemperaturyIndex;
+		xBladIloscPomiarowTemperatury := FALSE;
+	ELSE
+		rTemperaturaSrednia1Dzien := 15;
+		xBladIloscPomiarowTemperatury := TRUE;
+	END_IF
+	// Obliczanie średniej z trzech dni
+	IF xObliczSrednia3Dni THEN
+		aTemperaturySrednie[iTemperaturySrednieIndex] := rTemperaturaSrednia1Dzien;
+		iTemperaturySrednieIndex := iTemperaturySrednieIndex + 1;
+		IF iTemperaturySrednieIndex = 3 THEN 
+			iTemperaturySrednieIndex := 0;
+			xTemperaturaSrednia3DniObliczona := TRUE;
+		END_IF
+		rTemperaturaSrednia3Dni := (aTemperaturySrednie[0] + aTemperaturySrednie[1] + aTemperaturySrednie[2]) / 3; 
+		xObliczSrednia3Dni := FALSE;	
+	END_IF
+	iTemperaturyIndex := 0;
+END_IF
+
+IF iTemperaturyIndex &gt;= 96 THEN	// Zabezpieczenie przed przekroczeniem rozmiaru tablicy w przypadku utrary zasilania przez sterownik na całą noc
+	iTemperaturyIndex := 0;
+END_IF
+
+	// Sprawdzenie warunku na włączenie ogrzewania (pomiędzy 15 września a 15 maja i/lub średnia temperatura jest poniżej 15 stopni)
+IF  ((fbWschodZachod._rDay &gt;= 15 AND fbWschodZachod._rMonth = 9) OR (fbWschodZachod._rMonth &gt; 9 OR fbWschodZachod._rMonth &lt; 5) OR (fbWschodZachod._rDay &lt;= 15 AND fbWschodZachod._rMonth = 5)) OR 
+	(rTemperaturaSrednia3Dni &lt; 15 AND xTemperaturaSrednia3DniObliczona) OR xSezonGrzewczyCalyRok THEN
+	xSezonGrzewczy := TRUE;
+	rTrybPracyAutonomizacja := enumPPPSFriskoATTOM1STrybPracy.Zima;
+ELSE
+	xSezonGrzewczy := FALSE;
+	rTrybPracyAutonomizacja := enumPPPSFriskoATTOM1STrybPracy.Lato;
+END_IF
+
+// Raportowanie typu M do IZE wartosci odczytanych z Modbusa	
+IF (intBlokadaWykonywaniaRozkazow &lt;&gt; intBlokadaWykonywaniaRozkazowZaraportowana OR rTemperaturaZasilaniaObieguCO &lt;&gt; rTemperaturaZasilaniaObieguCOZaraportowana OR 
+	rTemperaturaZadanaObieguCO &lt;&gt; rTemperaturaZadanaObieguCOZaraportowana OR rTemperaturaZasilania &lt;&gt; rTemperaturaZasilaniaZaraportowana OR rTemperaturaZewnetrzna &lt;&gt; rTemperaturaZewnetrznaZaraportowana OR
+	rTemperaturaZewnetrznaSrednia &lt;&gt; rTemperaturaZewnetrznaSredniaZaraportowana OR wProgram &lt;&gt; wProgramZaraportowana OR 
+	rTemperaturaZasilaniaZadanaObieguCOKomfort &lt;&gt; rTemperaturaZasilaniaZadanaObieguCOKomfortZaraportowana OR 
+	rTemperaturaZasilaniaZadanaObieguCOEkonomiczna &lt;&gt; rTemperaturaZasilaniaZadanaObieguCOEkonomicznaZaraportowana OR rTemperaturaProguZimaLato &lt;&gt; rTemperaturaProguZimaLatoZaraportowana OR
+	rMinimalnaTemperaturaZasilaniaObieguCO &lt;&gt; rMinimalnaTemperaturaZasilaniaObieguCOZaraportowana OR rMaksymalnaTemperaturaZasilaniaObieguCO &lt;&gt; rMaksymalnaTemperaturaZasilaniaObieguCOZaraportowana OR
+	wTypRegulacji &lt;&gt; wTypRegulacjiZaraportowana OR wPompaCO &lt;&gt; wPompaCOZaraportowana OR wZaworCOZamkniecie &lt;&gt; wZaworCOZamkniecieZaraportowana OR wZaworCOOtwarcie &lt;&gt; wZaworCOOtwarcieZaraportowana OR 
+	wTrybPracy &lt;&gt; wTrybPracyZaraportowana OR xSezonGrzewczy &lt;&gt; xSezonGrzewczyZaraportowana OR rTemperaturaSrednia1Dzien &lt;&gt; rTemperaturaSrednia1DzienZaraportowana) AND 
+	arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa AND xPoInicjalizacji THEN
+	xRaport := TRUE;
+END_IF
+
+IF xRaport THEN
+	sDane := '';
+	xRaport := FALSE;
+	IF intBlokadaWykonywaniaRozkazow &lt;&gt; intBlokadaWykonywaniaRozkazowZaraportowana THEN 
+		intBlokadaWykonywaniaRozkazowZaraportowana := intBlokadaWykonywaniaRozkazow;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'BLOK=' , sWartosc := INT_TO_STRING(intBlokadaWykonywaniaRozkazow) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF
+	END_IF			
+	// Tryb pracy
+	IF wTrybPracy &lt;&gt; wTrybPracyZaraportowana THEN
+		wTrybPracyZaraportowana := wTrybPracy;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TRYB=' , sWartosc := REAL_TO_STRING(rTrybPracy) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF		
+	// Temperatura zasilania obwodu c. o.
+	IF rTemperaturaZasilaniaObieguCO &lt;&gt; rTemperaturaZasilaniaObieguCOZaraportowana THEN
+		rTemperaturaZasilaniaObieguCOZaraportowana := rTemperaturaZasilaniaObieguCO;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZASCO=' , sWartosc := REAL_TO_STRING(rTemperaturaZasilaniaObieguCO) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Temperatura zadana obwodu c. o.
+	IF rTemperaturaZadanaObieguCO &lt;&gt; rTemperaturaZadanaObieguCOZaraportowana THEN
+		rTemperaturaZadanaObieguCOZaraportowana := rTemperaturaZadanaObieguCO;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZADCO=' , sWartosc := REAL_TO_STRING(rTemperaturaZadanaObieguCO) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Temperatura zasilania budynku
+	IF rTemperaturaZasilania &lt;&gt; rTemperaturaZasilaniaZaraportowana THEN
+		rTemperaturaZasilaniaZaraportowana := rTemperaturaZasilania;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZAS=' , sWartosc := REAL_TO_STRING(rTemperaturaZasilania) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Temperatura zewnętrzna
+	IF rTemperaturaZewnetrzna &lt;&gt; rTemperaturaZewnetrznaZaraportowana THEN
+		rTemperaturaZewnetrznaZaraportowana := rTemperaturaZewnetrzna;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZEW=' , sWartosc := REAL_TO_STRING(rTemperaturaZewnetrzna) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Temperatura zewnętrzna średnia (2 godz.)
+	IF rTemperaturaZewnetrznaSrednia &lt;&gt; rTemperaturaZewnetrznaSredniaZaraportowana THEN
+		rTemperaturaZewnetrznaSredniaZaraportowana := rTemperaturaZewnetrznaSrednia;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZEWSR=' , sWartosc := REAL_TO_STRING(rTemperaturaZewnetrznaSrednia) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Program pracy regulatora
+	IF wProgram &lt;&gt; wProgramZaraportowana THEN
+		wProgramZaraportowana := wProgram;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'PROGRAM=' , sWartosc := WORD_TO_STRING(wProgram) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Zadana komfortowa temperatura wody instalacyjnej w trybie regulacji stałowartościowej
+	IF rTemperaturaZasilaniaZadanaObieguCOKomfort &lt;&gt; rTemperaturaZasilaniaZadanaObieguCOKomfortZaraportowana THEN
+		rTemperaturaZasilaniaZadanaObieguCOKomfortZaraportowana := rTemperaturaZasilaniaZadanaObieguCOKomfort;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPNASCOKMF=' , sWartosc := REAL_TO_STRING(rTemperaturaZasilaniaZadanaObieguCOKomfort) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Zadana ekonomiczna temperatura wody instalacyjnej w trybie regulacji stałowartościowej
+	IF rTemperaturaZasilaniaZadanaObieguCOEkonomiczna &lt;&gt; rTemperaturaZasilaniaZadanaObieguCOEkonomicznaZaraportowana THEN
+		rTemperaturaZasilaniaZadanaObieguCOEkonomicznaZaraportowana := rTemperaturaZasilaniaZadanaObieguCOEkonomiczna;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPNASCOEKO=' , sWartosc := REAL_TO_STRING(rTemperaturaZasilaniaZadanaObieguCOEkonomiczna) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Temperatura zasilania
+	IF rTemperaturaProguZimaLato &lt;&gt; rTemperaturaProguZimaLatoZaraportowana THEN
+		rTemperaturaProguZimaLatoZaraportowana := rTemperaturaProguZimaLato;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPZIMALATO=' , sWartosc := REAL_TO_STRING(rTemperaturaProguZimaLato) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Minimalna temperatura zasilania obwodu CO
+	IF rMinimalnaTemperaturaZasilaniaObieguCO &lt;&gt; rMinimalnaTemperaturaZasilaniaObieguCOZaraportowana THEN
+		rMinimalnaTemperaturaZasilaniaObieguCOZaraportowana := rMinimalnaTemperaturaZasilaniaObieguCO;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPMINZASCO=' , sWartosc := REAL_TO_STRING(rMinimalnaTemperaturaZasilaniaObieguCO) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Maksymalna temperatura wody instalacyjnej w punkcie Tco
+	IF rMaksymalnaTemperaturaZasilaniaObieguCO &lt;&gt; rMaksymalnaTemperaturaZasilaniaObieguCOZaraportowana THEN
+		rMaksymalnaTemperaturaZasilaniaObieguCOZaraportowana := rMaksymalnaTemperaturaZasilaniaObieguCO;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPMAXZASCO=' , sWartosc := REAL_TO_STRING(rMaksymalnaTemperaturaZasilaniaObieguCO) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Typ regulacji temperatury wody instalacyjnej
+	IF wTypRegulacji &lt;&gt; wTypRegulacjiZaraportowana THEN
+		wTypRegulacjiZaraportowana := wTypRegulacji;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TYPREG=' , sWartosc := WORD_TO_STRING(wTypRegulacji) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Stan wyjścia sterującego pompą obiegową CO
+	IF wPompaCO &lt;&gt; wPompaCOZaraportowana THEN
+		wPompaCOZaraportowana := wPompaCO;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'POMPA=' , sWartosc := WORD_TO_STRING(wPompaCO) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Stan wyjść sterujących siłownikiem zaworu mieszającego CO
+	IF wZaworCOZamkniecie &lt;&gt; wZaworCOZamkniecieZaraportowana THEN
+		wZaworCOZamkniecieZaraportowana := wZaworCOZamkniecie;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'ZAWORCOZAM=' , sWartosc := WORD_TO_STRING(wZaworCOZamkniecie) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Stan wyjść sterujących siłownikiem zaworu mieszającego CO
+	IF wZaworCOOtwarcie &lt;&gt; wZaworCOOtwarcieZaraportowana THEN
+		wZaworCOOtwarcieZaraportowana := wZaworCOOtwarcie;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'ZAWORCOOTW=' , sWartosc := WORD_TO_STRING(wZaworCOOtwarcie) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF	
+	IF xSezonGrzewczy &lt;&gt; xSezonGrzewczyZaraportowana THEN
+		xSezonGrzewczyZaraportowana := xSezonGrzewczy;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'SEZONGRZ=' , sWartosc := BOOL_TO_STRING(xSezonGrzewczy) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF	
+	IF rTemperaturaSrednia1Dzien &lt;&gt; rTemperaturaSrednia1DzienZaraportowana THEN
+		rTemperaturaSrednia1DzienZaraportowana := rTemperaturaSrednia1Dzien;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPSR1DZ=' , sWartosc := REAL_TO_STRING(rTemperaturaSrednia1Dzien + 273.15) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdInstancji ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF	
+	IF sDane &lt;&gt; '' AND xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'M' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := sDane ,
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikat);
+	END_IF
+END_IF
+	
+// Alarm braku komunikacji MODBUS 
+IF arErrorStan[enumPPPSFriskoATTOM1SError.BrakKomunikacji] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.BrakKomunikacji THEN
+	arErrorStan[enumPPPSFriskoATTOM1SError.BrakKomunikacji] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSFriskoATTOM1SError.BrakKomunikacji] := enumPPPSFriskoATTOM1SErrorKlasa.BrakKomunikacji;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumPPPSFriskoATTOM1SErrorKlasa.BrakKomunikacji , intNumer := enumPPPSFriskoATTOM1SError.BrakKomunikacji),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumPPPSFriskoATTOM1SError.BrakKomunikacji] &lt;&gt; enumAlarmWartosc.StanNormalny AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+	arErrorStan[enumPPPSFriskoATTOM1SError.BrakKomunikacji] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumPPPSFriskoATTOM1SError.BrakKomunikacji] := enumPPPSFriskoATTOM1SErrorKlasa.BrakKomunikacji;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := FALSE , intKlasa := enumPPPSFriskoATTOM1SErrorKlasa.BrakKomunikacji , intNumer := enumPPPSFriskoATTOM1SError.BrakKomunikacji),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+	
+// Alarm czujnika temperatury zewnętrznej 
+IF arErrorStan[enumPPPSFriskoATTOM1SError.AlarmCzujnikaZewnetrznego] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND xBladBrakZmianyTemperaturyZewnetrznej THEN
+	arErrorStan[enumPPPSFriskoATTOM1SError.AlarmCzujnikaZewnetrznego] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSFriskoATTOM1SError.AlarmCzujnikaZewnetrznego] := enumPPPSFriskoATTOM1SErrorKlasa.AlarmCzujnikaZewnetrznego;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumPPPSFriskoATTOM1SErrorKlasa.AlarmCzujnikaZewnetrznego , intNumer := enumPPPSFriskoATTOM1SError.AlarmCzujnikaZewnetrznego),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumPPPSFriskoATTOM1SError.AlarmCzujnikaZewnetrznego] &lt;&gt; enumAlarmWartosc.StanNormalny AND NOT xBladBrakZmianyTemperaturyZewnetrznej THEN
+	arErrorStan[enumPPPSFriskoATTOM1SError.AlarmCzujnikaZewnetrznego] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumPPPSFriskoATTOM1SError.AlarmCzujnikaZewnetrznego] := enumPPPSFriskoATTOM1SErrorKlasa.AlarmCzujnikaZewnetrznego;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := FALSE , intKlasa := enumPPPSFriskoATTOM1SErrorKlasa.AlarmCzujnikaZewnetrznego , intNumer := enumPPPSFriskoATTOM1SError.AlarmCzujnikaZewnetrznego),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+	
+// Alarm czujnika temperatury zasilania
+IF arErrorStan[enumPPPSFriskoATTOM1SError.AlarmCzujnikaZasilaniaObwoduCO] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND xBladBrakZmianyTemperaturyZasilaniaObieguCO THEN
+	arErrorStan[enumPPPSFriskoATTOM1SError.AlarmCzujnikaZasilaniaObwoduCO] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSFriskoATTOM1SError.AlarmCzujnikaZasilaniaObwoduCO] := enumPPPSFriskoATTOM1SErrorKlasa.AlarmCzujnikaZasilaniaObwoduCO;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumPPPSFriskoATTOM1SErrorKlasa.AlarmCzujnikaZasilaniaObwoduCO , intNumer := enumPPPSFriskoATTOM1SError.AlarmCzujnikaZasilaniaObwoduCO),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumPPPSFriskoATTOM1SError.AlarmCzujnikaZasilaniaObwoduCO] &lt;&gt; enumAlarmWartosc.StanNormalny AND NOT xBladBrakZmianyTemperaturyZasilaniaObieguCO THEN
+	arErrorStan[enumPPPSFriskoATTOM1SError.AlarmCzujnikaZasilaniaObwoduCO] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumPPPSFriskoATTOM1SError.AlarmCzujnikaZasilaniaObwoduCO] := enumPPPSFriskoATTOM1SErrorKlasa.AlarmCzujnikaZasilaniaObwoduCO;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := FALSE , intKlasa := enumPPPSFriskoATTOM1SErrorKlasa.AlarmCzujnikaZasilaniaObwoduCO , intNumer := enumPPPSFriskoATTOM1SError.AlarmCzujnikaZasilaniaObwoduCO),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+	
+// Alarm braku osiągnięcia temperatury zadanej
+IF arErrorStan[enumPPPSFriskoATTOM1SError.BrakOsiagnieciaTemperaturyCO] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND xBladBrakOsiagnieciaTemperauryZadanejCO THEN
+	arErrorStan[enumPPPSFriskoATTOM1SError.BrakOsiagnieciaTemperaturyCO] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSFriskoATTOM1SError.BrakOsiagnieciaTemperaturyCO] := enumPPPSFriskoATTOM1SErrorKlasa.BrakOsiagnieciaTemperaturyCO;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumPPPSFriskoATTOM1SErrorKlasa.BrakOsiagnieciaTemperaturyCO , intNumer := enumPPPSFriskoATTOM1SError.BrakOsiagnieciaTemperaturyCO),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumPPPSFriskoATTOM1SError.BrakOsiagnieciaTemperaturyCO] &lt;&gt; enumAlarmWartosc.StanNormalny AND NOT xBladBrakOsiagnieciaTemperauryZadanejCO THEN
+	arErrorStan[enumPPPSFriskoATTOM1SError.BrakOsiagnieciaTemperaturyCO] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumPPPSFriskoATTOM1SError.BrakOsiagnieciaTemperaturyCO] := enumPPPSFriskoATTOM1SErrorKlasa.BrakOsiagnieciaTemperaturyCO;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := FALSE , intKlasa := enumPPPSFriskoATTOM1SErrorKlasa.BrakOsiagnieciaTemperaturyCO , intNumer := enumPPPSFriskoATTOM1SError.BrakOsiagnieciaTemperaturyCO),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+
+// Alarm braku wymaganej ilości pomiarów do obliczenia średniej temperatury
+IF arErrorStan[enumPPPSFriskoATTOM1SError.BladIloscPomiarowTemperatury] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND xBladIloscPomiarowTemperatury THEN
+	arErrorStan[enumPPPSFriskoATTOM1SError.BladIloscPomiarowTemperatury] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSFriskoATTOM1SError.BladIloscPomiarowTemperatury] := enumPPPSFriskoATTOM1SErrorKlasa.BladIloscPomiarowTemperatury;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumPPPSFriskoATTOM1SErrorKlasa.BladIloscPomiarowTemperatury , intNumer := enumPPPSFriskoATTOM1SError.BladIloscPomiarowTemperatury),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

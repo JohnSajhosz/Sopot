@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.4862616" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes>
+      <dataType name="enumPPPSWezelClimatixPOL63xErrorKlasa">
+        <baseType>
+          <enum>
+            <values>
+              <value name="BrakKomunikacji" value="enumKlasaAlarmu.AwariaAutomatyki" />
+              <value name="AlarmOgolnyBezpieczenstwa" value="enumKlasaAlarmu.Bezpieczenstwa" />
+              <value name="AlarmOgolnyKrytyczny" value="enumKlasaAlarmu.Krytyczny" />
+              <value name="AlarmOgolnyOstrzezenie" value="enumKlasaAlarmu.Ostrzezenie" />
+              <value name="AlarmOgolnyInformacyjny" value="enumKlasaAlarmu.Informacyjny" />
+              <value name="AlarmCzujnikaZewnetrznego" value="enumKlasaAlarmu.AwariaAutomatyki" />
+              <value name="AlarmCzujnikaZasilaniaObwoduHC1" value="enumKlasaAlarmu.AwariaAutomatyki" />
+              <value name="AlarmCzujnikaZasilaniaObwoduDHW" value="enumKlasaAlarmu.AwariaAutomatyki" />
+              <value name="AlarmBrakuOsiagnieciaTemperaturyHC1" value="enumKlasaAlarmu.Ostrzezenie" />
+              <value name="AlarmBrakuOsiagnieciaTemperaturyDHW" value="enumKlasaAlarmu.Ostrzezenie" />
+              <value name="BladIloscPomiarowTemperatury" value="enumKlasaAlarmu.AwariaAutomatyki" />
+            </values>
+          </enum>
+        </baseType>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/enumvaluedocumentation" handleUnknown="implementation">
+            <EnumValueDocumentation>
+              <EnumValue>
+                <Name>AlarmCzujnikaZewnetrznego</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> alarm braku zmiany wartości czujnika temp. zewnetrznj</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>AlarmCzujnikaZasilaniaObwoduHC1</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> alarm braku zmiany wartości czujnika temp. zasilana obwodu HC1</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>AlarmCzujnikaZasilaniaObwoduDHW</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> alarm braku zmiany wartości czujnika temp. zasilana obwodu DHW</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>AlarmBrakuOsiagnieciaTemperaturyHC1</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> alarm braku osiągnięcia temp. zadanej obwodu HC1</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>AlarmBrakuOsiagnieciaTemperaturyDHW</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> alarm braku osiągnięcia temp. zadanej obwodu DHW</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>BladIloscPomiarowTemperatury</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> alarm zbyt małej ilości pomiarów dokonanych w ciągu dnia do obliczenia średniej </xhtml>
+                </Documentation>
+              </EnumValue>
+            </EnumValueDocumentation>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+            <Attributes>
+              <Attribute Name="qualified_only" Value="" />
+              <Attribute Name="strict" Value="" />
+            </Attributes>
+          </data>
+        </addData>
+        <documentation>
+          <xhtml xmlns="http://www.w3.org/1999/xhtml">		
+Autor:					Paweł Kąkol, 2018-09-03-PK
+Prawa majątkowe: 		Solwena Sp. z o.o., 
+Aktualizacje:			2019-02-14-AWy: dodanie alarmów czujników temp. zewnętrznej i zasilania obwodu HC1, DHW 
+						2019-02-18-AWy: zmiana klas alarmów
+
+Opis:					enum służy do definicji klas alarmów w fb węzła Climatix POL63x na budynkach PPP Sopot (ENGIE)
+</xhtml>
+        </documentation>
+      </dataType>
+    </dataTypes>
+    <pous />
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

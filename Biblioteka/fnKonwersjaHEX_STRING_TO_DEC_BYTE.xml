@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.9520309" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fnKonwersjaHEX_STRING_TO_DEC_BYTE" pouType="function">
+        <interface>
+          <returnType>
+            <BYTE />
+          </returnType>
+          <inputVars>
+            <variable name="sWartoscHEX">
+              <type>
+                <string length="2" />
+              </type>
+            </variable>
+          </inputVars>
+          <localVars constant="true">
+            <variable name="sTablicaReprezentacjiHEX">
+              <type>
+                <array>
+                  <dimension lower="0" upper="15" />
+                  <baseType>
+                    <string length="1" />
+                  </baseType>
+                </array>
+              </type>
+              <initialValue>
+                <arrayValue>
+                  <value>
+                    <simpleValue value="'0'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'1'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'2'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'3'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'4'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'5'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'6'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'7'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'8'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'9'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'A'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'B'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'C'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'D'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'E'" />
+                  </value>
+                  <value>
+                    <simpleValue value="'F'" />
+                  </value>
+                </arrayValue>
+              </initialValue>
+            </variable>
+          </localVars>
+          <localVars>
+            <variable name="sPierwszyZnak">
+              <type>
+                <string length="1" />
+              </type>
+            </variable>
+            <variable name="sDrugiZnak">
+              <type>
+                <string length="1" />
+              </type>
+            </variable>
+            <variable name="bPetla">
+              <type>
+                <BYTE />
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(*			
+Autor:					Paweł Kąkol, 
+Prawa majątkowe: 		Solwena Sp. z o.o., 
+Aktualizacje:			2018-08-24-PK - stworzenie
+
+Opis:					Funkcja zwraca reprezentację dziesiętną jako BYTE wartości szesnastkowej podanej jako STRING;
+*)
+
+sPierwszyZnak := LEFT(sWartoscHEX, 1);
+FOR bPetla := 0 TO 15 BY 1 DO
+	IF sPierwszyZnak = sTablicaReprezentacjiHEX[bPetla] THEN
+		fnKonwersjaHEX_STRING_TO_DEC_BYTE := bPetla * 16;
+	END_IF
+END_FOR
+sDrugiZnak := RIGHT(sWartoscHEX, 1);
+FOR bPetla := 0 TO 15 BY 1 DO
+	IF sDrugiZnak = sTablicaReprezentacjiHEX[bPetla] THEN
+		fnKonwersjaHEX_STRING_TO_DEC_BYTE := fnKonwersjaHEX_STRING_TO_DEC_BYTE + bPetla;
+	END_IF
+END_FOR
+</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

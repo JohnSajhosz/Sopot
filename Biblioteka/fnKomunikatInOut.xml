@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.8911777" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fnKomunikatInOut" pouType="function">
+        <interface>
+          <returnType>
+            <BOOL />
+          </returnType>
+          <inputVars>
+            <variable name="xStringNaStrukture">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> rozkaz rozbicia pełnego komunikatu na cząstki</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xStringUpdateZeStruktury">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xStrukturyNaString">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xWyczyscStrukture">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xAktualizujZnacznikCzasu">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> rozkaz zaktualizowania znacznika czasu - działa we wszystkich konfiguracjach </xhtml>
+              </documentation>
+            </variable>
+            <variable name="xAktualizujDlugoscDanych">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+          </inputVars>
+          <inOutVars>
+            <variable name="sKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="typKomunikat">
+              <type>
+                <derived name="typKomunikat" />
+              </type>
+            </variable>
+            <variable name="intBlad">
+              <type>
+                <INT />
+              </type>
+            </variable>
+          </inOutVars>
+          <localVars>
+            <variable name="sKomunikatTemp">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+          </localVars>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> funkcja do kompleksowej obróbki komunikatu</xhtml>
+          </documentation>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">IF xWyczyscStrukture AND xStringNaStrukture THEN
+	fnKomunikatInOutZeruj(typKomunikat);
+END_IF
+IF xStrukturyNaString THEN
+	sKomunikat := CONCAT(typKomunikat.sZnacznik , typKomunikat.sTypKomunikatu);
+	sKomunikat := CONCAT(sKomunikat , typKomunikat.sMnemonikWlasciciela);
+	sKomunikat := CONCAT(sKomunikat , typKomunikat.sMnemonikWlascicielaExt);
+	sKomunikat := CONCAT(sKomunikat , typKomunikat.sMACAdres);	
+	IF typKomunikat.sIDZrodla = '' THEN
+		sKomunikat := CONCAT(sKomunikat , typKomunikat.sIDZrodlaLokalizacja);
+		sKomunikat := CONCAT(sKomunikat , typKomunikat.sIDZrodlaUrzadzenie);
+		typKomunikat.sIDZrodla := CONCAT(typKomunikat.sIDZrodlaLokalizacja , typKomunikat.sIDZrodlaUrzadzenie);
+		ELSE
+		sKomunikat := CONCAT(sKomunikat , typKomunikat.sIDZrodla);
+	END_IF
+	IF typKomunikat.sIDPrzeznaczenia = '' THEN	
+		sKomunikat := CONCAT(sKomunikat , typKomunikat.sIDPrzeznaczeniaLokalizacja);
+		sKomunikat := CONCAT(sKomunikat , typKomunikat.sIDPrzeznaczeniaUrzadzenie);
+		typKomunikat.sIDPrzeznaczenia := CONCAT(typKomunikat.sIDPrzeznaczeniaLokalizacja , typKomunikat.sIDPrzeznaczeniaUrzadzenie);
+		ELSE
+		sKomunikat := CONCAT(sKomunikat , typKomunikat.sIDPrzeznaczenia);		
+	END_IF
+	IF typKomunikat.sDlugoscPolaDanych = '' OR xAktualizujDlugoscDanych THEN
+		sKomunikat := CONCAT(sKomunikat ,  fnKonwersjaINT_STRING(intWartosc := LEN(typKomunikat.sDane) , intIloscZnakow := 3));
+		typKomunikat.sDlugoscPolaDanych := fnKonwersjaINT_STRING(intWartosc := LEN(typKomunikat.sDane) , intIloscZnakow := 3);
+		ELSE
+		sKomunikat := CONCAT(sKomunikat , typKomunikat.sDlugoscPolaDanych);
+	END_IF
+	IF typKomunikat.sMarkerCzasowy = '' OR xAktualizujZnacznikCzasu THEN
+		sKomunikat := CONCAT(sKomunikat , fnCzasUTC());
+		typKomunikat.sMarkerCzasowy := fnCzasUTC();
+		ELSE		
+		sKomunikat := CONCAT(sKomunikat , typKomunikat.sMarkerCzasowy);
+	END_IF
+	sKomunikat := CONCAT(sKomunikat , typKomunikat.sRezerwa);
+	sKomunikat := CONCAT(sKomunikat , typKomunikat.sDane);
+END_IF
+
+IF xStringNaStrukture OR xStringUpdateZeStruktury THEN
+	IF typKomunikat.sZnacznik &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikat := CONCAT(typKomunikat.sZnacznik , MID(sKomunikat , LEN(sKomunikat) - 1 , 2));
+		ELSE
+		typKomunikat.sZnacznik := LEFT(sKomunikat , 1);
+	END_IF
+	IF typKomunikat.sTypKomunikatu &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikatTemp := LEFT(sKomunikat , 1);
+		sKomunikat := CONCAT(typKomunikat.sTypKomunikatu , MID(sKomunikat , LEN(sKomunikat) - 2 , 3));
+		sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		ELSE
+		typKomunikat.sTypKomunikatu := MID(SKomunikat , 1 , 2);
+	END_IF
+	IF typKomunikat.sMnemonikWlasciciela &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikatTemp := LEFT(sKomunikat , 2);
+		sKomunikat := CONCAT(typKomunikat.sMnemonikWlasciciela , MID(sKomunikat , LEN(sKomunikat) - 5 , 6));
+		sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		ELSE
+		typKomunikat.sMnemonikWlasciciela := MID(sKomunikat , 3 , 3);
+	END_IF
+	IF typKomunikat.sMnemonikWlascicielaExt &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikatTemp := LEFT(sKomunikat , 5);
+		sKomunikat := CONCAT(typKomunikat.sMnemonikWlascicielaExt , MID(sKomunikat , LEN(sKomunikat) - 6 , 7));
+		sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		ELSE
+		typKomunikat.sMnemonikWlascicielaExt := MID(Skomunikat , 1 , 6);
+	END_IF
+	IF typKomunikat.sMACAdres &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikatTemp := LEFT(sKomunikat , 6);
+		sKomunikat := CONCAT(typKomunikat.sMnemonikWlascicielaExt , MID(sKomunikat , LEN(sKomunikat) - 12 , 13));
+		sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		ELSE
+		typKomunikat.sMACAdres := MID(sKomunikat , 6 , 7);
+	END_IF
+	IF typKomunikat.sIDZrodla &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikatTemp := LEFT(sKomunikat , 12);
+		sKomunikat := CONCAT(typKomunikat.sIDZrodla , MID(sKomunikat , LEN(sKomunikat) - 28 , 29));
+		sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		ELSE
+		typKomunikat.sIDZrodla := MID(sKomunikat , 16 , 13);
+	END_IF
+	IF typKomunikat.sIDZrodlaLokalizacja &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikatTemp := LEFT(sKomunikat , 12);
+		sKomunikat := CONCAT(typKomunikat.sIDZrodlaLokalizacja , MID(sKomunikat , LEN(sKomunikat) - 24 , 25));
+		sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		ELSE
+		typKomunikat.sIDZrodlaLokalizacja := MID(SKomunikat , 12 , 13);
+	END_IF
+	IF typKomunikat.sIDZrodlaUrzadzenie &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikatTemp := LEFT(sKomunikat , 24);
+		sKomunikat := CONCAT(typKomunikat.sIDZrodlaUrzadzenie , MID(sKomunikat , LEN(sKomunikat) - 28 , 29));
+		sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		ELSE
+		typKomunikat.sIDZrodlaUrzadzenie := MID(SKomunikat , 4 , 25);		
+	END_IF
+	IF typKomunikat.sIDPrzeznaczenia &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikatTemp := LEFT(sKomunikat , 28);
+		sKomunikat := CONCAT(typKomunikat.sIDPrzeznaczenia , MID(sKomunikat , LEN(sKomunikat) - 44 ,45));
+		sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		ELSE
+		typKomunikat.sIDPrzeznaczenia := MID(SKomunikat , 16 , 29);
+	END_IF
+	IF typKomunikat.sIDPrzeznaczeniaLokalizacja &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikatTemp := LEFT(sKomunikat , 28);
+		sKomunikat := CONCAT(typKomunikat.sIDPrzeznaczeniaLokalizacja , MID(sKomunikat , LEN(sKomunikat) - 40 ,41));
+		sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		ELSE
+		typKomunikat.sIDPrzeznaczeniaLokalizacja := MID(SKomunikat , 12 , 29);
+	END_IF
+	IF typKomunikat.sIDPrzeznaczeniaUrzadzenie &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikatTemp := LEFT(sKomunikat , 40);
+		sKomunikat := CONCAT(typKomunikat.sIDPrzeznaczeniaUrzadzenie , MID(sKomunikat , LEN(sKomunikat) - 44 ,45));
+		sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		ELSE
+		typKomunikat.sIDPrzeznaczeniaUrzadzenie := MID(SKomunikat , 4 , 41);
+	END_IF
+	IF typKomunikat.sMarkerCzasowy &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		IF xAktualizujZnacznikCzasu THEN
+			sKomunikatTemp := LEFT(sKomunikat , 47);
+			sKomunikat := CONCAT(fnCzasUTC() , MID(sKomunikat , LEN(sKomunikat) - 76 , 77));			
+			sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+			ELSE
+			sKomunikatTemp := LEFT(sKomunikat , 47);
+			sKomunikat := CONCAT(typKomunikat.sMarkerCzasowy , MID(sKomunikat , LEN(sKomunikat) - 76 , 77));
+			sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		END_IF
+		ELSE
+		typKomunikat.sMarkerCzasowy := MID(SKomunikat , 29 , 48);
+	END_IF
+	IF typKomunikat.sRezerwa &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikatTemp := LEFT(sKomunikat , 76);
+		sKomunikat := CONCAT(typKomunikat.sRezerwa , MID(sKomunikat , LEN(sKomunikat) - 82 , 83));
+		sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		ELSE
+		typKomunikat.sRezerwa := MID(SKomunikat , 6 , 77);
+	END_IF
+	IF typKomunikat.sDane &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		sKomunikatTemp := LEFT(sKomunikat , 82);
+		sKomunikat := CONCAT(sKomunikatTemp , typKomunikat.sDane);
+		ELSE
+		typKomunikat.sDane := RIGHT(sKomunikat ,  LEN(sKomunikat) - 82);
+	END_IF
+	IF typKomunikat.sDlugoscPolaDanych &lt;&gt; '' AND xStringUpdateZeStruktury THEN
+		IF xAktualizujDlugoscDanych THEN
+			sKomunikatTemp := LEFT(sKomunikat , 44);
+			sKomunikat := CONCAT(fnKonwersjaINT_STRING(intWartosc := LEN(typKomunikat.sDane) , intIloscZnakow := 3) , MID(sKomunikat , LEN(sKomunikat) - 47 , 48));
+			sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		ELSE
+			sKomunikatTemp := LEFT(sKomunikat , 44);
+			sKomunikat := CONCAT(typKomunikat.sDlugoscPolaDanych , MID(sKomunikat , LEN(sKomunikat) - 47 , 48));
+			sKomunikat := CONCAT(sKomunikatTemp , sKomunikat);
+		END_IF
+		ELSE
+		typKomunikat.sDlugoscPolaDanych := MID(SKomunikat , 3 , 45);
+	END_IF
+END_IF
+</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

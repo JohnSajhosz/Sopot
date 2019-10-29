@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.9749874" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fnRozbicieNaBityRejestru16Bit" pouType="function">
+        <interface>
+          <returnType>
+            <BOOL />
+          </returnType>
+          <inputVars>
+            <variable name="wRejestr16Bit">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="xBit0">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit1">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit2">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit3">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit4">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit5">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit6">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit7">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit8">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit9">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit10">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit11">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit12">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit13">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit14">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit15">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="wTempRejestr16">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(*			
+Autor:					Paweł Kąkol, 
+Prawa majątkowe: 		Solwena Sp. z o.o., 
+Aktualizacje:			2017-11-17-10:00-PK
+
+Opis:					Funkcja do rozbijania rejestru 16-bitowego typu WORD na pojedyncze zmienne BOOL,
+						Nalezy pamietac, ze numeracja bitow jest zgodna z odpowiadajacymi wykladnikami potegi liczby 2
+*)
+wTempRejestr16 := wRejestr16Bit;
+//sprawdzanie stanu bitow
+IF wTempRejestr16 &gt;= 32768 THEN
+	xBit15 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 32768;
+ELSE
+	xBit15 := FALSE;	
+END_IF
+IF wTempRejestr16 &gt;= 16384 THEN
+	xBit14 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 16384;
+ELSE
+	xBit14 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 8192 THEN
+	xBit13 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 8192;
+ELSE
+	xBit13 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 4096 THEN
+	xBit12 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 4096;
+ELSE
+	xBit12 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 2048 THEN
+	xBit11 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 2048;
+ELSE
+	xBit11 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 1024 THEN
+	xBit10 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 1024;
+ELSE
+	xBit10 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 512 THEN
+	xBit9 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 512;
+ELSE
+	xBit9 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 256 THEN
+	xBit8 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 256;
+ELSE
+	xBit8 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 128 THEN
+	xBit7 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 128;
+ELSE
+	xBit7 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 64 THEN
+	xBit6 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 64;
+ELSE
+	xBit6 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 32 THEN
+	xBit5 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 32;
+ELSE
+	xBit5 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 16 THEN
+	xBit4 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 16;
+ELSE
+	xBit4 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 8 THEN
+	xBit3 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 8;
+ELSE
+	xBit3 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 4 THEN
+	xBit2 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 4;
+ELSE
+	xBit2 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 2 THEN
+	xBit1 := TRUE;
+	wTempRejestr16 := wTempRejestr16 MOD 2;
+ELSE
+	xBit1 := FALSE;
+END_IF
+IF wTempRejestr16 &gt;= 1 THEN
+	xBit0 := TRUE;
+ELSE
+	xBit0 := FALSE;
+END_IF</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

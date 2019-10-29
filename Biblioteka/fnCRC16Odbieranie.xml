@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.7874555" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fnCRC16Odbieranie" pouType="function">
+        <interface>
+          <returnType>
+            <BOOL />
+          </returnType>
+          <inputVars>
+            <variable name="arReceiverBuffer">
+              <type>
+                <array>
+                  <dimension lower="1" upper="512" />
+                  <baseType>
+                    <BYTE />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="udiRxNBytes">
+              <type>
+                <UDINT />
+              </type>
+            </variable>
+            <variable name="sMACAdresAplikacji">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="abMACAdresAplikacji">
+              <type>
+                <array>
+                  <dimension lower="1" upper="6" />
+                  <baseType>
+                    <BYTE />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+          </inputVars>
+          <inOutVars>
+            <variable name="sKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+          </inOutVars>
+          <localVars>
+            <variable name="wCRC16_modbus">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="intPetla">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="arwTelegram">
+              <type>
+                <array>
+                  <dimension lower="1" upper="512" />
+                  <baseType>
+                    <BYTE />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">wCRC16_modbus := MEM.CRC16_modbus(ADR(arReceiverBuffer[1]) , UDINT_TO_UINT(udiRxNBytes) - 2);
+sKomunikat := '';
+IF (MEM.LowByte(wCRC16_modbus) = arReceiverBuffer[udiRxNBytes - 1] AND MEM.HighByte(wCRC16_modbus) = arReceiverBuffer[udiRxNBytes]) OR ASCIIByte_to_string(arReceiverBuffer[1]) = 'Z' THEN
+	fnCRC16Odbieranie := TRUE;
+	FOR intPetla := 1 TO (UDINT_TO_INT(udiRxNBytes) - 2) BY 1 DO
+		IF intPetla &gt;= 7 AND intPetla &lt;= 12 AND arReceiverBuffer[7] = abMACAdresAplikacji[1] AND arReceiverBuffer[8] = abMACAdresAplikacji[2] AND arReceiverBuffer[9] = abMACAdresAplikacji[3] AND 
+			arReceiverBuffer[10] = abMACAdresAplikacji[4] AND arReceiverBuffer[11] = abMACAdresAplikacji[5] AND arReceiverBuffer[12] = abMACAdresAplikacji[6] THEN
+			sKomunikat := CONCAT(sKomunikat , MID(sMACAdresAplikacji, 1 , intPetla - 6));
+		ELSE
+			sKomunikat := CONCAT(sKomunikat , ASCIIByte_to_string(arReceiverBuffer[intPetla]));
+		END_IF
+	END_FOR
+	ELSE
+	fnCRC16Odbieranie := FALSE;	
+END_IF
+</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

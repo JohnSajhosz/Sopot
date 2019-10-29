@@ -1,0 +1,899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.6747974" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fbPPPSBramkaSTC65RS485Modbus" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="sKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> komunikat z systemu zewnętrznego</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intTablicaKomunikatowRozmiar">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> rozmiar tablicy danych wysyłkowych</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xTablicaKomunikatowHold">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> wstrzymanie komunikacji mniej ważnych komunikatów</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sIdInstancji">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr ID rolety np NS02L*202IBM**** </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sIdAplikacji">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr ID aplikacji np SO*******ECL*000 </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMnemonik">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> mnemonik właściciela - BCB* </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMACAdres">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> MAC adres sterownika</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sDaneZapasowe">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> 6 znaków zapasu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="tCzasOpoznieniaRestartu">
+              <type>
+                <TIME />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> czas opóźnienia po którym zaczynają być raportowane wartości</xhtml>
+              </documentation>
+            </variable>
+            <variable name="bAdres">
+              <type>
+                <BYTE />
+              </type>
+            </variable>
+            <variable name="tMinimalnyCzasRaportowania">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+            <variable name="tMaksymalnyCzasRaportowania">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+            <variable name="tCzasTimeoutEnOcean">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+          </inputVars>
+          <inOutVars>
+            <variable name="arModbusStatusKomunikacji">
+              <type>
+                <array>
+                  <dimension lower="1" upper="256" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arModbusOdczytCykliczny">
+              <type>
+                <array>
+                  <dimension lower="1" upper="5000" />
+                  <baseType>
+                    <derived name="typModbusOdczytCykliczny" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arTablicaKomunikatow">
+              <type>
+                <derived name="alARRAYTablicaKomunikatow" />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowZnacznikZapisu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+          </inOutVars>
+          <localVars constant="true">
+            <variable name="wCzasDzialaniaOdResetuAlarm">
+              <type>
+                <WORD />
+              </type>
+              <initialValue>
+                <simpleValue value="120" />
+              </initialValue>
+            </variable>
+          </localVars>
+          <localVars>
+            <variable name="xPierwszySkan">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+            </variable>
+            <variable name="intPetlaPierwszySkan">
+              <type>
+                <INT />
+              </type>
+              <initialValue>
+                <simpleValue value="1" />
+              </initialValue>
+            </variable>
+            <variable name="xPoInicjalizacji">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">inicjalizacja</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbInicjalizacyjnyTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="uintFirmwareVersion">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="0" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">definicja adresów i zmiennych modbusowych	</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wFirmwareVersion">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintOperatingTimeSinceLastResetHi">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="2" />
+              </initialValue>
+            </variable>
+            <variable name="wOperatingTimeSinceLastResetHi">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintOperatingTimeSinceLastResetLo">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="3" />
+              </initialValue>
+            </variable>
+            <variable name="wOperatingTimeSinceLastResetLo">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintReceivingChannelsTelegramCounterAllIDsHi">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="4" />
+              </initialValue>
+            </variable>
+            <variable name="wReceivingChannelsTelegramCounterAllIDsHi">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintReceivingChannelsTelegramCounterAllIDsLo">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="5" />
+              </initialValue>
+            </variable>
+            <variable name="wReceivingChannelsTelegramCounterAllIDsLo">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintReceivingChannelsTelegramCounterStoredIDsHi">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="6" />
+              </initialValue>
+            </variable>
+            <variable name="wReceivingChannelsTelegramCounterStoredIDsHi">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintReceivingChannelsTelegramCounterStoredIDsLo">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="7" />
+              </initialValue>
+            </variable>
+            <variable name="wReceivingChannelsTelegramCounterStoredIDsLo">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintEnOceanBaseIdByte3">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="8" />
+              </initialValue>
+            </variable>
+            <variable name="wEnOceanBaseIdByte3">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintEnOceanBaseIdByte2">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="9" />
+              </initialValue>
+            </variable>
+            <variable name="wEnOceanBaseIdByte2">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintEnOceanBaseIdByte1">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="10" />
+              </initialValue>
+            </variable>
+            <variable name="wEnOceanBaseIdByte1">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintEnOceanBaseIdByte0">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="11" />
+              </initialValue>
+            </variable>
+            <variable name="wEnOceanBaseIdByte0">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintRepeaterFunction">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="15" />
+              </initialValue>
+            </variable>
+            <variable name="wRepeaterFunction">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintMinResponseTime">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="16" />
+              </initialValue>
+            </variable>
+            <variable name="wMinResponseTime">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintResetRxCoil">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="17" />
+              </initialValue>
+            </variable>
+            <variable name="wResetRxCoil">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintTransmittingChannelsTelegramCounterAll">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="18" />
+              </initialValue>
+            </variable>
+            <variable name="wTransmittingChannelsTelegramCounterAll">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintTransmittingChannelsTelegramCounterByCoilTriggered">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="19" />
+              </initialValue>
+            </variable>
+            <variable name="wTransmittingChannelsTelegramCounterByCoilTriggered">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wCzasDzialaniaOdResetuHi">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">zmienne operacyjne	
+Zmienne Modbusowe</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wCzasDzialaniaOdResetuLo">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="dwCzasDzialaniaOdResetu">
+              <type>
+                <DWORD />
+              </type>
+            </variable>
+            <variable name="xAlarmResetu">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="wLicznikTelegramowUrzadzenHi">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wLicznikTelegramowUrzadzenLo">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="dwLicznikTelegramowUrzadzen">
+              <type>
+                <DWORD />
+              </type>
+            </variable>
+            <variable name="dwLicznikTelegramowUrzadzenPamiec">
+              <type>
+                <DWORD />
+              </type>
+            </variable>
+            <variable name="fbTimeoutEnOcean">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="wFunkcjaPowtarzanaia">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wMinimalnyCzasOdpowiedzi">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="sDane">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sWyslanyKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sKomunikatPamiec">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sWyslanyKomunikatDummy">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="intPetla">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="arErrorStan">
+              <type>
+                <array>
+                  <dimension lower="0" upper="5" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica przechowująca statusy alarmowe</xhtml>
+              </documentation>
+            </variable>
+            <variable name="arErrorKlasa">
+              <type>
+                <array>
+                  <dimension lower="0" upper="5" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica przechowująca klasy danych alarmów</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbBrakKomunikacjiTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wystawianie alarmu o braku komunikacji. Alarm zostanie aktywowany po minutach od momentu stwierdzenia braku komunikacji.</xhtml>
+              </documentation>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(*			
+Autor:					Paweł Kąkol, 2018-08-13, Jan Bartczak
+Prawa majątkowe: 		Solwena Sp. z o.o., 
+Aktualizacje:			
+						
+Opis:					fb służy obsługi bramek (STC65-RS485) GTW0 na budynkach PPP Sopot (ENGIE) 
+		
+UWAGA:					2018-08-13-PK-Stworzenie FB
+						2018-10-05-JB Przygotowanie odczytu rejestrów Modbusowych z bramki STC
+						2018-12-11-JB Poprawienie obsługi alarmów od resetu bramki i braku ruchu telegramów (do tego momentu wysyłane były błędne alarmy)		
+						2019-02-18-AWy: Filtrowanie alarmu braku komunikacji (5 minut zwłoki od momentu stwierdzenia braku komunikacji)			
+*)
+
+//inicjalizacja sterownika
+fbInicjalizacyjnyTimer(IN := NOT xPoInicjalizacji , PT := tCzasOpoznieniaRestartu);
+IF fbInicjalizacyjnyTimer.Q THEN
+	xPoInicjalizacji := TRUE;
+	dwLicznikTelegramowUrzadzenPamiec := dwLicznikTelegramowUrzadzen;
+END_IF
+
+
+IF xPierwszySkan THEN
+	xPierwszySkan := FALSE;
+	WHILE arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia &lt;&gt; 0 DO
+		intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	END_WHILE
+	
+//deklaracja rejestrow do odczytu
+
+	//wyznaczenie adresów rejestrów modbusowych
+
+	//holding register
+	//  #Firmware Version e.g.: 0x3300 = Version 3.3.0.0
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintFirmwareVersion;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wFirmwareVersion);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+
+	//R/W Operating Time since last reset [seconds] HIGH
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintOperatingTimeSinceLastResetHi;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wOperatingTimeSinceLastResetHi);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	//R/W Operating Time since last reset [seconds] LOW
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintOperatingTimeSinceLastResetLo;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wOperatingTimeSinceLastResetLo);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	//R/W Receiving Channels Telegram Counter (all IDs) HIGH
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintReceivingChannelsTelegramCounterAllIDsHi;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wReceivingChannelsTelegramCounterAllIDsHi);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;		
+
+	//R/W Receiving Channels Telegram Counter (all IDs) LOW	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintReceivingChannelsTelegramCounterAllIDsLo;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wReceivingChannelsTelegramCounterAllIDsLo);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+
+	//R/W Receiving Channels Telegram Counter (stored IDs only) HIGH
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintReceivingChannelsTelegramCounterStoredIDsHi;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wReceivingChannelsTelegramCounterStoredIDsHi);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+
+	//R/W Receiving Channels Telegram Counter (stored IDs only) LOW
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintReceivingChannelsTelegramCounterStoredIDsLo;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wReceivingChannelsTelegramCounterStoredIDsLo);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	//R/W* #EnOcean Base-ID-Byte-3
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintEnOceanBaseIdByte3;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wEnOceanBaseIdByte3);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	//R/W* #EnOcean Base-ID-Byte-2
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintEnOceanBaseIdByte2;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wEnOceanBaseIdByte2);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;		
+
+	//R/W* #EnOcean Base-ID-Byte-1
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintEnOceanBaseIdByte1;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wEnOceanBaseIdByte1);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;		
+
+	//R/W* #EnOcean Base-ID-Byte-0
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintEnOceanBaseIdByte0;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wEnOceanBaseIdByte0);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;		
+	
+	//#Repeater function (0=OFF, 1=1-Level, 2=2-Level) ; Sets the integrated EnOcean repeater to off, 1-level or 2-level
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintRepeaterFunction;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wRepeaterFunction);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;			
+	
+	//R/W #Min. Response Time 
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintMinResponseTime;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wMinResponseTime);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;		
+	
+	//R/W #Reset RX Coil necessary (factory setting: 0)
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintResetRxCoil;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wResetRxCoil);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;		
+	
+	//R/W Transmitting Channels Telegram Counter (all telegrams)
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintTransmittingChannelsTelegramCounterAll;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTransmittingChannelsTelegramCounterAll);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+
+	//R/W Transmitting Channels Telegram Counter (by coil triggered telegrams only)
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintTransmittingChannelsTelegramCounterByCoilTriggered;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTransmittingChannelsTelegramCounterByCoilTriggered);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+END_IF
+
+//obsluga komunikatu przychodzacego z IZE
+
+IF 	sKomunikat &lt;&gt; sKomunikatPamiec AND xPoInicjalizacji THEN
+	sKomunikatPamiec := sKomunikat;
+	IF fnIDOdbiorcyMatch(sKomunikat , sIdInstancji) THEN
+		sDane := '';
+		//zapytanie typu Q
+		IF fnKomunikatTyp(sKomunikat) = 'Q' THEN
+			//pytanie o stany alarmów
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALARM=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				FOR intPetla := 1 TO 5 BY 1 DO
+					//raportowanie typu E (stanów alarmów) na zapytanie typu Q
+					IF arErrorStan[intPetla] &lt;&gt; enumAlarmWartosc.StanNieznany THEN
+						fnZapiszKomunikat(	sCalyKomunikat := '' ,
+											sTypKomunikatu := 'E' ,
+											sMnemonik := sMnemonik ,
+											sMACAdres := sMACAdres ,
+											sIDNadawcy := sIdInstancji ,
+											sIDOdbiorcy := sIdAplikacji ,
+											sDaneZapasowe := sDaneZapasowe ,
+											sDane := fnKomunikatDaneErrorRetry(xAktywny := arErrorStan[intPetla] = enumAlarmWartosc.StanAlarmowy , intKlasa := arErrorKlasa[intPetla] , intNumer := intPetla),
+											arTablicaKomunikatow := arTablicaKomunikatow ,
+											intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+											intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+											sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					END_IF
+				END_FOR
+			END_IF
+		END_IF
+		//raportowanie typu A na zapytanie Q
+		IF sDane &lt;&gt; '' THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+		END_IF
+	END_IF
+END_IF
+
+//obliczenia
+dwCzasDzialaniaOdResetu := wOperatingTimeSinceLastResetHi * 256 * 256 + wOperatingTimeSinceLastResetLo;
+IF dwCzasDzialaniaOdResetu &gt; 0 THEN
+	IF dwCzasDzialaniaOdResetu &lt; WORD_TO_DWORD(wCzasDzialaniaOdResetuAlarm) THEN
+		xAlarmResetu := TRUE;
+	ELSE
+		IF dwCzasDzialaniaOdResetu &gt; WORD_TO_DWORD(wCzasDzialaniaOdResetuAlarm) THEN
+			xAlarmResetu := FALSE;
+		END_IF
+	END_IF
+END_IF
+
+dwLicznikTelegramowUrzadzen := wReceivingChannelsTelegramCounterAllIDsHi * 256 * 256 + wReceivingChannelsTelegramCounterAllIDsLo;
+IF xPoInicjalizacji THEN
+	fbTimeoutEnOcean(IN := (dwLicznikTelegramowUrzadzen = dwLicznikTelegramowUrzadzenPamiec) , PT := tCzasTimeoutEnOcean);
+END_IF
+
+IF dwLicznikTelegramowUrzadzen &lt;&gt; dwLicznikTelegramowUrzadzenPamiec THEN
+	dwLicznikTelegramowUrzadzenPamiec := dwLicznikTelegramowUrzadzen;
+END_IF
+
+// Filtrowanie alarmu o braku komunikacji. Alarm wystąpi po 5 minutach od momentu wystąpienia arModbusStatusKomunikacji[bAdres] = enumModbusStatus.BrakKomunikacji
+fbBrakKomunikacjiTimer(IN := arModbusStatusKomunikacji[bAdres] = enumModbusStatus.BrakKomunikacji, PT := T#5M);
+
+// obsługa alarmów konwertera
+	//brak komunikacji
+IF arErrorStan[enumPPPSBramkaSTC65RS485ModbusError.BrakKomunikacji] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND fbBrakKomunikacjiTimer.Q THEN
+	arErrorStan[enumPPPSBramkaSTC65RS485ModbusError.BrakKomunikacji] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSBramkaSTC65RS485ModbusError.BrakKomunikacji] :=enumPPPSBramkaSTC65RS485ModbusErrorKlasa.BrakKomunikacji;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumPPPSBramkaSTC65RS485ModbusErrorKlasa.BrakKomunikacji , intNumer := enumPPPSBramkaSTC65RS485ModbusError.BrakKomunikacji),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumPPPSBramkaSTC65RS485ModbusError.BrakKomunikacji] &lt;&gt; enumAlarmWartosc.StanNormalny AND NOT fbBrakKomunikacjiTimer.Q  THEN
+	arErrorStan[enumPPPSBramkaSTC65RS485ModbusError.BrakKomunikacji] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumPPPSBramkaSTC65RS485ModbusError.BrakKomunikacji] := enumPPPSBramkaSTC65RS485ModbusErrorKlasa.BrakKomunikacji;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := FALSE , intKlasa := enumPPPSBramkaSTC65RS485ModbusErrorKlasa.BrakKomunikacji , intNumer := enumPPPSBramkaSTC65RS485ModbusError.BrakKomunikacji),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+
+	//reset konwertera
+IF arErrorStan[enumPPPSBramkaSTC65RS485ModbusError.ResetKonwertera] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND xAlarmResetu AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+	arErrorStan[enumPPPSBramkaSTC65RS485ModbusError.ResetKonwertera] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSBramkaSTC65RS485ModbusError.ResetKonwertera] :=enumPPPSBramkaSTC65RS485ModbusErrorKlasa.ResetKonwertera;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumPPPSBramkaSTC65RS485ModbusErrorKlasa.ResetKonwertera , intNumer := enumPPPSBramkaSTC65RS485ModbusError.ResetKonwertera),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumPPPSBramkaSTC65RS485ModbusError.ResetKonwertera] &lt;&gt; enumAlarmWartosc.StanNormalny AND NOT xAlarmResetu AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+	arErrorStan[enumPPPSBramkaSTC65RS485ModbusError.ResetKonwertera] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumPPPSBramkaSTC65RS485ModbusError.ResetKonwertera] := enumPPPSBramkaSTC65RS485ModbusErrorKlasa.ResetKonwertera;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := FALSE , intKlasa := enumPPPSBramkaSTC65RS485ModbusErrorKlasa.ResetKonwertera , intNumer := enumPPPSBramkaSTC65RS485ModbusError.ResetKonwertera),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+
+	//brak telegramów
+IF arErrorStan[enumPPPSBramkaSTC65RS485ModbusError.BrakTelegramowEnOcean] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND fbTimeoutEnOcean.Q AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+	arErrorStan[enumPPPSBramkaSTC65RS485ModbusError.BrakTelegramowEnOcean] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSBramkaSTC65RS485ModbusError.BrakTelegramowEnOcean] :=enumPPPSBramkaSTC65RS485ModbusErrorKlasa.BrakTelegramowEnOcean;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumPPPSBramkaSTC65RS485ModbusErrorKlasa.BrakTelegramowEnOcean , intNumer := enumPPPSBramkaSTC65RS485ModbusError.BrakTelegramowEnOcean),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumPPPSBramkaSTC65RS485ModbusError.BrakTelegramowEnOcean] &lt;&gt; enumAlarmWartosc.StanNormalny AND NOT fbTimeoutEnOcean.Q AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+	arErrorStan[enumPPPSBramkaSTC65RS485ModbusError.BrakTelegramowEnOcean] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumPPPSBramkaSTC65RS485ModbusError.BrakTelegramowEnOcean] := enumPPPSBramkaSTC65RS485ModbusErrorKlasa.BrakTelegramowEnOcean;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := FALSE , intKlasa := enumPPPSBramkaSTC65RS485ModbusErrorKlasa.BrakTelegramowEnOcean , intNumer := enumPPPSBramkaSTC65RS485ModbusError.BrakTelegramowEnOcean),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+
+</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

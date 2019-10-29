@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.8044438" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fnCzasUTC" pouType="function">
+        <interface>
+          <returnType>
+            <derived name="alSTRINGKomunikat" />
+          </returnType>
+          <localVars>
+            <variable name="sCzasUTC">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">zmienna do przechowywania wyniku - czas w formacie UTC</xhtml>
+              </documentation>
+            </variable>
+            <variable name="dtDataIGodzina">
+              <type>
+                <DT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">odczyt daty i godziny z systemu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="ltGodzina">
+              <type>
+                <derived name="LTIME" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">odczyt ms z systemu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sDataiGodzina">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">odczyt daty i godziny z systemu - konwersja na STRING</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sGodzina">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">odczyt ms z systemu - konwersjan a STRING</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xMsZapisane">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">flaga informująca czy ms zostały już dopisane</xhtml>
+              </documentation>
+            </variable>
+          </localVars>
+          <documentation>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"> funkcja bez parametrów zwracająca STRING z bieżącym czasem UTC</xhtml>
+          </documentation>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(*odczyt czasu z systemu i jego konwersja do STRING*)
+
+dtDataIGodzina := FuGetDateAndTime();
+ltGodzina := FuGetLongTime();
+sDataiGodzina := DT_TO_STRING(dtDataiGodzina);
+sGodzina := LTIME_TO_STRING(ltGodzina);
+
+sCzasUTC := MID(sDataIGodzina , 4 , 4);							(*dodanie roku do wyniku*)
+sCzasUTC := CONCAT(sCzasUTC , '-');
+sCzasUTC := CONCAT(sCzasUTC , MID(sDataIGodzina , 2 , 9));		(*dodanie miesiąca do wyniku*)
+sCzasUTC := CONCAT(sCzasUTC , '-');
+sCzasUTC := CONCAT(sCzasUTC , MID(sDataIGodzina , 2 , 12));		(*dodanie dnia do wyniku*)
+sCzasUTC := CONCAT(sCzasUTC , 'T');
+sCzasUTC := CONCAT(sCzasUTC , MID(sDataIGodzina , 2 , 15));		(*dodanie godziny do wyniku*)
+sCzasUTC := CONCAT(sCzasUTC , ':');
+sCzasUTC := CONCAT(sCzasUTC , MID(sDataIGodzina , 2 , 18));		(*dodanie minuty do wyniku*)
+sCzasUTC := CONCAT(sCzasUTC , ':');
+sCzasUTC := CONCAT(sCzasUTC , MID(sDataIGodzina , 2 , 21));		(*dodanie sekundy do wyniku*)
+sCzasUTC := CONCAT(sCzasUTC , '.');
+
+(*sprawdzenie czy w danych o czasie są milisekundy*)
+
+IF FIND(sGodzina , 'ms') &lt;&gt; 0 THEN 
+
+	xMsZapisane := FALSE;
+
+(*jeżeli przed wykrytym 'ms' dwa znaki wcześniej nie ma liczby dopisz dwa zera i liczbę jednocyfrową przed 'ms'*)
+		
+	IF STRING_TO_INT(MID(sGodzina , 1 , FIND(sGodzina , 'ms') - 2)) = 0 AND MID(sGodzina , 1 , FIND(sGodzina , 'ms') - 2) &lt;&gt; '0' AND xMsZapisane = FALSE THEN
+		sCzasUTC := CONCAT(sCzasUTC , '00');
+		sCzasUTC := CONCAT(sCzasUTC , MID(sGodzina , 1 , FIND(sGodzina , 'ms') - 1));
+		xMsZapisane := TRUE;
+	END_IF
+
+(*jeżeli przed wykrytym 'ms' trzy znaki wcześniej nie ma liczby dopisz jedno zero i liczbę dwujcyfrową przed 'ms'*)
+		
+	IF STRING_TO_INT(MID(sGodzina , 1 , FIND(sGodzina , 'ms') - 3)) = 0 AND MID(sGodzina , 1 , FIND(sGodzina , 'ms') - 3) &lt;&gt; '0' AND xMsZapisane = FALSE THEN
+		sCzasUTC := CONCAT(sCzasUTC , '0');
+		sCzasUTC := CONCAT(sCzasUTC , MID(sGodzina , 2 , FIND(sGodzina , 'ms') - 2));
+		xMsZapisane := TRUE;	
+	END_IF
+
+(*jeżeli przed wykrytym 'ms' cztery znaki wcześniej nie ma liczby dopisz liczbę trzycyfrową cyfrową przed 'ms'*)
+
+	IF STRING_TO_INT(MID(sGodzina , 1 , FIND(sGodzina , 'ms') - 4)) = 0 AND MID(sGodzina , 1 , FIND(sGodzina , 'ms') - 4) &lt;&gt; '0' AND xMsZapisane = FALSE THEN
+		sCzasUTC := CONCAT(sCzasUTC , MID(sGodzina , 3 , FIND(sGodzina , 'ms') - 3));			
+	END_IF
+		
+	ELSE
+
+(*jeżeli nie wykryto 'ms' dopisz trzy zera*)
+
+	sCzasUTC := CONCAT(sCzasUTC , '000');
+
+END_IF
+
+sCzasUTC := CONCAT(sCzasUTC , '+00:00');
+
+fnCzasUTC :=sCzasUTC;</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

@@ -1,0 +1,1363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.7037125" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fbPPPSLicznikCieplaMultical403" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="sKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> komunikat z systemu zewnętrznego</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intTablicaKomunikatowRozmiar">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> rozmiar tablicy danych wysyłkowych</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intModbusOdczytZapisZadanieRozmiar">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> rozmiar tablicy danych modbusa</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xTablicaKomunikatowHold">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> wstrzymanie komunikacji mniej ważnych komunikatów</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sIdInstancji">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr ID rolety np NS02L*202IBM**** </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sIdAplikacji">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr ID aplikacji np SO*******ECL*000 </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMnemonik">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> mnemonik właściciela - BCB* </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMACAdres">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> MAC adres sterownika</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sDaneZapasowe">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> 6 znaków zapasu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="tCzasOpoznieniaRestartu">
+              <type>
+                <TIME />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> czas opóźnienia po którym zaczynają być raportowane wartości</xhtml>
+              </documentation>
+            </variable>
+            <variable name="tCzasOpoznieniaAlarmu">
+              <type>
+                <TIME />
+              </type>
+              <initialValue>
+                <simpleValue value="TIME#1m0s0ms" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> czas opóźnienia po którym zaczynają być raportowane wartości</xhtml>
+              </documentation>
+            </variable>
+            <variable name="bAdres">
+              <type>
+                <BYTE />
+              </type>
+            </variable>
+            <variable name="tMinimalnyCzasRaportowania">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+            <variable name="tMaksymalnyCzasRaportowania">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+            <variable name="xAutonomizacja">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xAutonomizacjaSztuczna">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+          </inputVars>
+          <inOutVars>
+            <variable name="arModbusOdczytCykliczny">
+              <type>
+                <array>
+                  <dimension lower="1" upper="5000" />
+                  <baseType>
+                    <derived name="typModbusOdczytCykliczny" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arModbusStatusKomunikacji">
+              <type>
+                <array>
+                  <dimension lower="1" upper="256" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arTablicaKomunikatow">
+              <type>
+                <derived name="alARRAYTablicaKomunikatow" />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowZnacznikZapisu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+          </inOutVars>
+          <localVars>
+            <variable name="xPoInicjalizacji">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Inicjalizacja</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbInicjalizacyjnyTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="tCzasInicjalizacji">
+              <type>
+                <TIME />
+              </type>
+              <initialValue>
+                <simpleValue value="TIME#30s0ms" />
+              </initialValue>
+            </variable>
+            <variable name="xPierwszySkan">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Definicje zmiennych do odczytu wartości z modbusa</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intPetlaPierwszySkan">
+              <type>
+                <INT />
+              </type>
+              <initialValue>
+                <simpleValue value="1" />
+              </initialValue>
+            </variable>
+            <variable name="sDane">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Definicje do komunikacji z IZE</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sWyslanyKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sWyslanyKomunikatDummy">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="xZadanieRaportu">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="sKomunikatPamiec">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="intPetla">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="arErrorStan">
+              <type>
+                <array>
+                  <dimension lower="0" upper="10" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica przechowująca statusy alarmowe</xhtml>
+              </documentation>
+            </variable>
+            <variable name="arErrorKlasa">
+              <type>
+                <array>
+                  <dimension lower="0" upper="10" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica przechowująca klasy danych alarmów</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xRaport">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+            </variable>
+            <variable name="sTempWartoscAtrybutu">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="xOverFlow">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="fbTimerBrakuKomunikacji">
+              <type>
+                <derived name="TON" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Kontrola komunikacji urządzenia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBrakKomunikacjiPLC">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBrakKomunikacjiIZE">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="wEnergiaCieplna_Lo">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Całkowita energia cieplna </xhtml>
+              </documentation>
+            </variable>
+            <variable name="wEnergiaCieplna_Hi">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="rEnergiaCieplna">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="fbEnergiaCieplna">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rEnergiaCieplnaZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wEnergiaCieplnaJednostka">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Jednostka energii cieplnej</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wPrzeplyw_Lo">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Aktualna wartość przepływu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wPrzeplyw_Hi">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="rPrzeplyw">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="fbPrzeplyw">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rPrzeplywZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wPrzeplywJednostka">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Jednostka przepływu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rPrzeplywPamiec">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wartosc przechowywana w pamieci w celu porównania z wartością aktualną </xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBrakZmianyPrzeplywu">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Flaga informująca o braku zmiany przepływu w czasie</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbBrakZmianyPrzeplywuTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="xBladBrakZmianyPrzeplywu">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Flaga informująca o braku przeplywu przez czas 12h - podstawa wygenerowania alarmu	</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wObjetosc_Lo">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Objętość medium, które przepłynęło przez licznik</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wObjetosc_Hi">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="rObjetosc">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="fbObjetosc">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rObjetoscZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wObjetoscJednostka">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Jednostka wolumenu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wMoc_Hi">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Aktualna moc cieplna płynąca przez licznik</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wMoc_Lo">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="rMoc">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="fbMoc">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rMocZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wMocJednostka">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Jednostka mocy</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wTemperaturaZasilania_Lo">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Temp czynnika na wejściu licznika</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wTemperaturaZasilania_Hi">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZasilania">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="fbTemperaturaZasilania">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZasilaniaZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rTemperaturaZasilaniaPamiec">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wartosc przechowywana w pamieci w celu porównania z wartością aktualną </xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBrakZmianyTemperaturyZasilania">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Flaga informująca o braku zmiany przepływu w czasie</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbBrakZmianyTemperaturyZasilaniaTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="xBladBrakZmianyTemperaturyZasilania">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Flaga informująca o braku przeplywu przez czas 12h - podstawa wygenerowania alarmu	</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wTemperaturaPowrotu_Lo">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Temp czynnika na wyjściu licznika</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wTemperaturaPowrotu_Hi">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="rTemperaturaPowrotu">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="fbTemperaturaPowrotu">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rTemperaturaPowrotuZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rTemperaturaPowrotuPamiec">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wartosc przechowywana w pamieci w celu porównania z wartością aktualną </xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBrakZmianyTemperaturyPowrotu">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Flaga informująca o braku zmiany przepływu w czasie</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbBrakZmianyTemperaturyPowrotuTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="xBladBrakZmianyTemperaturyPowrotu">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Flaga informująca o braku przeplywu przez czas 12h - podstawa wygenerowania alarmu	</xhtml>
+              </documentation>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(*			
+Autor:					Artur Wyszomirski, 2019-08-07 
+Prawa majątkowe: 		Solwena Sp. z o.o., 
+Aktualizacje:			2019-08-28-AWy: Zmiana adresów rejestrów (przesunięcie -1). Zmiana poszczególnych parametrów przy przeliczaniu zmiennych.
+						2019-08-29-AWy: Usunięcie buga z raporotwania mocy.
+					
+Opis:					Komunikacji z licznikami ciepła Multical 403
+		
+*)
+
+// Inicjalizacja sterownika
+fbInicjalizacyjnyTimer(IN := (NOT xPoInicjalizacji AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa), PT := tCzasOpoznieniaRestartu);
+IF fbInicjalizacyjnyTimer.Q THEN
+	rPrzeplywZaraportowana := rPrzeplyw;
+	rMocZaraportowana := rMoc;
+	rEnergiaCieplnaZaraportowana := rEnergiaCieplna;
+	rObjetoscZaraportowana := rObjetosc;
+	rTemperaturaZasilaniaZaraportowana := rTemperaturaZasilania;
+	rTemperaturaPowrotuZaraportowana := rTemperaturaPowrotu;
+	xPoInicjalizacji := TRUE;
+END_IF
+
+// Włącz autonomizację jeśli sterownik jest w stanie inicjalizacji lub nastąpiło wymuszenie autonomizacji
+IF NOT xPoInicjalizacji OR xAutonomizacjaSztuczna = TRUE THEN
+	xAutonomizacja := TRUE;
+END_IF 
+
+// Kontrola komunikacji
+fbTimerBrakuKomunikacji(IN := arModbusStatusKomunikacji[bAdres] = enumModbusStatus.BrakKomunikacji, PT := T#60S);
+IF fbTimerBrakuKomunikacji.Q THEN
+	xBrakKomunikacjiPLC := TRUE;
+ELSE
+	xBrakKomunikacjiPLC := FALSE;
+END_IF
+
+IF xAutonomizacja THEN
+	xBrakKomunikacjiIZE := TRUE;
+ELSE
+	xBrakKomunikacjiIZE := FALSE;
+END_IF
+
+// Deklaracja rejestrów Modbusa
+IF xPierwszySkan THEN
+	xPierwszySkan := FALSE;
+	WHILE arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia &lt;&gt; 0 DO
+		intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	END_WHILE
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 20;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wEnergiaCieplna_Hi);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 21;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wEnergiaCieplna_Lo);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 0;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wPrzeplyw_Hi);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 1;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wPrzeplyw_Lo);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 52;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wObjetosc_Hi);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 53;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wObjetosc_Lo);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 4;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wMoc_Hi);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 5;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wMoc_Lo);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 6;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaZasilania_Hi);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 7;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaZasilania_Lo);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 8;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaPowrotu_Hi);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 9;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaPowrotu_Lo);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 92;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wEnergiaCieplnaJednostka);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 82;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wPrzeplywJednostka);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 108;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wObjetoscJednostka);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := 84;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wMocJednostka);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+END_IF
+
+// konwersja 2 odczytanych wordów na 32Float
+fnKonwersja2x16naFloat32BySchneider(wRejestrMSW := wEnergiaCieplna_Hi, wRejestrLSW := wEnergiaCieplna_Lo, rWartoscFloat32 := rEnergiaCieplna);
+fnKonwersja2x16naFloat32BySchneider(wRejestrMSW := wPrzeplyw_Hi, wRejestrLSW := wPrzeplyw_Lo, rWartoscFloat32 := rPrzeplyw);
+fnKonwersja2x16naFloat32BySchneider(wRejestrMSW := wObjetosc_Hi, wRejestrLSW := wObjetosc_Lo, rWartoscFloat32 := rObjetosc);
+fnKonwersja2x16naFloat32BySchneider(wRejestrMSW := wMoc_Hi, wRejestrLSW := wMoc_Lo, rWartoscFloat32 := rMoc);
+fnKonwersja2x16naFloat32BySchneider(wRejestrMSW := wTemperaturaZasilania_Hi, wRejestrLSW := wTemperaturaZasilania_Lo, rWartoscFloat32 := rTemperaturaZasilania);
+fnKonwersja2x16naFloat32BySchneider(wRejestrMSW := wTemperaturaPowrotu_Hi, wRejestrLSW := wTemperaturaPowrotu_Lo, rWartoscFloat32 := rTemperaturaPowrotu);
+
+// Przeliczenie zmiennych
+fbEnergiaCieplna(	rWartoscWejsciowa := rEnergiaCieplna,
+					rDeadband := 100,
+					tCzasMinimalny := tMinimalnyCzasRaportowania,
+					tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+					rWynikMnoznik := 1000000000,
+					rWynikOffset := 0,
+					rWartoscWejsciowaZaraportowana := rEnergiaCieplnaZaraportowana,
+					rWartoscWyjsciowa =&gt; rEnergiaCieplna);
+					
+fbPrzeplyw(	rWartoscWejsciowa := rPrzeplyw,
+			rDeadband := 0.00000027778,
+			tCzasMinimalny := tMinimalnyCzasRaportowania,
+			tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+			rWynikMnoznik := 0.00000027778,
+			rWynikOffset := 0,
+			rWartoscWejsciowaZaraportowana := rPrzeplywZaraportowana,
+			rWartoscWyjsciowa =&gt; rPrzeplyw);
+							
+fbObjetosc(	rWartoscWejsciowa := rObjetosc,
+			rDeadband := 0.001,
+			tCzasMinimalny := tMinimalnyCzasRaportowania,
+			tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+			rWynikMnoznik := 1,
+			rWynikOffset := 0,
+			rWartoscWejsciowaZaraportowana := rObjetoscZaraportowana,
+			rWartoscWyjsciowa =&gt; rObjetosc);								
+								
+fbMoc(	rWartoscWejsciowa := rMoc,
+		rDeadband := 10,
+		tCzasMinimalny := tMinimalnyCzasRaportowania,
+		tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+		rWynikMnoznik := 1000,
+		rWynikOffset := 0,
+		rWartoscWejsciowaZaraportowana := rMocZaraportowana,
+		rWartoscWyjsciowa =&gt; rMoc);
+				
+fbTemperaturaZasilania(	rWartoscWejsciowa := rTemperaturaZasilania,
+						rDeadband := 0.1,
+						tCzasMinimalny := tMinimalnyCzasRaportowania,
+						tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+						rWynikMnoznik := 1,
+						rWynikOffset := 273.15,
+						rWartoscWejsciowaZaraportowana := rTemperaturaZasilaniaZaraportowana,
+						rWartoscWyjsciowa =&gt; rTemperaturaZasilania);
+			
+fbTemperaturaPowrotu(	rWartoscWejsciowa := rTemperaturaPowrotu,
+						rDeadband := 0.1,
+						tCzasMinimalny := tMinimalnyCzasRaportowania,
+						tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+						rWynikMnoznik := 1,
+						rWynikOffset := 273.15,
+						rWartoscWejsciowaZaraportowana := rTemperaturaPowrotuZaraportowana,
+						rWartoscWyjsciowa =&gt; rTemperaturaPowrotu);							
+
+// Sprawdzanie czy pomiar aktualnego przeplywu działa (alarm jest generowany, jeśli odczyt nie zmienił wartości w przeciągu 12h)
+IF rPrzeplywPamiec = rPrzeplyw THEN
+	xBrakZmianyPrzeplywu := TRUE;
+ELSE
+	xBrakZmianyPrzeplywu := FALSE;	
+END_IF
+fbBrakZmianyPrzeplywuTimer(IN := xBrakZmianyPrzeplywu, PT := T#12H);
+IF fbBrakZmianyPrzeplywuTimer.Q THEN
+	xBladBrakZmianyPrzeplywu := TRUE;
+ELSE
+	xBladBrakZmianyPrzeplywu := FALSE;
+END_IF
+rPrzeplywPamiec := rPrzeplyw;
+
+// Sprawdzanie czy pomiar temperatury zasilania działa (alarm jest generowany, jeśli odczyt nie zmienił wartości w przeciągu 12h)
+IF rTemperaturaZasilaniaPamiec = rTemperaturaZasilania THEN
+	xBrakZmianyTemperaturyZasilania := TRUE;
+ELSE
+	xBrakZmianyTemperaturyZasilania := FALSE;	
+END_IF
+fbBrakZmianyTemperaturyZasilaniaTimer(IN := xBrakZmianyTemperaturyZasilania, PT := T#12H);
+IF fbBrakZmianyTemperaturyZasilaniaTimer.Q THEN
+	xBladBrakZmianyTemperaturyZasilania := TRUE;
+ELSE
+	xBladBrakZmianyTemperaturyZasilania := FALSE;
+END_IF
+rTemperaturaZasilaniaPamiec := rTemperaturaZasilania;
+
+// Sprawdzanie czy pomiar temperatury powrotu działa (alarm jest generowany, jeśli odczyt nie zmienił wartości w przeciągu 12h)
+IF rTemperaturaPowrotuPamiec = rTemperaturaPowrotu THEN
+	xBrakZmianyTemperaturyPowrotu := TRUE;
+ELSE
+	xBrakZmianyTemperaturyPowrotu := FALSE;	
+END_IF
+fbBrakZmianyTemperaturyPowrotuTimer(IN := xBrakZmianyTemperaturyPowrotu, PT := T#12H);
+IF fbBrakZmianyTemperaturyPowrotuTimer.Q THEN
+	xBladBrakZmianyTemperaturyPowrotu := TRUE;
+ELSE
+	xBladBrakZmianyTemperaturyPowrotu := FALSE;
+END_IF
+rTemperaturaPowrotuPamiec := rTemperaturaPowrotu;
+
+// Obsluga komunikatu przychodzacego z IZE
+IF sKomunikat &lt;&gt; sKomunikatPamiec AND xPoInicjalizacji THEN
+	sKomunikatPamiec := sKomunikat;
+	IF fnIDOdbiorcyMatch(sKomunikat , sIdInstancji) THEN
+		sDane := '';
+		//zapytanie typu Q
+		IF fnKomunikatTyp(sKomunikat) = 'Q' AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'ENCC=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'ENCC=' , sWartosc := REAL_TO_STRING(rEnergiaCieplna) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+										sTypKomunikatu := 'A' ,
+										sMnemonik := sMnemonik ,
+										sMACAdres := sMACAdres ,
+										sIDNadawcy := sIdInstancji ,
+										sIDOdbiorcy := sIdAplikacji ,
+										sDaneZapasowe := sDaneZapasowe ,
+										sDane := sDane ,
+										arTablicaKomunikatow := arTablicaKomunikatow ,
+										intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+										intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+										sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'FLOWCC=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'FLOWCC=' , sWartosc := REAL_TO_STRING(rPrzeplyw) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+										sTypKomunikatu := 'A' ,
+										sMnemonik := sMnemonik ,
+										sMACAdres := sMACAdres ,
+										sIDNadawcy := sIdInstancji ,
+										sIDOdbiorcy := sIdAplikacji ,
+										sDaneZapasowe := sDaneZapasowe ,
+										sDane := sDane ,
+										arTablicaKomunikatow := arTablicaKomunikatow ,
+										intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+										intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+										sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'VOLCC=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'VOLCC=' , sWartosc := REAL_TO_STRING(rObjetosc) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+										sTypKomunikatu := 'A' ,
+										sMnemonik := sMnemonik ,
+										sMACAdres := sMACAdres ,
+										sIDNadawcy := sIdInstancji ,
+										sIDOdbiorcy := sIdAplikacji ,
+										sDaneZapasowe := sDaneZapasowe ,
+										sDane := sDane ,
+										arTablicaKomunikatow := arTablicaKomunikatow ,
+										intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+										intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+										sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'POWCC=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'POWCC=' , sWartosc := REAL_TO_STRING(rMoc) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+										sTypKomunikatu := 'A' ,
+										sMnemonik := sMnemonik ,
+										sMACAdres := sMACAdres ,
+										sIDNadawcy := sIdInstancji ,
+										sIDOdbiorcy := sIdAplikacji ,
+										sDaneZapasowe := sDaneZapasowe ,
+										sDane := sDane ,
+										arTablicaKomunikatow := arTablicaKomunikatow ,
+										intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+										intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+										sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPINCC=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPINCC=' , sWartosc := REAL_TO_STRING(rTemperaturaZasilania) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+										sTypKomunikatu := 'A' ,
+										sMnemonik := sMnemonik ,
+										sMACAdres := sMACAdres ,
+										sIDNadawcy := sIdInstancji ,
+										sIDOdbiorcy := sIdAplikacji ,
+										sDaneZapasowe := sDaneZapasowe ,
+										sDane := sDane ,
+										arTablicaKomunikatow := arTablicaKomunikatow ,
+										intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+										intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+										sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPOUTCC=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPOUTCC=' , sWartosc := REAL_TO_STRING(rTemperaturaPowrotu) , xOverFlow := xOverFlow);	
+				IF xOverFlow = TRUE THEN
+					fnZapiszKomunikat(	sCalyKomunikat := '' ,
+										sTypKomunikatu := 'A' ,
+										sMnemonik := sMnemonik ,
+										sMACAdres := sMACAdres ,
+										sIDNadawcy := sIdInstancji ,
+										sIDOdbiorcy := sIdAplikacji ,
+										sDaneZapasowe := sDaneZapasowe ,
+										sDane := sDane ,
+										arTablicaKomunikatow := arTablicaKomunikatow ,
+										intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+										intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+										sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					sDane := '';
+				END_IF
+			END_IF
+			// Pytanie o stany alarmów
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALARM=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				FOR intPetla := 1 TO 10 BY 1 DO
+					// Raportowanie typu E (stanów alarmów) na zapytanie typu Q
+					IF arErrorStan[intPetla] &lt;&gt; enumAlarmWartosc.StanNieznany THEN
+						fnZapiszKomunikat(	sCalyKomunikat := '' ,
+											sTypKomunikatu := 'E' ,
+											sMnemonik := sMnemonik ,
+											sMACAdres := sMACAdres ,
+											sIDNadawcy := sIdInstancji ,
+											sIDOdbiorcy := sIdAplikacji ,
+											sDaneZapasowe := sDaneZapasowe ,
+											sDane := fnKomunikatDaneErrorRetry(xAktywny := arErrorStan[intPetla] = enumAlarmWartosc.StanAlarmowy , intKlasa := arErrorKlasa[intPetla] , intNumer := intPetla),
+											arTablicaKomunikatow := arTablicaKomunikatow ,
+											intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+											intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+											sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					END_IF
+				END_FOR
+			END_IF
+		END_IF
+		// Raportowanie typu A na zapytanie Q
+		IF sDane &lt;&gt; '' THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+		END_IF
+	END_IF
+END_IF
+
+// Raportowanie typu M do IZE wartosci odczytanych z Modbusa	
+IF 	(rPrzeplyw &lt;&gt; rPrzeplywZaraportowana OR rMoc &lt;&gt; rMocZaraportowana OR rEnergiaCieplna &lt;&gt; rEnergiaCieplnaZaraportowana OR rObjetosc &lt;&gt; rObjetoscZaraportowana OR 
+	rTemperaturaZasilania &lt;&gt; rTemperaturaZasilaniaZaraportowana OR rTemperaturaPowrotu &lt;&gt; rTemperaturaPowrotuZaraportowana) AND 
+	arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa AND xPoInicjalizacji THEN
+	xRaport := TRUE;
+END_IF
+
+IF xRaport THEN
+	sDane := '';
+	xRaport := FALSE;
+	// Sumaryczna zużyta energia cieplna licznika
+	IF rEnergiaCieplna &lt;&gt; rEnergiaCieplnaZaraportowana THEN
+		rEnergiaCieplnaZaraportowana := rEnergiaCieplna;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'ENCC=' , sWartosc := REAL_TO_STRING(rEnergiaCieplna) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'M' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Biezacy przeplyw licznika 
+	IF rPrzeplyw &lt;&gt; rPrzeplywZaraportowana THEN
+		rPrzeplywZaraportowana := rPrzeplyw;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'FLOWCC=' , sWartosc := REAL_TO_STRING(rPrzeplyw) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'M' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Objętość medium, które przepłynęło przez licznik
+	IF rObjetosc &lt;&gt; rObjetoscZaraportowana THEN
+		rObjetoscZaraportowana := rObjetosc;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'VOLCC=' , sWartosc := REAL_TO_STRING(rObjetosc) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'M' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Biezaca moc licznika
+	IF rMoc &lt;&gt; rMocZaraportowana THEN
+		rMocZaraportowana := rMoc;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'POWCC=' , sWartosc := REAL_TO_STRING(rMoc) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'M' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	// Temperatura na wejsciu licznika
+	IF rTemperaturaZasilania &lt;&gt; rTemperaturaZasilaniaZaraportowana THEN
+		rTemperaturaZasilaniaZaraportowana := rTemperaturaZasilania;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPINCC=' , sWartosc := REAL_TO_STRING(rTemperaturaZasilania) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'M' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+		// Temperatura na wyjsciu licznika
+	IF rTemperaturaPowrotu &lt;&gt; rTemperaturaPowrotuZaraportowana THEN
+		rTemperaturaPowrotuZaraportowana := rTemperaturaPowrotu;
+		fnKomunikatDaneDodaj_xOverFlow(sDane := sDane , sAtrybut := 'TEMPOUTCC=' , sWartosc := REAL_TO_STRING(rTemperaturaPowrotu) , xOverFlow := xOverFlow);	
+		IF xOverFlow = TRUE THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'M' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			sDane := '';
+		END_IF	
+	END_IF
+	
+	IF sDane &lt;&gt; '' AND xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'M' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := sDane ,
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikat);
+	END_IF
+END_IF
+	
+// Alarm braku komunikacji MODBUS 
+IF arErrorStan[enumPPPSLicznikCieplaMultical403Error.BrakKomunikacji] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.BrakKomunikacji THEN
+	arErrorStan[enumPPPSLicznikCieplaMultical403Error.BrakKomunikacji] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSLicznikCieplaMultical403Error.BrakKomunikacji] := enumPPPSLicznikCieplaMultical403Error.BrakKomunikacji;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '',
+							sTypKomunikatu := 'E',
+							sMnemonik := sMnemonik,
+							sMACAdres := sMACAdres,
+							sIDNadawcy := sIdInstancji,
+							sIDOdbiorcy := sIdAplikacji,
+							sDaneZapasowe := sDaneZapasowe,
+							sDane := fnKomunikatDaneError(	xAktywny := TRUE, 
+															intKlasa := enumPPPSLicznikCieplaMultical403ErrorKlasa.BrakKomunikacji, 
+															intNumer := enumPPPSLicznikCieplaMultical403Error.BrakKomunikacji),
+							arTablicaKomunikatow := arTablicaKomunikatow,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumPPPSLicznikCieplaMultical403Error.BrakKomunikacji] &lt;&gt; enumAlarmWartosc.StanNormalny AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+	arErrorStan[enumPPPSLicznikCieplaMultical403Error.BrakKomunikacji] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumPPPSLicznikCieplaMultical403Error.BrakKomunikacji] := enumPPPSLicznikCieplaMultical403Error.BrakKomunikacji;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '',
+							sTypKomunikatu := 'E',
+							sMnemonik := sMnemonik,
+							sMACAdres := sMACAdres,
+							sIDNadawcy := sIdInstancji,
+							sIDOdbiorcy := sIdAplikacji,
+							sDaneZapasowe := sDaneZapasowe,
+							sDane := fnKomunikatDaneError(	xAktywny := FALSE, 
+															intKlasa := enumPPPSLicznikCieplaMultical403ErrorKlasa.BrakKomunikacji, 
+															intNumer := enumPPPSLicznikCieplaMultical403Error.BrakKomunikacji),
+							arTablicaKomunikatow := arTablicaKomunikatow,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+	
+// Alarm czujnika przepływu
+IF arErrorStan[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPrzeplywu] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND xBladBrakZmianyPrzeplywu THEN
+	arErrorStan[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPrzeplywu] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPrzeplywu] := enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPrzeplywu;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '',
+							sTypKomunikatu := 'E',
+							sMnemonik := sMnemonik,
+							sMACAdres := sMACAdres,
+							sIDNadawcy := sIdInstancji,
+							sIDOdbiorcy := sIdAplikacji,
+							sDaneZapasowe := sDaneZapasowe,
+							sDane := fnKomunikatDaneError(	xAktywny := TRUE, 
+															intKlasa := enumPPPSLicznikCieplaMultical403ErrorKlasa.AlarmCzujnikaPrzeplywu, 
+															intNumer := enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPrzeplywu),
+							arTablicaKomunikatow := arTablicaKomunikatow,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPrzeplywu] &lt;&gt; enumAlarmWartosc.StanNormalny AND NOT xBladBrakZmianyPrzeplywu THEN
+	arErrorStan[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPrzeplywu] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPrzeplywu] := enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPrzeplywu;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '',
+							sTypKomunikatu := 'E',
+							sMnemonik := sMnemonik,
+							sMACAdres := sMACAdres,
+							sIDNadawcy := sIdInstancji,
+							sIDOdbiorcy := sIdAplikacji,
+							sDaneZapasowe := sDaneZapasowe,
+							sDane := fnKomunikatDaneError(	xAktywny := FALSE, 
+															intKlasa := enumPPPSLicznikCieplaMultical403ErrorKlasa.AlarmCzujnikaPrzeplywu, 
+															intNumer := enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPrzeplywu),
+							arTablicaKomunikatow := arTablicaKomunikatow,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+	
+// Alarm czujnika temperatury zasilania
+IF arErrorStan[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaZasilania] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND xBladBrakZmianyTemperaturyZasilania THEN
+	arErrorStan[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaZasilania] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaZasilania] := enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaZasilania;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '',
+							sTypKomunikatu := 'E',
+							sMnemonik := sMnemonik,
+							sMACAdres := sMACAdres,
+							sIDNadawcy := sIdInstancji,
+							sIDOdbiorcy := sIdAplikacji,
+							sDaneZapasowe := sDaneZapasowe,
+							sDane := fnKomunikatDaneError(	xAktywny := TRUE, 
+														  	intKlasa := enumPPPSLicznikCieplaMultical403ErrorKlasa.AlarmCzujnikaZasilania, 
+															intNumer := enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaZasilania),
+							arTablicaKomunikatow := arTablicaKomunikatow,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaZasilania] &lt;&gt; enumAlarmWartosc.StanNormalny AND NOT xBladBrakZmianyTemperaturyZasilania THEN
+	arErrorStan[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaZasilania] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaZasilania] := enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaZasilania;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '',
+							sTypKomunikatu := 'E',
+							sMnemonik := sMnemonik,
+							sMACAdres := sMACAdres,
+							sIDNadawcy := sIdInstancji,
+							sIDOdbiorcy := sIdAplikacji,
+							sDaneZapasowe := sDaneZapasowe,
+							sDane := fnKomunikatDaneError(	xAktywny := FALSE, 
+															intKlasa := enumPPPSLicznikCieplaMultical403ErrorKlasa.AlarmCzujnikaZasilania, 
+															intNumer := enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaZasilania),
+							arTablicaKomunikatow := arTablicaKomunikatow,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF	
+	
+// Alarm czujnika temperatury powrotu
+IF arErrorStan[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPowrotu] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND xBladBrakZmianyTemperaturyPowrotu THEN
+	arErrorStan[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPowrotu] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPowrotu] := enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPowrotu;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '',
+							sTypKomunikatu := 'E',
+							sMnemonik := sMnemonik,
+							sMACAdres := sMACAdres,
+							sIDNadawcy := sIdInstancji,
+							sIDOdbiorcy := sIdAplikacji,
+							sDaneZapasowe := sDaneZapasowe,
+							sDane := fnKomunikatDaneError(	xAktywny := TRUE, 
+															intKlasa := enumPPPSLicznikCieplaMultical403ErrorKlasa.AlarmCzujnikaPowrotu, 
+															intNumer := enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPowrotu),
+							arTablicaKomunikatow := arTablicaKomunikatow,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPowrotu] &lt;&gt; enumAlarmWartosc.StanNormalny AND NOT xBladBrakZmianyTemperaturyPowrotu THEN
+	arErrorStan[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPowrotu] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPowrotu] := enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPowrotu;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '',
+							sTypKomunikatu := 'E',
+							sMnemonik := sMnemonik,
+							sMACAdres := sMACAdres,
+							sIDNadawcy := sIdInstancji,
+							sIDOdbiorcy := sIdAplikacji,
+							sDaneZapasowe := sDaneZapasowe,
+							sDane := fnKomunikatDaneError(	xAktywny := FALSE, 
+															intKlasa := enumPPPSLicznikCieplaMultical403ErrorKlasa.AlarmCzujnikaPowrotu, 
+															intNumer := enumPPPSLicznikCieplaMultical403Error.AlarmCzujnikaPowrotu),
+							arTablicaKomunikatow := arTablicaKomunikatow,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+	</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

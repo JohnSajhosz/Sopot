@@ -1,0 +1,990 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.7266535" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fbPPPSSterownikLAC0" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="sKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> komunikat z systemu zewnętrznego</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intTablicaKomunikatowRozmiar">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> rozmiar tablicy danych wysyłkowych</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xTablicaKomunikatowHold">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> wstrzymanie komunikacji mniej ważnych komunikatów</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sIdInstancji">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr ID rolety np NS02L*202IBM**** </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sIdAplikacji">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr ID aplikacji np SO*******ECL*000 </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMnemonik">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> mnemonik właściciela - BCB* </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMACAdres">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> MAC adres sterownika</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sDaneZapasowe">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> 6 znaków zapasu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="tCzasOpoznieniaRestartu">
+              <type>
+                <TIME />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> czas opóźnienia po którym zaczynają być raportowane wartości</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sIdSterownika">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">systemowe - HeartBeat itp.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="tCzasOpoznieniaWyslaniaIamAlive">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+            <variable name="tCzasWysylaniaHeartbeatu">
+              <type>
+                <TIME />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> co ile sekund ma być wysyłany heartbeat</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xEmergencyStopWejscie">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xZezwolenieHeartbeat">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> flaga zezwolenia na wysyłanie heartbeatu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="tUdpWejscieCzasHeartbeatTimeout">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+            <variable name="intAutonomizacja_PLC">
+              <type>
+                <array>
+                  <dimension lower="1" upper="7" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">sterowniki</xhtml>
+              </documentation>
+            </variable>
+            <variable name="dtAktualnaDataCzas">
+              <type>
+                <DT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zapis ramek do pliku</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sFrameLogPath">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="tCzasArchiwacjiRamek">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+          </inputVars>
+          <inOutVars>
+            <variable name="arTablicaKomunikatow">
+              <type>
+                <derived name="alARRAYTablicaKomunikatow" />
+              </type>
+            </variable>
+            <variable name="intTransmitterLicznikKomunikatowWyslanych">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intReceiverLicznikKomunikatowOtrzymanych">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowZnacznikZapisu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowZnacznikWysylkiUDP">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowZnacznikOdczytu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+          </inOutVars>
+          <outputVars>
+            <variable name="xAutonomizacjaWyjscie">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xAutonomizacjaWyjscieNVL">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="intEmergencyStopActive">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intEmergencyStopActiveZaraportowana">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intAutonomizacjaZewnetrzna">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intAutonomizacjaWewnetrzna">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="xPoInicjalizacji">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">inicjalizacja</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbInicjalizacyjnyTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="fbCzasOpoznieniaWyslaniaIamAlive">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="xOpoznienieWyslaniaIamAlive">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">zmienne systemowe</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbCzasHeartbeat">
+              <type>
+                <derived name="fbTimer" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Czasowka do odliczania częstotliwości wysyłania HEARTBEAT</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sHeartbeatDane">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="fbCzasWejscieHeartbeatTimeout">
+              <type>
+                <derived name="fbTimer" />
+              </type>
+            </variable>
+            <variable name="xWejscieHeartbeatOtrzymano">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="intLokalnyLicznikKomunikatowWyslanych">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="xPoprawnaWalidacja">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xZgodnoscIDwHeartBeat">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+            </variable>
+            <variable name="sDane">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sWyslanyKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sKomunikatPamiec">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sWyslanyKomunikatDummy">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="intPetla">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="arErrorStan">
+              <type>
+                <array>
+                  <dimension lower="0" upper="20" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica przechowująca statusy alarmowe</xhtml>
+              </documentation>
+            </variable>
+            <variable name="arErrorKlasa">
+              <type>
+                <array>
+                  <dimension lower="0" upper="20" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica przechowująca klasy danych alarmów</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xRaport">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="File">
+              <type>
+                <derived name="WagoSysFileDir.FbSysFile" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Zmienne obsługujące zapis i kasowanie plików logowania ramek</xhtml>
+              </documentation>
+            </variable>
+            <variable name="Dir">
+              <type>
+                <derived name="FbSysDir" />
+              </type>
+            </variable>
+            <variable name="Entry">
+              <type>
+                <derived name="typFileProperties" />
+              </type>
+            </variable>
+            <variable name="sPlikName">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="Triger_Zapisu_1">
+              <type>
+                <derived name="R_TRIG" />
+              </type>
+            </variable>
+            <variable name="Triger_Zapisu_2">
+              <type>
+                <derived name="R_TRIG" />
+              </type>
+            </variable>
+            <variable name="xZapiszPlik_1">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xZapiszPlik_2">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="sCzasZapisuTablicy_A1">
+              <type>
+                <string length="255" />
+              </type>
+            </variable>
+            <variable name="sCzasZapisuTablicy_A2">
+              <type>
+                <string length="255" />
+              </type>
+            </variable>
+            <variable name="sCzasZapisuTablicy_B1">
+              <type>
+                <string length="255" />
+              </type>
+            </variable>
+            <variable name="sCzasZapisuTablicy_1">
+              <type>
+                <string length="255" />
+              </type>
+            </variable>
+            <variable name="sCzasZapisuTablicy_A">
+              <type>
+                <string length="255" />
+              </type>
+            </variable>
+            <variable name="sCzasZapisuTablicy_B">
+              <type>
+                <string length="255" />
+              </type>
+            </variable>
+            <variable name="sCzasZapisuTablicy">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="iKomunikatIndex">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="iKoniecZapisu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="ProceduraKasowaniaTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="sPlikNameRemove">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="xFlagaKasowaniaPlikow">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="sFullIdNadawcy">
+              <type>
+                <string length="255" />
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(*			
+Autor:					Paweł Kąkol, 
+Prawa majątkowe: 		Solwena Sp. z o.o., 
+Aktualizacje:			2018-03-12-PK - stworzenie
+						2018-05-14-PK - przeniesienie z fbUDPComm wszystkich rzeczy związanych z LAC0, dodanie walidacji IdInstacji z IdSterownika
+						2018-05-17-PK - dodanie przyjmowania HeartBeat'u bez względu na FullIdentifier, dodanie alarmowania takiego stanu
+						2018-09-25-PK - dodanie sprawdzania nadawcy komunikatu Heartbeat (odczytaj tylko od przypisanej do mnie aplikacji IZE)
+						2019-04-01-JC - dodanie zrzutu tablicy komunikatów do pliku + kasowanie plków raz na 24h o ile pliki sa przedawnione
+						
+						
+Opis:					fb służy do obsługi stanów sterownika (RESTART, HeartBeat, EMST) LAC0 na budynku BCB B2
+
+
+//NA PÓŹNIEJ: dorobić obsługę momentów przytkania UDP - to wydanie nie będzie poprawnie zliczało i kasowało licznik podczas przytkania
+*)
+
+//walidacja ID sterownika/instacji - jeżeli nie zgadzają się Identyfikatory to nie nadawaj nic  oprócz alarmu błędu walidacji
+IF sIdSterownika &lt;&gt; sIdInstancji THEN
+	xPoprawnaWalidacja := FALSE;
+ELSE
+	xPoprawnaWalidacja := TRUE;
+END_IF
+
+//inicjalizacja sterownika
+fbInicjalizacyjnyTimer(IN := NOT xPoInicjalizacji , PT := tCzasOpoznieniaRestartu);
+IF fbInicjalizacyjnyTimer.Q AND xPoprawnaWalidacja THEN
+	xPoInicjalizacji := TRUE;
+END_IF
+
+fbCzasOpoznieniaWyslaniaIamAlive(	IN := NOT xOpoznienieWyslaniaIamAlive,
+									PT := tCzasOpoznieniaWyslaniaIamAlive);
+									
+//jeżeli sterownik uruchomił się ponownie wyślij komunikat z atrybutem RESTART=1 w celu poinformowania IZE o restarcie sterownika
+IF fbCzasOpoznieniaWyslaniaIamAlive.Q THEN
+	xOpoznienieWyslaniaIamAlive := TRUE;
+	fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'M' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIDSterownika ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := 'RESTART=1' ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikat);
+END_IF
+
+// sprawdzenie heartbeatu i ilosci wyslanych komunikatow - wystawienie odpowiednich alarmów
+
+fbCzasWejscieHeartbeatTimeout(	intTyp := 1 ,
+								xWejscie := NOT xWejscieHeartbeatOtrzymano , 
+								tCzas := tUdpWejscieCzasHeartbeatTimeout);
+								
+xWejscieHeartbeatOtrzymano := FALSE;
+
+// obsługa niezgodnej ilości komunikatów w heartbeacie, do sprawdzenia warunki
+(*
+	IF STRING_TO_INT(fnKomunikatDaneSzukajWartosci(sReceiverTelegram , 'ILE=')) = intReceiverLicznikKomunikatowOtrzymanych AND 
+		arErrorStan[enumSystemError.NiezgodnaIloscKomunikatowOdebranychZIZE] THEN
+		arErrorStan[enumSystemError.NiezgodnaIloscKomunikatowOdebranychZIZE] := FALSE;
+		sDane := CONCAT('ACT=0;CLASS=' , INT_TO_STRING(enumSystemErrorKlasa.NiezgodnaIloscKomunikatowOdebranychZIZE));
+		sDane := CONCAT(sDane , ';NUM=');
+		sDane := CONCAT(sDane , INT_TO_STRING(enumSystemError.NiezgodnaIloscKomunikatowOdebranychZIZE));	
+		sDane := CONCAT(sDane , ';E');
+		sDane := CONCAT(sDane , fnKonwersjaINT_STRING(intWartosc := enumSystemError.NiezgodnaIloscKomunikatowOdebranychZIZE , intIloscZnakow := 3));
+		sDane := CONCAT(sDane , 'ACT=0');
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik :=  sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdSterownika ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := sDane ,
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := arErrorKomunikat[enumSystemError.NiezgodnaIloscKomunikatowOdebranychZIZE]);
+	END_IF
+	IF  STRING_TO_INT(fnKomunikatDaneSzukajWartosci(sReceiverTelegram , 'ILE=')) &lt;&gt; intReceiverLicznikKomunikatowOtrzymanych AND 
+		NOT arErrorStan[enumSystemError.NiezgodnaIloscKomunikatowOdebranychZIZE] AND intReceiverLicznikKomunikatowOtrzymanych &gt; 0 THEN
+		arErrorStan[enumSystemError.NiezgodnaIloscKomunikatowOdebranychZIZE] := TRUE;
+		sDane := CONCAT('ACT=1;CLASS=' , INT_TO_STRING(enumSystemErrorKlasa.NiezgodnaIloscKomunikatowOdebranychZIZE));
+		sDane := CONCAT(sDane , ';NUM=');
+		sDane := CONCAT(sDane , INT_TO_STRING(enumSystemError.NiezgodnaIloscKomunikatowOdebranychZIZE));	
+		sDane := CONCAT(sDane , ';E');
+		sDane := CONCAT(sDane , fnKonwersjaINT_STRING(intWartosc := enumSystemError.NiezgodnaIloscKomunikatowOdebranychZIZE , intIloscZnakow := 3));
+		sDane := CONCAT(sDane , 'ACT=1');
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik :=  sMnemonik,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdSterownika ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := sDane ,
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := arErrorKomunikat[enumSystemError.NiezgodnaIloscKomunikatowOdebranychZIZE]);
+	END_IF*)
+
+//obsluga komunikatu przychodzacego z IZE
+
+IF 	sKomunikat &lt;&gt; sKomunikatPamiec AND xPoInicjalizacji THEN
+	sKomunikatPamiec := sKomunikat;
+	sDane := '';
+	//komunikat typu H
+	IF fnKomunikatTyp(sKomunikat) = 'H' THEN
+		//jeżeli Heartbeat nadaje (nie ważne kto jest odbiorcą) przypisana do mnie (w zmiennej globalnej PLC) aplikacja IZE
+		IF fnIDNadawcyMatch(sKomunikat , sIdAplikacji) THEN
+			//sprawdzanie statusu EMST systemu IZE
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat,'EMST=') = '0' THEN
+				IF intEmergencyStopActive = 1 THEN
+					intEmergencyStopActive := 0;
+				ELSE
+					IF sDane &lt;&gt; '' THEN
+						sDane := CONCAT(sDane , ';');
+					END_IF
+					sDane := CONCAT(sDane , 'EMST=0');
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat,'EMST=') = '1' THEN
+				IF intEmergencyStopActive = 0 THEN
+					intEmergencyStopActive := 1;
+				ELSE
+					IF sDane &lt;&gt; '' THEN
+						sDane := CONCAT(sDane , ';');
+					END_IF
+					sDane := CONCAT(sDane , 'EMST=1');
+				END_IF
+			END_IF
+			intReceiverLicznikKomunikatowOtrzymanych := 0;//NA PÓŹNIEJ: dorobić obsługę momentów przytkania UDP - to wydanie nie będzie poprawnie kasować licznika podczas przytkania
+			xWejscieHeartbeatOtrzymano := TRUE;
+			xZgodnoscIDwHeartBeat := (fnIDNadawcyMatch(sKomunikat , sIdSterownika) AND fnIDOdbiorcyMatch(sKomunikat , sIdAplikacji)) OR (fnIDNadawcyMatch(sKomunikat , sIdAplikacji) AND fnIDOdbiorcyMatch(sKomunikat , sIdSterownika));
+		END_IF
+	END_IF
+	IF fnIDOdbiorcyMatch(sKomunikat , sIdSterownika) THEN		
+		//rozkaz typu C
+		IF fnKomunikatTyp(sKomunikat) = 'C' THEN
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat,'EMST=') = '0' THEN
+				IF intEmergencyStopActive = 1 THEN
+					intEmergencyStopActive := 0;
+				ELSE
+					IF sDane &lt;&gt; '' THEN
+						sDane := CONCAT(sDane , ';');
+					END_IF
+					sDane := CONCAT(sDane , 'EMST=0');
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat,'EMST=') = '1' THEN
+				IF intEmergencyStopActive = 0 THEN
+					intEmergencyStopActive := 1;
+				ELSE
+					IF sDane &lt;&gt; '' THEN
+						sDane := CONCAT(sDane , ';');
+					END_IF
+					sDane := CONCAT(sDane , 'EMST=1');
+				END_IF
+			END_IF
+		//raportowanie typu A na potwierdzanie stanow zadanych przez C
+			IF sDane &lt;&gt; '' THEN
+				fnZapiszKomunikat(	sCalyKomunikat := '' ,
+									sTypKomunikatu := 'A' ,
+									sMnemonik := sMnemonik ,
+									sMACAdres := sMACAdres ,
+									sIDNadawcy := sIdSterownika ,
+									sIDOdbiorcy := sIdAplikacji ,
+									sDaneZapasowe := sDaneZapasowe ,
+									sDane := sDane ,
+									arTablicaKomunikatow := arTablicaKomunikatow ,
+									intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+									intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+									sWyslanyKomunikat := sWyslanyKomunikatDummy);
+			END_IF
+		END_IF
+
+		sDane := '';
+		//zapytanie typu Q
+		IF fnKomunikatTyp(sKomunikat) = 'Q' THEN
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'EMST=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'EMST=' , sWartosc := INT_TO_STRING(intEmergencyStopActive));
+			END_IF
+		//pytanie o stany alarmów
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALARM=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				FOR intPetla := 1 TO 20 BY 1 DO
+					//raportowanie typu E (stanów alarmów) na zapytanie typu Q
+					IF arErrorStan[intPetla] &lt;&gt; enumAlarmWartosc.StanNieznany THEN
+						fnZapiszKomunikat(	sCalyKomunikat := '' ,
+											sTypKomunikatu := 'E' ,
+											sMnemonik := sMnemonik ,
+											sMACAdres := sMACAdres ,
+											sIDNadawcy := sIdSterownika ,
+											sIDOdbiorcy := sIdAplikacji ,
+											sDaneZapasowe := sDaneZapasowe ,
+											sDane := fnKomunikatDaneErrorRetry(xAktywny := arErrorStan[intPetla] = enumAlarmWartosc.StanAlarmowy , intKlasa := arErrorKlasa[intPetla] , intNumer := intPetla),
+											arTablicaKomunikatow := arTablicaKomunikatow ,
+											intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+											intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+											sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					END_IF
+				END_FOR
+			END_IF
+		END_IF
+		//raportowanie typu A na zapytanie Q
+		IF sDane &lt;&gt; '' THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdSterownika ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+		END_IF
+	END_IF
+END_IF
+
+// Uruchomienie czasówki wyzwalającej puls co zadany czas. Uruchomiona gdy jest zezwolenie ze zmiennej globalnej
+
+fbCzasHeartbeat( xWejscie := NOT fbCzasHeartbeat.xWyjscie AND xZezwolenieHeartbeat , intTyp := 1 , tCzas := tCzasWysylaniaHeartbeatu );
+
+// jeśli czasówka działa to po upłynięciu danego czasu zapisz komunikat HEARTBEAT do wysłania
+
+IF fbCzasHeartbeat.xWyjscie THEN
+	sHeartbeatDane := '';
+	intLokalnyLicznikKomunikatowWyslanych := intTransmitterLicznikKomunikatowWyslanych + 1; //NA PÓŹNIEJ: dorobić obsługę momentów przytkania UDP - to wydanie nie będzie zliczało poprawnie podczas przytkania
+	sHeartbeatDane := CONCAT('CZAS=' , REAL_TO_STRING(DWORD_TO_REAL(TIME_TO_DWORD(tCzasWysylaniaHeartbeatu))/1000));
+	sHeartbeatDane := CONCAT(sHeartbeatDane , ';ILE=');
+	sHeartbeatDane := CONCAT(sHeartbeatDane , INT_TO_STRING(intLokalnyLicznikKomunikatowWyslanych));
+	sHeartbeatDane := CONCAT(sHeartbeatDane , ';EMST=');
+	sHeartbeatDane := CONCAT(sHeartbeatDane , INT_TO_STRING(intEmergencyStopActive));
+	fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'H' ,
+						sMnemonik := sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdSterownika ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sHeartbeatDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := sWyslanyKomunikat);
+	intEmergencyStopActiveZaraportowana := intEmergencyStopActive;
+END_IF
+
+//dokonywanie obliczeń
+
+intAutonomizacjaZewnetrzna := 0;
+//sprawdzanie stanów w zewnętrznych sterownikach
+FOR intPetla := 1 TO 7 BY 1 DO
+	//zewnętrzne sterowniki mogą tylko ustawiać stan EMST
+	IF intAutonomizacja_PLC[intPetla] = 1 THEN
+		intAutonomizacjaZewnetrzna := 1;//ustawianie zdalnej autonomizacji
+	END_IF
+END_FOR
+
+//przejście w tryb EMST oraz autonomizacji gdy przycisk na ewacji wciśnięty
+IF xEmergencyStopWejscie THEN 
+	intEmergencyStopActive := 1;
+	intAutonomizacjaWewnetrzna := 1;
+END_IF
+
+//przejście w tryb autonomizacji po zaniku komunikacji
+IF fbCzasWejscieHeartbeatTimeout.xWyjscie THEN
+	intAutonomizacjaWewnetrzna := 1;
+END_IF
+
+//Wyłączenie lokalnego trybu autonomizacji
+IF NOT fbCzasWejscieHeartbeatTimeout.xWyjscie AND NOT xEmergencyStopWejscie THEN
+	intAutonomizacjaWewnetrzna := 0;
+END_IF
+
+//Wystawienie informacji o lokalnej autonomizacji na zewnętrzne sterowniki
+IF intEmergencyStopActive = 1 OR intAutonomizacjaWewnetrzna = 1 THEN
+	xAutonomizacjaWyjscieNVL := TRUE;
+ELSE
+	xAutonomizacjaWyjscieNVL := FALSE;
+END_IF
+
+//Wystawienie informacji o autonomizacji na urządzenia wewnętrzne sterownika
+IF xAutonomizacjaWyjscieNVL OR intAutonomizacjaZewnetrzna = 1 THEN
+	xAutonomizacjaWyjscie := TRUE;
+ELSE
+	xAutonomizacjaWyjscie := FALSE;
+END_IF
+
+
+//Jeżeli znacznik zapisu przekroczy polowe rozmiaru tabli to zapisz rekordy od 0 do intTablicaKomunikatowRozmiar / 2
+Triger_Zapisu_1(CLK := (intTablicaKomunikatowZnacznikZapisu &gt; intTablicaKomunikatowRozmiar / 2), Q =&gt; xZapiszPlik_1);
+//Jeżeli znacznik zapisu wróci na poczatek tabli zapiz rekordy od ("intTablicaKomunikatowRozmiar" / 2) + 1 do "intTablicaKomunikatowRozmiar"
+Triger_Zapisu_2(CLK := (intTablicaKomunikatowZnacznikZapisu &lt; intTablicaKomunikatowRozmiar / 2), Q =&gt; xZapiszPlik_2);
+//Zapisywanie wygenerowanych ramek do pliku tekstowego 
+IF xZapiszPlik_1 OR xZapiszPlik_2 THEN 
+//Utworzenie nazwy pliku "TAB_SAVE_2019-06-12_15-23_32"
+	sCzasZapisuTablicy_A1 := CONCAT(MID(DT_TO_STRING(dtAktualnaDataCzas), 10, 4), '_');
+	sCzasZapisuTablicy_A2 := CONCAT(MID(DT_TO_STRING(dtAktualnaDataCzas), 2, 15), '-');
+	sCzasZapisuTablicy_A := CONCAT(sCzasZapisuTablicy_A1, sCzasZapisuTablicy_A2);
+	sCzasZapisuTablicy_B1 := CONCAT(MID(DT_TO_STRING(dtAktualnaDataCzas), 2, 18), '-');
+	sCzasZapisuTablicy_B := CONCAT(sCzasZapisuTablicy_B1, MID(DT_TO_STRING(dtAktualnaDataCzas), 2, 21));
+	sCzasZapisuTablicy := CONCAT(sCzasZapisuTablicy_A, sCzasZapisuTablicy_B);
+	sPlikName := CONCAT('TAB_SAVE_', sCzasZapisuTablicy);
+	IF File.Open(sPlikName, FAM_Append, FSM_SafeClose, FALSE) = 0 THEN //Otwórz plik i jeżeli został poprawnie otwarty to
+		IF 	xZapiszPlik_1 THEN
+			iKomunikatIndex := 1;
+			iKoniecZapisu := intTablicaKomunikatowRozmiar / 2;	
+		END_IF
+		IF 	xZapiszPlik_2 THEN
+			iKomunikatIndex := intTablicaKomunikatowRozmiar / 2 + 1;
+			iKoniecZapisu := intTablicaKomunikatowRozmiar;
+		END_IF
+		WHILE (iKomunikatIndex &lt;= iKoniecZapisu) DO //Dla wszystkich elementów tablicy
+			sFullIdNadawcy := MID(arTablicaKomunikatow[iKomunikatIndex],16,13);// Wyciecie z ramki FullId nadawcy
+			IF sFullIdNadawcy &lt;&gt; sIdAplikacji THEN
+				File.WriteString(arTablicaKomunikatow[iKomunikatIndex]); //Zapisz ramkę
+				File.WriteByte(16#0D); //Wprowadź znak entera
+				File.WriteByte(16#0A); //Wprowadź znak konca lini
+			END_IF		
+			iKomunikatIndex := iKomunikatIndex + 1;
+		END_WHILE
+		File.Close(); //Zamknij plik
+	END_IF
+END_IF
+
+//Timer odliczajacy czas do kasowania plików
+ProceduraKasowaniaTimer(IN := xFlagaKasowaniaPlikow, PT := T#24H);
+xFlagaKasowaniaPlikow := TRUE;
+//Kasowanie logu ramek wykonywane co 24h. Pliki są kasowane jeżeli zostałe zapisane dawniej niż "dtAktualnaDataCzas" - "tCzasArchiwacjiRamek"
+ChangeWorkingDirectory(sFrameLogPath, TRUE); //Wybranie ścieżki dostępu do miejsca zapisu pliku
+IF ProceduraKasowaniaTimer.Q THEN //Jezeli nastapiła zmiana daty
+	IF Dir.Open(sFrameLogPath) = 0 THEN //Otwarcie folderu z lokalizacją pliku
+ 		WHILE Dir.Read(Entry) = 0 DO //Pętla odczytująca po kolei wszystkie pliki w wskazanej lokalizacji
+ 			IF (Entry.dtLastModification &lt;= (dtAktualnaDataCzas - tCzasArchiwacjiRamek)) THEN //Jeżeli sterownik zakończył proces inicjalizacji a data ostatniej modyfikacji pliku jest wcześniejsza niż aktualana data - tCzasArchiwacjiRamek)
+				sPlikNameRemove := Entry.sFileName; //Wybierz plik 
+				RemoveFile(sPlikNameRemove); //Skasuj plik
+				xFlagaKasowaniaPlikow := FALSE; //Zresetuj flagę kasowania plików
+ 			END_IF
+  		END_WHILE
+		Dir.close(); //Zamknij folder
+	END_IF
+END_IF
+
+//raportowanie
+IF intEmergencyStopActiveZaraportowana &lt;&gt; intEmergencyStopActive THEN
+	xRaport := TRUE;
+END_IF
+
+IF xRaport THEN
+	sDane := '';
+	xRaport := FALSE;
+	IF intEmergencyStopActiveZaraportowana &lt;&gt; intEmergencyStopActive THEN
+		intEmergencyStopActiveZaraportowana := intEmergencyStopActive;
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'EMST=' , sWartosc := INT_TO_STRING(intEmergencyStopActive));	
+	END_IF
+	IF sDane &lt;&gt; '' AND xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'M' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdSterownika ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := sDane ,
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikat);
+	END_IF
+END_IF
+
+// obsługa alarmów do sterownika LAC0
+
+	//sprawdzanie sIdSterownika oraz sIdInstancji - raportowanie pomimo blokady pozostałych funkcjonalności fb
+IF arErrorStan[enumSystemError.BladWalidacjiFullIdentifier] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND NOT xPoprawnaWalidacja THEN
+	arErrorStan[enumSystemError.BladWalidacjiFullIdentifier] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumSystemError.BladWalidacjiFullIdentifier] := enumSystemError.BladWalidacjiFullIdentifier;
+	IF fbInicjalizacyjnyTimer.Q OR xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumSystemErrorKlasa.BladWalidacjiFullIdentifier , intNumer := enumSystemError.BladWalidacjiFullIdentifier),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumSystemError.BladWalidacjiFullIdentifier] &lt;&gt; enumAlarmWartosc.StanNormalny AND xPoprawnaWalidacja THEN
+	arErrorStan[enumSystemError.BladWalidacjiFullIdentifier] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumSystemError.BladWalidacjiFullIdentifier] := enumSystemError.BladWalidacjiFullIdentifier;
+	IF fbInicjalizacyjnyTimer.Q OR xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := FALSE , intKlasa := enumSystemErrorKlasa.BladWalidacjiFullIdentifier , intNumer := enumSystemError.BladWalidacjiFullIdentifier),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+
+	//sprawdzanie alarmu Timeout HeartBeat
+IF arErrorStan[enumSystemError.BrakHeartbetuzIZE] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND fbCzasWejscieHeartbeatTimeout.xWyjscie THEN
+	arErrorStan[enumSystemError.BrakHeartbetuzIZE] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumSystemError.BrakHeartbetuzIZE] := enumSystemError.BrakHeartbetuzIZE;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumSystemErrorKlasa.BrakHeartbetuzIZE , intNumer := enumSystemError.BrakHeartbetuzIZE),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+
+IF arErrorStan[enumSystemError.BrakHeartbetuzIZE] &lt;&gt; enumAlarmWartosc.StanNormalny AND NOT fbCzasWejscieHeartbeatTimeout.xWyjscie THEN
+	arErrorStan[enumSystemError.BrakHeartbetuzIZE] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumSystemError.BrakHeartbetuzIZE] := enumSystemError.BrakHeartbetuzIZE;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := FALSE , intKlasa := enumSystemErrorKlasa.BrakHeartbetuzIZE , intNumer := enumSystemError.BrakHeartbetuzIZE),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+
+//sprawdzanie alarmu poprawności ID w HeartBeat
+IF arErrorStan[enumSystemError.BladFullIdentifierWHeartBeat] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND NOT xZgodnoscIDwHeartBeat THEN
+	arErrorStan[enumSystemError.BladFullIdentifierWHeartBeat] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumSystemError.BladFullIdentifierWHeartBeat] := enumSystemError.BladFullIdentifierWHeartBeat;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumSystemErrorKlasa.BladFullIdentifierWHeartBeat , intNumer := enumSystemError.BladFullIdentifierWHeartBeat),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+
+IF arErrorStan[enumSystemError.BladFullIdentifierWHeartBeat] &lt;&gt; enumAlarmWartosc.StanNormalny AND xZgodnoscIDwHeartBeat THEN
+	arErrorStan[enumSystemError.BladFullIdentifierWHeartBeat] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumSystemError.BladFullIdentifierWHeartBeat] := enumSystemError.BladFullIdentifierWHeartBeat;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := FALSE , intKlasa := enumSystemErrorKlasa.BladFullIdentifierWHeartBeat , intNumer := enumSystemError.BladFullIdentifierWHeartBeat),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

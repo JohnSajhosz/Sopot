@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.3197062" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes>
+      <dataType name="enumModbusKodyFunkcji">
+        <baseType>
+          <enum>
+            <values>
+              <value name="OdczytWyjscBitowych" value="1" />
+              <value name="OdczytWejscBitowych" value="2" />
+              <value name="OdczytNRejestrow" value="3" />
+              <value name="OdczytNRejestrowWejsciowych" value="4" />
+              <value name="ZapisBitu" value="5" />
+              <value name="ZapisRejestru" value="6" />
+              <value name="OdczytStatusu" value="7" />
+              <value name="ZapisNBitow" value="15" />
+              <value name="ZapisNRejestrow" value="16" />
+            </values>
+          </enum>
+        </baseType>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/enumvaluedocumentation" handleUnknown="implementation">
+            <EnumValueDocumentation>
+              <EnumValue>
+                <Name>OdczytWyjscBitowych</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> odczyt stanu wyjść cyfrowych</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>OdczytWejscBitowych</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> odczyt stanu wejść cyfrowych</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>OdczytNRejestrow</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> odczyt dowolnej ilości rejestrów</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>OdczytNRejestrowWejsciowych</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> odczyt dowolnej ilości rejestrów wejściowych</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>ZapisBitu</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> zapis jednego bitu informacji</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>ZapisRejestru</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> zapis jednego rejestru</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>OdczytStatusu</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> odczyt statusu</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>ZapisNBitow</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> zapis dowolnej ilości bitów</xhtml>
+                </Documentation>
+              </EnumValue>
+              <EnumValue>
+                <Name>ZapisNRejestrow</Name>
+                <Documentation>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml"> zapis dowolnej ilości rejestrów</xhtml>
+                </Documentation>
+              </EnumValue>
+            </EnumValueDocumentation>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+            <Attributes>
+              <Attribute Name="qualified_only" Value="" />
+              <Attribute Name="strict" Value="" />
+            </Attributes>
+          </data>
+        </addData>
+        <documentation>
+          <xhtml xmlns="http://www.w3.org/1999/xhtml">
+Nazwa bloku:			Enumeracja - definicja kodów funkcyjnych protokołu modbus
+			
+Projekt: 				Bałtyckie Centrum Biznesu Budynek 2
+Firma:					Solwena
+Autor:					Marcin Szumiło
+Wersja:					0.1.0.1 - 2017-01-10
+
+</xhtml>
+        </documentation>
+      </dataType>
+    </dataTypes>
+    <pous />
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

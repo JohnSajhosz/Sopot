@@ -1,0 +1,1735 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.7455698" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fbPPPSZadajnikSR04P" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="sKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> komunikat z systemu zewnętrznego</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intTablicaKomunikatowRozmiar">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> rozmiar tablicy danych wysyłkowych</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intModbusOdczytZapisZadanieRozmiar">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> rozmiar tablicy danych modbusa</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xTablicaKomunikatowHold">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> wstrzymanie komunikacji mniej ważnych komunikatów</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sIdInstancji">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr ID rolety np NS02L*202IBM**** </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sIdAplikacji">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr ID aplikacji np SO*******ECL*000 </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMnemonik">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> mnemonik właściciela - BCB* </xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMACAdres">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> MAC adres sterownika</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sDaneZapasowe">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> 6 znaków zapasu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="tCzasOpoznieniaRestartu">
+              <type>
+                <TIME />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> czas opóźnienia po którym zaczynają być raportowane wartości</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sTypPomieszczenia">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> typ pomieszczenia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="bAdres">
+              <type>
+                <BYTE />
+              </type>
+            </variable>
+            <variable name="bKanalEnOcean">
+              <type>
+                <BYTE />
+              </type>
+            </variable>
+            <variable name="sEnOceanID">
+              <type>
+                <string length="10" />
+              </type>
+            </variable>
+            <variable name="tMinimalnyCzasRaportowania">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+            <variable name="tMaksymalnyCzasRaportowania">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+            <variable name="tCzasTimeoutEnOcean">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+            <variable name="xAutonomizacja">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xAutonomizacjaSztuczna">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xGlobalnaAutomatycznaKonfiguracja">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="tCzestotliwoscAutomatycznejKonfiguracji">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+            <variable name="rRegulatorTemperaturyKp">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rRegulatorTemperaturyTi">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rRegulatorTemperaturyDeadZone">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rTrybPracyAutonomizacja">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Domyślny tryb pracy</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaBazowaAutoAutonomizacja">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Domyślna wartość nastawy temperatury bazowej w trybie automatycznym</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaBazowaManAutonomizacja">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Domyślna wartość nastawy temperatury bazowej w trybie manualnym</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rSkalaPotencjometruAutonomizacja">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Domyślna skala potencjomentru</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaBazowaHMI">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="293.15" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Temperatura bazowa z HMI</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intTrybPracyHMI">
+              <type>
+                <INT />
+              </type>
+              <initialValue>
+                <simpleValue value="1" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> 0 - ręczny; 1 - auto</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xPokazPanelHMI">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> 0 - widoczny; 1 - niewidoczny</xhtml>
+              </documentation>
+            </variable>
+          </inputVars>
+          <inOutVars>
+            <variable name="arModbusOdczytCykliczny">
+              <type>
+                <array>
+                  <dimension lower="1" upper="5000" />
+                  <baseType>
+                    <derived name="typModbusOdczytCykliczny" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arModbusStatusKomunikacji">
+              <type>
+                <array>
+                  <dimension lower="1" upper="256" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="arModbusOdczytZapisZadanie">
+              <type>
+                <array>
+                  <dimension lower="1" upper="1000" />
+                  <baseType>
+                    <derived name="typModbusOdczytZapisZadanie" />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="intModbusOdczytZapisZadanieZnacznikZapisu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="arTablicaKomunikatow">
+              <type>
+                <derived name="alARRAYTablicaKomunikatow" />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowZnacznikZapisu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+          </inOutVars>
+          <outputVars>
+            <variable name="rWyjscieRgulatoraTemperatury">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rDiagnostykaTemperaturaPomieszczenia">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rDiagnostykaTemperaturaNastawiona">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rDiagnostykaTemperaturaBazowa">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rDiagnostykaKorektaTemperaturyPotencjometru">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rDiagnostykaWyjscieRgulatoraTemperatury">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="intDiagnostykaTrybPracy">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="sDiagnostykaEnOceanIDodczytany">
+              <type>
+                <string length="10" />
+              </type>
+            </variable>
+            <variable name="wDiagnostykaCzasOdOstatniegoKomunikatu">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="rTemperaturaPomieszczenia">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+          </outputVars>
+          <localVars constant="true">
+            <variable name="uintLiczbaRejestrowNaKanal">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="20" />
+              </initialValue>
+            </variable>
+            <variable name="uintPierwszyRejestr">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="200" />
+              </initialValue>
+            </variable>
+            <variable name="wEnOceanFunction">
+              <type>
+                <WORD />
+              </type>
+              <initialValue>
+                <simpleValue value="16" />
+              </initialValue>
+            </variable>
+            <variable name="wEnOceanType">
+              <type>
+                <WORD />
+              </type>
+              <initialValue>
+                <simpleValue value="3" />
+              </initialValue>
+            </variable>
+            <variable name="wEnOceanManufacturer">
+              <type>
+                <WORD />
+              </type>
+              <initialValue>
+                <simpleValue value="2" />
+              </initialValue>
+            </variable>
+            <variable name="intDomyslneHarmonogram">
+              <type>
+                <INT />
+              </type>
+              <initialValue>
+                <simpleValue value="enumPPPSHarmonogramy.Komfort" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">domyślne nastawy po restarcie sterownika</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rDomyslneTemperaturaBazowaKomfort">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="293.15" />
+              </initialValue>
+            </variable>
+            <variable name="rDomyslneTemperaturaBazowaEkonomiczny">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="292.15" />
+              </initialValue>
+            </variable>
+          </localVars>
+          <localVars>
+            <variable name="uintFunctionModbusAdres">
+              <type>
+                <UINT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">definicja adresów rejestrów modbusowych	</xhtml>
+              </documentation>
+            </variable>
+            <variable name="uintTypeModbusAdres">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="uintManufacturerModbusAdres">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="uintEnOceanIDHiModbusAdres">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="uintEnOceanIDLoModbusAdres">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="uintCzasOdOstatniegoKomunikatuModbusAdres">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="uintPustyRejestr1ModbusAdres">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="uintStatusUrzadzeniaModbusAdres">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="uintPustyRejestr2ModbusAdres">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="uintTemperaturaPomieszczeniaOdczytanaModbusAdres">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="uintNastawaPotencjometruModbusAdres">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="xPierwszySkan">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">uintLiczbaTelegramowModbusAdres : UINT;
+zmienne operacyjne</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intPetlaPierwszySkan">
+              <type>
+                <INT />
+              </type>
+              <initialValue>
+                <simpleValue value="1" />
+              </initialValue>
+            </variable>
+            <variable name="intRozkazTymczasowy">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="arNastawyRegulatoraTemperatury">
+              <type>
+                <derived name="typConfigPIDController" />
+              </type>
+            </variable>
+            <variable name="fbRegulatorTemperatury">
+              <type>
+                <derived name="FbPIDController" />
+              </type>
+            </variable>
+            <variable name="intBlokadaWykonywaniaRozkazow">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intBlokadaWykonywaniaRozkazowZaraportowana">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intTrybPracy">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Tryb pracy regulatora.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intTrybPracyZaraportowana">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="xTrybPracyZapisz">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Trigger zapisu wartości w pamięci urządzenia.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTrybPracyZapis">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wartość do zapisania w pamięci urządzenia.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaBazowaAuto">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="293.15" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Temperatura bazowa trybu automatycznego.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaBazowaAutoZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="xTemperaturaBazowaAutoZapisz">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Trigger zapisu wartości w pamięci urządzenia.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaBazowaAutoZapis">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wartość do zapisania w pamięci urządzenia.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaBazowaMan">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="293.15" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Temperatura bazowa trybu manualnego.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaBazowaManZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="xTemperaturaBazowaManZapisz">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Trigger zapisu wartości w pamięci urządzenia.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rTemperaturaBazowaManZapis">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wartość do zapisania w pamięci urządzenia.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rSkalaPotencjometru">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Skala Potencjometru</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rSkalaPotencjometruZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="xSkalaPotencjometruZapisz">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Trigger zapisu wartości w pamięci urządzenia.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rSkalaPotencjometruZapis">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Wartość do zapisania w pamięci urządzenia.</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbZadanieGrzania">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rZadanieGrzania">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zadana grzania</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbZadanieGrzaniaRaport">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rZadanieGrzaniaRaport">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zadana grzania (raportowana)</xhtml>
+              </documentation>
+            </variable>
+            <variable name="rZadanieGrzaniaRaportZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rWartoscWejsciowaTemperaturyNastawionej">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="fbWyslanieKonfiguracji">
+              <type>
+                <derived name="TON" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> definicja zmiennych i FB do odczytu wartości z modbusa</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xPozwolenieNaAutomatycznaKonfiguracje">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xResetTimerautomatycznejKonfiguracji">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="wFunctionEnOceanOdczytana">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wTypeEnOceanOdczytana">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wManufacturerEnOceanOdczytana">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="sEnOceanIDodczytany">
+              <type>
+                <string length="10" />
+              </type>
+            </variable>
+            <variable name="wEnOceanIDHi">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wEnOceanIDLo">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wEnOceanIDHiZapis">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wEnOceanIDLoZapis">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wCzasOdOstatniegoKomunikatu">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="fbTimeoutEnOcean">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="wStatusUrzadzenia">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wLiczbaTelegramow">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="uintLiczbaTelegramow">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="wPustyRejestr1">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Rejestry odczytywane dla zgrupowania zapytania rejestrów Modbus</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wPustyRejestr2">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="wTemperaturaPomieszczeniaOdczytana">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="fbTemperaturaPomieszczenia">
+              <type>
+                <derived name="fbFiltrWartoscAnalogowa" />
+              </type>
+            </variable>
+            <variable name="rTemperaturaPomieszczeniaZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="wNastawaPotencjometru">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="rTemperaturaNastawiona">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="rTemperaturaNastawionaZaraportowana">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="xPoInicjalizacji">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">inicjalizacja</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbInicjalizacyjnyTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="sDane">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sWyslanyKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sKomunikatPamiec">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sWyslanyKomunikatDummy">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="intPetla">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="arErrorStan">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica przechowująca statusy alarmowe</xhtml>
+              </documentation>
+            </variable>
+            <variable name="arErrorKlasa">
+              <type>
+                <array>
+                  <dimension lower="0" upper="3" />
+                  <baseType>
+                    <INT />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica przechowująca klasy danych alarmów</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sTempWartoscAtrybutu">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="rTempWartoscAtrybutu">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="intTempWartoscAtrybutu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="xRaport">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="uintFunctionAdres">
+              <type>
+                <UINT />
+              </type>
+            </variable>
+            <variable name="sPlakietkaHMI">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Plakietka pomieszczenia zawierająca numer piętra i pomieszczenia (na potrzeby webvisu)</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fnPrzywrocDomyslne">
+              <type>
+                <derived name="R_TRIG" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Przywracanie domyślnych wartości nastaw</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbTaktowanieZapisywaniaModbus">
+              <type>
+                <derived name="TON" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Cykliczne żądanie zapisu danych do urządzenia</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBrakKomunikacjiEnOcean">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Brak komunikacji z urządzeniem po enOcean</xhtml>
+              </documentation>
+            </variable>
+            <variable name="tonBrakKomunikacjiPLC">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="xBrakKomunikacjiPLC">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBrakKomunikacjiIZE">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="rTemperaturaPomieszczeniaPamiec">
+              <type>
+                <REAL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Temperatura zapamiętana w celu porównania z aktualną</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBrakZmianyTemperatury">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Flaga braku zmiany temperatury</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbBrakZmianyTemperaturyTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Timer braku zmiany temperatury (24 godziny)</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBladBrakZmianyTemperatury">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Błąd braku zmiany temperatury </xhtml>
+              </documentation>
+            </variable>
+            <variable name="xOsiagniecieTemperaturyZadanej">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Sprawdzanie czy została osiągnęta zadana temperatura</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xOsiagniecieTemperaturyZadanejZaraportowana">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+            </variable>
+            <variable name="xFlagaTrybuPracy">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+            </variable>
+            <variable name="rRoznicaTemperaturyZadanejOrazZaraportowanej">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(*			
+Autor:					Paweł Kąkol, 2018-08-06, Artur Wyszomirski
+Prawa majątkowe: 		Solwena Sp. z o.o., 
+Aktualizacje:			
+						2018-08-27-PK: dodanie algorytmu nadpisywania konfiguracji (uczenia) anteny
+						2018-09-10-PK: dodanie regulatora temperatury oraz obsługi atrybutów potrzebnych do zadajnika z regulatorem, dodanie alarmowania Timeout komunikacji EnOcean
+						2018-09-24-AWy: obsługa trybu manualnego i automatycznego
+						2018-09-25-PK: dodanie domyślnego przyjmowania 21 st. C po restarcie sterownika, zanim nastąpi Autonomizacja i komunikacja z IZE.
+						2018-15-10-AWy: obsługa harmonogramów
+						2018-23-10-JB: przygotowanie atrybutów i alarmów do komunikacji z IZE
+						2018-12-12-JB: napisanie od nowa obsługi ramek typu C i Q
+						2019-02-26-JB: zmiana deadbandów w filtrach analogowych
+						2019-04-08-AWy: usunięcie buga braku wysterowania grzejników w trybie manualnym (usunięcie intTrybPracy &lt;&gt; enumPPPSZadajnikTrybPracy.Manualny AND z linii 473)
+						2019-05-13-AWy: zmiana wartości umieszczonej w atrybucie STERGRZ. Wartość rZadanieGrzania jest dzielona przez 100 tak, aby zakres STERGRZ mieścił się między 0 a 1.
+						2019-05-16-AWy: modyfikacja warunku na raportowanie. Dopisane: AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa AND xPoInicjalizacji 
+						2019-05-17-AWy: rozbicie zmiennej rTemperaturaBazowa na rTemperaturaBazowaAuto i rTemperaturaBazowaMan
+						2019-05-21-AWy: modyfikacja przepisywania temperatury bazowej z IZE do lokalnej podczas regulacji IZE. 
+						2019-06-05-AWy: załadowanie domyślnych trybów pracy i nastaw po przejściu w tryb autonomizacji
+						2019-08-05-AWy: dodanie zmiennej sPlakietkaHMI.
+						2019-08-14-AWy: zmiana fbPrzywrocDomyslne z przerzutnika RS na R_TRIG.
+						2019-09-23-AWy: modyfikacja generowania wartości zmiennej xBrakKomunikacjiPLC
+						2019-10-09-AWy: uzależnienie wystąpienia alarmu braku zmiany temperatury od stanu komunikacji 
+						2019-10-10-AWy: przywrócenie zmiennej xBrakKomunikacjiEnOcean na potrzeby alarmów i webvisu z I etapu ENGIE
+						2019-10-21-AWy: dodanie dodatkowego filtrowania zadanej grzania przy wysyłaniu ramek do IZE
+						2019-10-22-AWy: usunięcie uintLiczbaTelegramowModbusAdres z odczytu po Modbusie
+						
+Opis:					fb służy do komunikacji po Modbus RTU za pośrednictwem bramek (STC65-RS485) EnOcean z zadajnikami FCP0 (SR04P) na budynkach PPP Sopot (ENGIE) 
+*)
+
+// Inicjalizacja sterownika
+fbInicjalizacyjnyTimer(IN := NOT xPoInicjalizacji , PT := tCzasOpoznieniaRestartu);
+IF fbInicjalizacyjnyTimer.Q THEN
+	intTrybPracyZaraportowana := intTrybPracy;
+	rTemperaturaBazowaAutoZaraportowana := rTemperaturaBazowaAuto;
+	rTemperaturaBazowaManZaraportowana := rTemperaturaBazowaMan;
+	rSkalaPotencjometruZaraportowana := rSkalaPotencjometru;
+	rTemperaturaNastawionaZaraportowana := rTemperaturaNastawiona;
+	rTemperaturaPomieszczeniaZaraportowana := rTemperaturaPomieszczenia;
+	rZadanieGrzaniaRaportZaraportowana := rZadanieGrzaniaRaport;
+	xOsiagniecieTemperaturyZadanej := xOsiagniecieTemperaturyZadanejZaraportowana;
+	xPoInicjalizacji := TRUE;
+END_IF
+
+// Włącz autonomizację jeśli sterownik jest w stanie inicjalizacji lub nastąpiło wymuszenie autonomizacji
+IF NOT xPoInicjalizacji OR xAutonomizacjaSztuczna = TRUE THEN
+	xAutonomizacja := TRUE;
+END_IF 
+
+// Kontrola komunikacji
+tonBrakKomunikacjiPLC(IN := (wCzasOdOstatniegoKomunikatu &gt; 180 OR arModbusStatusKomunikacji[bAdres] &lt;&gt; enumModbusStatus.KomunikacjaPrawidlowa), PT := T#180S);
+IF tonBrakKomunikacjiPLC.Q THEN
+	xBrakKomunikacjiPLC := TRUE;
+ELSE
+	xBrakKomunikacjiPLC := FALSE;
+END_IF
+
+IF xAutonomizacja THEN
+	xBrakKomunikacjiIZE := TRUE;
+ELSE
+	xBrakKomunikacjiIZE := FALSE;
+END_IF
+
+IF xPierwszySkan THEN
+	xPierwszySkan := FALSE;
+	WHILE arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia &lt;&gt; 0 DO
+		intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	END_WHILE
+	
+	//ustawienie parametrów regulatora temperatury
+	arNastawyRegulatoraTemperatury.rKp := rRegulatorTemperaturyKp;
+	arNastawyRegulatoraTemperatury.rTn := rRegulatorTemperaturyTi;
+	arNastawyRegulatoraTemperatury.rTd := 0.0;
+	arNastawyRegulatoraTemperatury.rOutputMax := 100.0;
+	arNastawyRegulatoraTemperatury.rOutputMin := 0.0;
+	arNastawyRegulatoraTemperatury.xPresetOn := TRUE;
+	arNastawyRegulatoraTemperatury.rPresetValueOn := 0.0;
+	arNastawyRegulatoraTemperatury.rPresetValueOff := 0.0;
+	arNastawyRegulatoraTemperatury.rDeadZone := rRegulatorTemperaturyDeadZone;
+	
+	//wyznaczenie adresów rejestrów modbusowych
+	uintFunctionModbusAdres := uintPierwszyRejestr + (uintLiczbaRejestrowNaKanal * (BYTE_TO_UINT(bKanalEnOcean) - 1));
+	uintTypeModbusAdres := uintFunctionModbusAdres + 1;
+	uintManufacturerModbusAdres := uintFunctionModbusAdres + 2;
+	
+	uintEnOceanIDHiModbusAdres := uintFunctionModbusAdres + 3;
+	uintEnOceanIDLoModbusAdres := uintFunctionModbusAdres + 4;
+	uintCzasOdOstatniegoKomunikatuModbusAdres := uintFunctionModbusAdres + 6;
+	uintPustyRejestr1ModbusAdres := uintFunctionModbusAdres + 7;
+	uintStatusUrzadzeniaModbusAdres := uintFunctionModbusAdres + 8;
+	uintPustyRejestr2ModbusAdres := uintFunctionModbusAdres + 9;
+	uintTemperaturaPomieszczeniaOdczytanaModbusAdres := uintFunctionModbusAdres + 10;
+	uintNastawaPotencjometruModbusAdres := uintFunctionModbusAdres + 11;
+	//uintLiczbaTelegramowModbusAdres := uintFunctionModbusAdres + 19;
+	
+//deklaracja rejestrow do odczytu
+	//rejestry
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintFunctionModbusAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMaksymalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wFunctionEnOceanOdczytana);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintTypeModbusAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMaksymalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTypeEnOceanOdczytana);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintManufacturerModbusAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMaksymalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wManufacturerEnOceanOdczytana);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintEnOceanIDHiModbusAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMaksymalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wEnOceanIDHi);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintEnOceanIDLoModbusAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMaksymalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wEnOceanIDLo);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintCzasOdOstatniegoKomunikatuModbusAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wCzasOdOstatniegoKomunikatu);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintPustyRejestr1ModbusAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wPustyRejestr1);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintStatusUrzadzeniaModbusAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wStatusUrzadzenia);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintPustyRejestr2ModbusAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wPustyRejestr2);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintTemperaturaPomieszczeniaOdczytanaModbusAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wTemperaturaPomieszczeniaOdczytana);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;	
+	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintNastawaPotencjometruModbusAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wNastawaPotencjometru);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+(*	
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bAdresUrzadzenia := bAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].bFunkcja := TO_BYTE(enumModbusKodyFunkcji.OdczytNRejestrow);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].uiAdresRejestru := uintLiczbaTelegramowModbusAdres;
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].ltCzestotliwosc := TIME_TO_LTIME(tMinimalnyCzasRaportowania);
+	arModbusOdczytCykliczny[intPetlaPierwszySkan].pZmiennaReferencyjna := ADR(wLiczbaTelegramow);
+	intPetlaPierwszySkan := intPetlaPierwszySkan + 1;
+*)	
+(*	//przyjęcie nastaw domyślnych do momentu uzyskania nastaw z IZE lub przejścia w autonomizację
+	IF intDomyslneHarmonogram = enumPPPSHarmonogramy.Ekonomiczny THEN
+		rTemperaturaBazowaAuto := rDomyslneTemperaturaBazowaEkonomiczny;
+	ELSE
+		rTemperaturaBazowaAuto := rDomyslneTemperaturaBazowaKomfort;													
+	END_IF
+	intTrybPracy := enumPPPSZadajnikTrybPracy.Automatyczny;
+	rSkalaPotencjometru := rSkalaPotencjometruAutonomizacja;	*)
+END_IF
+
+// Obsługa komunikatu przychodzacego z IZE
+IF 	sKomunikat &lt;&gt; sKomunikatPamiec AND xPoInicjalizacji THEN
+	sKomunikatPamiec := sKomunikat;
+	IF fnIDOdbiorcyMatch(sKomunikat , sIdInstancji) THEN
+		sDane := '';
+		// Rozkaz typu C
+		IF fnKomunikatTyp(sKomunikat) = 'C' AND NOT xAutonomizacja THEN
+			// Blokada wykonywania rozkazów
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat,'BLOK=') = '0' THEN
+				IF intBlokadaWykonywaniaRozkazow = 1 THEN
+					intBlokadaWykonywaniaRozkazow := 0;
+					xRaport := TRUE;
+					ELSE	
+					IF sDane &lt;&gt; '' THEN
+					sDane := CONCAT(sDane , ';');
+					END_IF
+					sDane := CONCAT(sDane , 'BLOK=0');
+				END_IF
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat,'BLOK=') = '1' THEN
+				IF intBlokadaWykonywaniaRozkazow = 0 THEN
+					intBlokadaWykonywaniaRozkazow := 1;
+					xRaport := TRUE;
+					ELSE
+					IF sDane &lt;&gt; '' THEN
+					sDane := CONCAT(sDane , ';');
+					END_IF					
+					sDane := CONCAT(sDane , 'BLOK=1');
+				END_IF
+			END_IF		
+
+			IF intBlokadaWykonywaniaRozkazow = 0 THEN
+				// Tryby pracy 
+				fnKomunikatDaneZnajdzPorownajZapisz(sKomunikat := sKomunikat,
+					sAtrybut := 'TRYB=',
+					rAtrybutWartosc := rTrybPracyZapis,
+					sDane := sDane,
+					xAtrybutZapisz =&gt; xTrybPracyZapisz);	
+				// Temperatura bazowa w trybie automatycznym
+				fnKomunikatDaneZnajdzPorownajZapisz(sKomunikat := sKomunikat,
+					sAtrybut := 'TEMPBAZAUTO=',
+					rAtrybutWartosc := rTemperaturaBazowaAutoZapis,
+					sDane := sDane,
+					xAtrybutZapisz =&gt; xTemperaturaBazowaAutoZapisz);	
+				// Temperatura bazowa w trybie manualnym
+				fnKomunikatDaneZnajdzPorownajZapisz(sKomunikat := sKomunikat,
+					sAtrybut := 'TEMPBAZMAN=',
+					rAtrybutWartosc := rTemperaturaBazowaManZapis,
+					sDane := sDane,
+					xAtrybutZapisz =&gt; xTemperaturaBazowaManZapisz);
+				// Skala potencjometru
+				fnKomunikatDaneZnajdzPorownajZapisz(sKomunikat := sKomunikat,
+					sAtrybut := 'SKALAPOT=',
+					rAtrybutWartosc := rSkalaPotencjometruZapis,
+					sDane := sDane,
+					xAtrybutZapisz =&gt; xSkalaPotencjometruZapisz);
+			END_IF
+		END_IF	
+
+		// Zapytanie typu Q
+		IF fnKomunikatTyp(sKomunikat) = 'Q' AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'BLOK=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'BLOK=' , sWartosc := INT_TO_STRING(intBlokadaWykonywaniaRozkazow));	
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TRYB=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TRYB=' , sWartosc := INT_TO_STRING(intTrybPracy));	
+			END_IF
+			IF (fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPBAZMAN=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?') THEN
+				fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMPBAZMAN=' , sWartosc := REAL_TO_STRING(rTemperaturaBazowaMan));	
+			END_IF
+			IF (fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPBAZAUTO=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?') THEN
+				fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMPBAZAUTO=' , sWartosc := REAL_TO_STRING(rTemperaturaBazowaAuto));	
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'SKALAPOT=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'SKALAPOT=' , sWartosc := REAL_TO_STRING(rSkalaPotencjometru));	
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMP=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMP=' , sWartosc := REAL_TO_STRING(rTemperaturaPomieszczenia));	
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'STERGRZ=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'STERGRZ=' , sWartosc := REAL_TO_STRING(rZadanieGrzaniaRaport / 100));	
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'TEMPNAS=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMPNAS=' , sWartosc := REAL_TO_STRING(rTemperaturaNastawiona));	
+			END_IF
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'DOGRZ=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'DOGRZ=' , sWartosc := INT_TO_STRING(BOOL_TO_INT(xOsiagniecieTemperaturyZadanej)));	
+			END_IF
+			//pytanie o stany alarmów
+			IF fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALARM=') = '?' OR fnKomunikatDaneSzukajWartosci(sKomunikat , 'ALL=') = '?' THEN
+				FOR intPetla := 1 TO 4 BY 1 DO
+					//raportowanie typu E (stanów alarmów) na zapytanie typu Q
+					IF arErrorStan[intPetla] &lt;&gt; enumAlarmWartosc.StanNieznany THEN
+						fnZapiszKomunikat(	sCalyKomunikat := '' ,
+											sTypKomunikatu := 'E' ,
+											sMnemonik := sMnemonik ,
+											sMACAdres := sMACAdres ,
+											sIDNadawcy := sIdInstancji ,
+											sIDOdbiorcy := sIdAplikacji ,
+											sDaneZapasowe := sDaneZapasowe ,
+											sDane := fnKomunikatDaneErrorRetry(xAktywny := arErrorStan[intPetla] = enumAlarmWartosc.StanAlarmowy , intKlasa := arErrorKlasa[intPetla] , intNumer := intPetla),
+											arTablicaKomunikatow := arTablicaKomunikatow ,
+											intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+											intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+											sWyslanyKomunikat := sWyslanyKomunikatDummy);
+					END_IF
+				END_FOR
+			END_IF
+		END_IF
+		
+		// Raportowanie typu A
+		IF sDane &lt;&gt; '' THEN
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'A' ,
+								sMnemonik := sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdInstancji ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikatDummy);
+		END_IF
+	END_IF
+END_IF
+
+// Przywrócenie wartości domyślnych nastaw krzywej grzewczej i trybów pracy w przypadku restartu sterownika lub przejścia w stan autonomizacji (brak komunikacji z IZE)
+fnPrzywrocDomyslne(CLK := xAutonomizacja);
+IF fnPrzywrocDomyslne.Q THEN	
+	IF intTrybPracy &lt;&gt; REAL_TO_INT(rTrybPracyAutonomizacja) THEN
+		rTrybPracyZapis := rTrybPracyAutonomizacja;
+		xTrybPracyZapisz := TRUE;
+	END_IF
+	IF rTemperaturaBazowaAuto &lt;&gt; rTemperaturaBazowaAutoAutonomizacja THEN
+		rTemperaturaBazowaAutoZapis := rTemperaturaBazowaAutoAutonomizacja + 273.15;
+		xTemperaturaBazowaAutoZapisz := TRUE;
+	END_IF
+	IF rTemperaturaBazowaMan &lt;&gt; rTemperaturaBazowaManAutonomizacja THEN
+		rTemperaturaBazowaManZapis := rTemperaturaBazowaManAutonomizacja;
+		xTemperaturaBazowaManZapisz := TRUE;
+	END_IF
+	IF rSkalaPotencjometru &lt;&gt; rSkalaPotencjometruAutonomizacja THEN
+		rSkalaPotencjometruZapis := rSkalaPotencjometruAutonomizacja;
+		xSkalaPotencjometruZapisz := TRUE;
+	END_IF
+END_IF	
+
+// Zapisanie nastaw domyślnych lub otrzymanych w ramce C
+IF xTrybPracyZapisz THEN
+	intTrybPracy := REAL_TO_INT(rTrybPracyZapis);
+	intTrybPracyHMI := REAL_TO_INT(rTrybPracyZapis);
+	xTrybPracyZapisz := FALSE;
+END_IF
+IF xTemperaturaBazowaAutoZapisz THEN
+	rTemperaturaBazowaAuto := rTemperaturaBazowaAutoZapis;
+	xTemperaturaBazowaAutoZapisz := FALSE;
+END_IF
+IF xTemperaturaBazowaManZapisz THEN
+	rTemperaturaBazowaMan := rTemperaturaBazowaManZapis;
+	xTemperaturaBazowaManZapisz := FALSE;
+END_IF
+IF xSkalaPotencjometruZapisz THEN
+	rSkalaPotencjometru := rSkalaPotencjometruZapis;
+	xSkalaPotencjometruZapisz := FALSE;
+END_IF
+
+// Tryby pracy
+IF xAutonomizacja THEN	// W trybie automonizacji pobieraj tryb pracy i temperaturę bazową z panelu WebVisu
+	IF intTrybPracyHMI = enumPPPSZadajnikTrybPracy.Manualny THEN	
+		intTrybPracy := enumPPPSZadajnikTrybPracy.Manualny;
+		rTemperaturaBazowaMan := rTemperaturaBazowaHMI + 273.15;
+	ELSE
+		intTrybPracy := enumPPPSZadajnikTrybPracy.Automatyczny;
+		rTemperaturaBazowaAuto := rTemperaturaBazowaAutoAutonomizacja + 273.15;
+	END_IF
+ELSE // W trybie sterowania z IZE pobieraj tryb pracy i temperaturę bazową z panelu WebVisu
+	IF intTrybPracy = enumPPPSZadajnikTrybPracy.Manualny THEN
+		intTrybPracyHMI := enumPPPSZadajnikTrybPracy.Manualny;
+		rTemperaturaBazowaHMI := rTemperaturaBazowaMan - 273.15;
+	ELSE
+		intTrybPracyHMI := enumPPPSZadajnikTrybPracy.Automatyczny;
+		rTemperaturaBazowaHMI := rTemperaturaBazowaAuto - 273.15;
+	END_IF	
+END_IF
+						 
+IF intTrybPracy = enumPPPSZadajnikTrybPracy.Manualny THEN 	
+	rTemperaturaNastawiona := rTemperaturaBazowaMan; // W trybie manualnym nie uwzględniaj nastawy potencjometru na zadajniku
+ELSE
+	rTemperaturaNastawiona := ((WORD_TO_REAL(wNastawaPotencjometru) - 127.0) * rSkalaPotencjometru / 127.0) + rTemperaturaBazowaAuto; // W trybie automatycznym uwzględnij nastawę Potencjometru
+END_IF
+
+//Autokonfiguracja bramki EnOcean
+sEnOceanIDodczytany := CONCAT(CONCAT(fnKonwersjaDEC_BYTE_TO_HEX_STRING(INT_TO_BYTE(WORD_TO_INT(wEnOceanIDHi / 256))), fnKonwersjaDEC_BYTE_TO_HEX_STRING(WORD_TO_BYTE(wEnOceanIDHi))), CONCAT(fnKonwersjaDEC_BYTE_TO_HEX_STRING(INT_TO_BYTE(WORD_TO_INT(wEnOceanIDLo / 256))), fnKonwersjaDEC_BYTE_TO_HEX_STRING(WORD_TO_BYTE(wEnOceanIDLo))));
+
+fbWyslanieKonfiguracji(IN := ((xPozwolenieNaAutomatycznaKonfiguracje OR xGlobalnaAutomatycznaKonfiguracja) AND NOT xResetTimerautomatycznejKonfiguracji) , PT := tCzestotliwoscAutomatycznejKonfiguracji);
+xResetTimerautomatycznejKonfiguracji := FALSE;
+
+IF((xPozwolenieNaAutomatycznaKonfiguracje OR xGlobalnaAutomatycznaKonfiguracja) AND fbWyslanieKonfiguracji.Q) THEN
+	//EnOcean ID urządzenia
+	IF sEnOceanID &lt;&gt; sEnOceanIDodczytany THEN
+		wEnOceanIDHiZapis := BYTE_TO_WORD(fnKonwersjaHEX_STRING_TO_DEC_BYTE(LEFT(sEnOceanID, 2))) * 256 + BYTE_TO_WORD(fnKonwersjaHEX_STRING_TO_DEC_BYTE(LEFT(RIGHT(sEnOceanID, 6), 2)));
+		fnModbusZapisRejestru(	bAdresUrzadzenia := bAdres,
+								bFunkcja := INT_TO_BYTE(enumModbusKodyFunkcji.ZapisRejestru),										
+								uiAdresRejestru := uintEnOceanIDHiModbusAdres,
+								pZmiennaReferencyjna := 0,
+								wWartoscDoZapisania := wEnOceanIDHiZapis,
+								intModbusOdczytZapisZadanieRozmiar := intModbusOdczytZapisZadanieRozmiar,
+								arModbusOdczytZapisZadanie := arModbusOdczytZapisZadanie,
+								intModbusOdczytZapisZadanieZnacznikZapisu := intModbusOdczytZapisZadanieZnacznikZapisu);
+		wEnOceanIDLoZapis := BYTE_TO_WORD(fnKonwersjaHEX_STRING_TO_DEC_BYTE(LEFT(RIGHT(sEnOceanID, 4), 2))) * 256 + BYTE_TO_WORD(fnKonwersjaHEX_STRING_TO_DEC_BYTE(RIGHT(sEnOceanID, 2)));
+		fnModbusZapisRejestru(	bAdresUrzadzenia := bAdres,
+								bFunkcja := INT_TO_BYTE(enumModbusKodyFunkcji.ZapisRejestru),										
+								uiAdresRejestru := uintEnOceanIDLoModbusAdres,
+								pZmiennaReferencyjna := 0,
+								wWartoscDoZapisania := wEnOceanIDLoZapis,
+								intModbusOdczytZapisZadanieRozmiar := intModbusOdczytZapisZadanieRozmiar,
+								arModbusOdczytZapisZadanie := arModbusOdczytZapisZadanie,
+								intModbusOdczytZapisZadanieZnacznikZapisu := intModbusOdczytZapisZadanieZnacznikZapisu);
+	END_IF
+	//stałe wartości dla danego typu urządzeń
+	IF wFunctionEnOceanOdczytana &lt;&gt; wEnOceanFunction THEN
+		fnModbusZapisRejestru(	bAdresUrzadzenia := bAdres,
+								bFunkcja := INT_TO_BYTE(enumModbusKodyFunkcji.ZapisRejestru),										
+								uiAdresRejestru := uintFunctionModbusAdres,
+								pZmiennaReferencyjna := 0,
+								wWartoscDoZapisania := wEnOceanFunction,
+								intModbusOdczytZapisZadanieRozmiar := intModbusOdczytZapisZadanieRozmiar,
+								arModbusOdczytZapisZadanie := arModbusOdczytZapisZadanie,
+								intModbusOdczytZapisZadanieZnacznikZapisu := intModbusOdczytZapisZadanieZnacznikZapisu);
+	END_IF
+	IF wTypeEnOceanOdczytana &lt;&gt; wEnOceanType THEN
+		fnModbusZapisRejestru(	bAdresUrzadzenia := bAdres,
+								bFunkcja := INT_TO_BYTE(enumModbusKodyFunkcji.ZapisRejestru),										
+								uiAdresRejestru := uintTypeModbusAdres,
+								pZmiennaReferencyjna := 0,
+								wWartoscDoZapisania := wEnOceanType,
+								intModbusOdczytZapisZadanieRozmiar := intModbusOdczytZapisZadanieRozmiar,
+								arModbusOdczytZapisZadanie := arModbusOdczytZapisZadanie,
+								intModbusOdczytZapisZadanieZnacznikZapisu := intModbusOdczytZapisZadanieZnacznikZapisu);
+	END_IF
+	IF wManufacturerEnOceanOdczytana &lt;&gt; wEnOceanManufacturer THEN
+		fnModbusZapisRejestru(	bAdresUrzadzenia := bAdres,
+								bFunkcja := INT_TO_BYTE(enumModbusKodyFunkcji.ZapisRejestru),										
+								uiAdresRejestru := uintManufacturerModbusAdres,
+								pZmiennaReferencyjna := 0,
+								wWartoscDoZapisania := wEnOceanManufacturer,
+								intModbusOdczytZapisZadanieRozmiar := intModbusOdczytZapisZadanieRozmiar,
+								arModbusOdczytZapisZadanie := arModbusOdczytZapisZadanie,
+								intModbusOdczytZapisZadanieZnacznikZapisu := intModbusOdczytZapisZadanieZnacznikZapisu);
+	END_IF
+	xResetTimerautomatycznejKonfiguracji := TRUE;
+END_IF
+
+//sprawdzanie Timeout komunikacji
+fbTimeoutEnOcean(IN := ((wCzasOdOstatniegoKomunikatu &gt; 120) AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa) , PT := tCzasTimeoutEnOcean);	
+							
+fbTemperaturaPomieszczenia(	rWartoscWejsciowa := WORD_TO_REAL(wTemperaturaPomieszczeniaOdczytana),
+							rDeadband := 0.1,
+							tCzasMinimalny := tMinimalnyCzasRaportowania,
+							tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+							rWynikMnoznik := (-40.0 / 255.0),
+							rWynikOffset := 273.15 + 40.0,
+							rWartoscWejsciowaZaraportowana := rTemperaturaPomieszczeniaZaraportowana,
+							rWartoscWyjsciowa =&gt; rTemperaturaPomieszczenia);
+
+//regulator PI
+fbRegulatorTemperatury( xEnable := TRUE,
+	rReferenceValue := rTemperaturaNastawiona,
+	rActualValue := rTemperaturaPomieszczenia,
+	typConfigParameters := arNastawyRegulatoraTemperatury,
+	rY =&gt; rWyjscieRgulatoraTemperatury);
+
+fbZadanieGrzania(rWartoscWejsciowa := rWyjscieRgulatoraTemperatury,
+	rDeadband := 0.25,
+	tCzasMinimalny := tMinimalnyCzasRaportowania,
+	tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+	rWynikMnoznik := 1,
+	rWynikOffset := 0.0,
+	rWartoscWejsciowaZaraportowana := rZadanieGrzania,
+	rWartoscWyjsciowa =&gt; rZadanieGrzania);		
+	
+// Raportowanie zadanej grzania
+fbZadanieGrzaniaRaport(rWartoscWejsciowa := rZadanieGrzania,
+	rDeadband := 10,
+	tCzasMinimalny := tMinimalnyCzasRaportowania,
+	tCzasMaksymalny := tMaksymalnyCzasRaportowania,
+	rWynikMnoznik := 1,
+	rWynikOffset := 0.0,
+	rWartoscWejsciowaZaraportowana := rZadanieGrzaniaRaportZaraportowana,
+	rWartoscWyjsciowa =&gt; rZadanieGrzaniaRaport);		
+	
+// Nowy filtr "antypyćkowy"
+IF rZadanieGrzania &lt; 0.25 THEN
+	rZadanieGrzania := 0;
+	rZadanieGrzaniaRaport := 0;
+ELSIF rZadanieGrzania &gt; 99.75 THEN
+	rZadanieGrzania := 100;
+	rZadanieGrzaniaRaport := 100;	
+END_IF
+(*
+// FILTR ANTY_PYĆKOWY
+rRoznicaTemperaturyZadanejOrazZaraportowanej := rZadanieGrzania - rZadanieGrzaniaZaraportowana;
+IF rRoznicaTemperaturyZadanejOrazZaraportowanej &lt; 0.25 AND rRoznicaTemperaturyZadanejOrazZaraportowanej &gt; 0 AND rZadanieGrzania &lt; 1.0 THEN
+	rZadanieGrzania := rZadanieGrzaniaZaraportowana;
+END_IF	
+
+IF rRoznicaTemperaturyZadanejOrazZaraportowanej &gt; - 0.25 AND rRoznicaTemperaturyZadanejOrazZaraportowanej &lt; 0 AND rZadanieGrzania &gt; 99.0 THEN
+	rZadanieGrzania := rZadanieGrzaniaZaraportowana;
+END_IF	
+	*)		
+///////Diagnostyka na czas uruchomień////////
+	rDiagnostykaTemperaturaPomieszczenia := rTemperaturaPomieszczenia;
+	rDiagnostykaTemperaturaNastawiona := rTemperaturaNastawiona;
+	rDiagnostykaTemperaturaBazowa := rTemperaturaBazowaAuto;
+	rDiagnostykaKorektaTemperaturyPotencjometru := (WORD_TO_REAL(wNastawaPotencjometru) - 127.0) * rSkalaPotencjometru / 127.0;
+	rDiagnostykaWyjscieRgulatoraTemperatury := rWyjscieRgulatoraTemperatury;
+	intDiagnostykaTrybPracy := intTrybPracy;
+	sDiagnostykaEnOceanIDodczytany := sEnOceanIDodczytany;
+	wDiagnostykaCzasOdOstatniegoKomunikatu := wCzasOdOstatniegoKomunikatu;
+//////////////////////////////////////////////		
+IF (intBlokadaWykonywaniaRozkazow &lt;&gt; intBlokadaWykonywaniaRozkazowZaraportowana OR intTrybPracy &lt;&gt; intTrybPracyZaraportowana OR rTemperaturaBazowaAuto &lt;&gt; rTemperaturaBazowaAutoZaraportowana OR 
+	rSkalaPotencjometru &lt;&gt; rSkalaPotencjometruZaraportowana OR rTemperaturaNastawiona &lt;&gt; rTemperaturaNastawionaZaraportowana OR rTemperaturaPomieszczenia &lt;&gt; rTemperaturaPomieszczeniaZaraportowana OR 
+	rZadanieGrzaniaRaport &lt;&gt; rZadanieGrzaniaRaportZaraportowana OR xOsiagniecieTemperaturyZadanej &lt;&gt; xOsiagniecieTemperaturyZadanejZaraportowana OR rTemperaturaBazowaMan &lt;&gt; rTemperaturaBazowaManZaraportowana) AND 
+	arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa AND xPoInicjalizacji THEN
+	xRaport := TRUE;
+END_IF
+
+IF xRaport THEN
+	sDane := '';
+	xRaport := FALSE;
+	IF intBlokadaWykonywaniaRozkazow &lt;&gt; intBlokadaWykonywaniaRozkazowZaraportowana THEN
+		intBlokadaWykonywaniaRozkazowZaraportowana := intBlokadaWykonywaniaRozkazow;
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'BLOK=' , sWartosc := INT_TO_STRING(intBlokadaWykonywaniaRozkazow));	
+	END_IF
+	IF intTrybPracy &lt;&gt; intTrybPracyZaraportowana THEN
+		intTrybPracyZaraportowana := intTrybPracy;
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TRYB=' , sWartosc := INT_TO_STRING(intTrybPracy));	
+	END_IF
+	IF (rTemperaturaBazowaMan &lt;&gt; rTemperaturaBazowaManZaraportowana) THEN
+		rTemperaturaBazowaManZaraportowana := rTemperaturaBazowaMan;
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMPBAZMAN=' , sWartosc := REAL_TO_STRING(rTemperaturaBazowaMan));	
+	END_IF
+	IF (rTemperaturaBazowaAuto &lt;&gt; rTemperaturaBazowaAutoZaraportowana) THEN
+		rTemperaturaBazowaAutoZaraportowana := rTemperaturaBazowaAuto;
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMPBAZAUTO=' , sWartosc := REAL_TO_STRING(rTemperaturaBazowaAuto));	
+	END_IF
+	IF rSkalaPotencjometru &lt;&gt; rSkalaPotencjometruZaraportowana THEN
+		rSkalaPotencjometruZaraportowana := rSkalaPotencjometru;
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'SKALAPOT=' , sWartosc := REAL_TO_STRING(rSkalaPotencjometru));	
+	END_IF
+	IF rTemperaturaNastawiona &lt;&gt; rTemperaturaNastawionaZaraportowana THEN
+		rTemperaturaNastawionaZaraportowana := rTemperaturaNastawiona;
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMPNAS=' , sWartosc := REAL_TO_STRING(rTemperaturaNastawiona));	
+	END_IF
+	IF rTemperaturaPomieszczenia &lt;&gt; rTemperaturaPomieszczeniaZaraportowana THEN
+		rTemperaturaPomieszczeniaZaraportowana := rTemperaturaPomieszczenia;
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMP=' , sWartosc := REAL_TO_STRING(rTemperaturaPomieszczenia));	
+	END_IF
+	IF rZadanieGrzaniaRaport &lt;&gt; rZadanieGrzaniaRaportZaraportowana THEN
+		rZadanieGrzaniaRaportZaraportowana := rZadanieGrzaniaRaport;	
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'STERGRZ=' , sWartosc := REAL_TO_STRING(rZadanieGrzaniaRaport / 100));	
+	END_IF
+	IF xOsiagniecieTemperaturyZadanej &lt;&gt; xOsiagniecieTemperaturyZadanejZaraportowana THEN
+		xOsiagniecieTemperaturyZadanejZaraportowana := xOsiagniecieTemperaturyZadanej;
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'DOGRZ=' , sWartosc := INT_TO_STRING(BOOL_TO_INT(xOsiagniecieTemperaturyZadanej)));	
+	END_IF
+	
+(*	IF rTemperaturaPomieszczeniaMIN &lt;&gt; rTemperaturaPomieszczeniaMINZaraportowana OR rTemperaturaPomieszczeniaMAX &lt;&gt; rTemperaturaPomieszczeniaMAXZaraportowana THEN
+		
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMPPOC=' , sWartosc := REAL_TO_STRING(rTemperaturaPomieszczeniaPOCZATKOWA));
+		rTemperaturaPomieszczeniaPOCZATKOWA := rTemperaturaPomieszczenia;
+		
+		rTemperaturaPomieszczeniaKONCOWA := rTemperaturaPomieszczenia;
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMPKON=' , sWartosc := REAL_TO_STRING(rTemperaturaPomieszczeniaKONCOWA));
+		
+		rTemperaturaPomieszczeniaMINZaraportowana := rTemperaturaPomieszczeniaMIN;
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMPMIN=' , sWartosc := REAL_TO_STRING(rTemperaturaPomieszczeniaMIN));
+		rZmiennaProcesowaMinimumTemperatury := 500.0;
+		
+		rTemperaturaPomieszczeniaMAXZaraportowana := rTemperaturaPomieszczeniaMAX;
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMPMAX=' , sWartosc := REAL_TO_STRING(rTemperaturaPomieszczeniaMAX));
+		rZmiennaProcesowaMaximumTemperatury := -1.0;
+		
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMPSRE=' , sWartosc := REAL_TO_STRING(rTemperaturaPomieszczeniaSREDNIA));
+		rTemperaturaPomieszczeniaSREDNIA := 0.0;
+		
+		fnKomunikatDaneDodaj(sDane := sDane , sAtrybut := 'TEMPMED=' , sWartosc := REAL_TO_STRING(rTemperaturaPomieszczeniaMEDIANA));
+		rTemperaturaPomieszczeniaMEDIANA := -1.0;
+	END_IF
+*)
+
+	IF sDane &lt;&gt; '' AND xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'M' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := sDane ,
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikat);
+	END_IF
+END_IF
+
+// Sprawdzanie czy pomiar temperatury działa (odczyt jest niepoprawny, jeśli nie zmienił wartości w przeciągu doby)
+IF rTemperaturaPomieszczeniaPamiec = rTemperaturaPomieszczenia THEN
+	xBrakZmianyTemperatury := TRUE;
+ELSE
+	xBrakZmianyTemperatury := FALSE;	
+END_IF
+fbBrakZmianyTemperaturyTimer(IN := xBrakZmianyTemperatury, PT := T#12H);
+rTemperaturaPomieszczeniaPamiec := rTemperaturaPomieszczenia;
+IF fbBrakZmianyTemperaturyTimer.Q AND NOT xBrakKomunikacjiPLC THEN
+	xBladBrakZmianyTemperatury := TRUE;
+ELSE
+	xBladBrakZmianyTemperatury := FALSE;
+END_IF
+
+// Sprawdzanie czy została osiągnęta zadana temperatura
+IF rTemperaturaPomieszczenia &gt;= rTemperaturaNastawiona THEN
+	xOsiagniecieTemperaturyZadanej  := TRUE;
+END_IF
+IF rTemperaturaPomieszczenia &lt;= rTemperaturaNastawiona - 0.4 THEN
+	xOsiagniecieTemperaturyZadanej := FALSE;	
+END_IF
+
+// obsługa alarmów do zadajnika
+	//brak komunikacji po EnOcean
+IF arErrorStan[enumPPPSZadajnikError.BrakKomunikacji] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND fbTimeoutEnOcean.Q AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+	arErrorStan[enumPPPSZadajnikError.BrakKomunikacji] := enumAlarmWartosc.StanAlarmowy;
+	xBrakKomunikacjiEnOcean := TRUE;
+	arErrorKlasa[enumPPPSZadajnikError.BrakKomunikacji] := enumPPPSZadajnikErrorKlasa.BrakKomunikacji;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumPPPSZadajnikErrorKlasa.BrakKomunikacji , intNumer := enumPPPSZadajnikError.BrakKomunikacji),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+IF arErrorStan[enumPPPSZadajnikError.BrakKomunikacji] &lt;&gt; enumAlarmWartosc.StanNormalny AND NOT fbTimeoutEnOcean.Q AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+	arErrorStan[enumPPPSZadajnikError.BrakKomunikacji] := enumAlarmWartosc.StanNormalny;
+	xBrakKomunikacjiEnOcean := FALSE;
+	arErrorKlasa[enumPPPSZadajnikError.BrakKomunikacji] := enumPPPSZadajnikErrorKlasa.BrakKomunikacji;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := FALSE , intKlasa := enumPPPSZadajnikErrorKlasa.BrakKomunikacji , intNumer := enumPPPSZadajnikError.BrakKomunikacji),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+// Alarm czujnika temperatury
+IF arErrorStan[enumPPPSZadajnikError.AlarmCzujnika] &lt;&gt; enumAlarmWartosc.StanAlarmowy AND xBladBrakZmianyTemperatury AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+	arErrorStan[enumPPPSZadajnikError.AlarmCzujnika] := enumAlarmWartosc.StanAlarmowy;
+	arErrorKlasa[enumPPPSZadajnikError.AlarmCzujnika] := enumPPPSZadajnikErrorKlasa.AlarmCzujnika;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := TRUE , intKlasa := enumPPPSZadajnikErrorKlasa.AlarmCzujnika , intNumer := enumPPPSZadajnikError.AlarmCzujnika),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+
+IF arErrorStan[enumPPPSZadajnikError.AlarmCzujnika] &lt;&gt; enumAlarmWartosc.StanNormalny AND NOT xBladBrakZmianyTemperatury AND arModbusStatusKomunikacji[bAdres] = enumModbusStatus.KomunikacjaPrawidlowa THEN
+	arErrorStan[enumPPPSZadajnikError.AlarmCzujnika] := enumAlarmWartosc.StanNormalny;
+	arErrorKlasa[enumPPPSZadajnikError.AlarmCzujnika] := enumPPPSZadajnikErrorKlasa.AlarmCzujnika;
+	IF xPoInicjalizacji THEN
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik := sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdInstancji ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := fnKomunikatDaneError(xAktywny := FALSE , intKlasa := enumPPPSZadajnikErrorKlasa.AlarmCzujnika , intNumer := enumPPPSZadajnikError.AlarmCzujnika),
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := sWyslanyKomunikatDummy);
+	END_IF
+END_IF
+
+// Plakietka pomieszczenia (numer piętra.numer pomieszczenia)
+sPlakietkaHMI := CONCAT(STR1 := MID(sIdInstancji, LEN := 2, POS := 3), '.');
+sPlakietkaHMI := CONCAT(sPlakietkaHMI, MID(STR := sIdInstancji, LEN := 3, POS := 7));</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

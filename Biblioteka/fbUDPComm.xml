@@ -1,0 +1,894 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.7625589" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fbUDPComm" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="sIDSterownika">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> ID sterownika</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sIDAplikacji">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> ID aplikacji</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMnemonik">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> mnemonik właściciela</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMACAdres">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> MAC adres urządzenia - alias</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sMACAdresAplikacji">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> MAC adres aplikacji - alias</xhtml>
+              </documentation>
+            </variable>
+            <variable name="abMACAdresAplikacji">
+              <type>
+                <array>
+                  <dimension lower="1" upper="6" />
+                  <baseType>
+                    <BYTE />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> MAC adres aplikacji - wartość rzeczywista</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sDaneZapasowe">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> dane zapasowe</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sAdresIP">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> adres IP aplikacji</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wTransmitterPort">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> port do wysyłania komunikatów</xhtml>
+              </documentation>
+            </variable>
+            <variable name="wReceiverPort">
+              <type>
+                <WORD />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> port nasłuchu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sKluczSzyfrowania">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowRozmiar">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowOverflow">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowZnacznikOdczytu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="iDetekcjaBlokadaKomunikacjiLimitIlosciRamek">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Limit ilosi ramek do wysłania </xhtml>
+              </documentation>
+            </variable>
+            <variable name="tDetekcjaBlokadaKomunikacjiLimitCzasu">
+              <type>
+                <TIME />
+              </type>
+            </variable>
+          </inputVars>
+          <inOutVars>
+            <variable name="arTablicaKomunikatow">
+              <type>
+                <derived name="alARRAYTablicaKomunikatow" />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowZnacznikZapisu">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowZnacznikWysylkiUDP">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intTablicaKomunikatowLiczbaWBuforze">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="intTransmitterLicznikKomunikatowWyslanych">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> zmienna zwierająca licznik komunikatów wysłanych pomiędzy heartbetami</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intReceiverLicznikKomunikatowOtrzymanych">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> zmienna zwierająca licznik komunikatów otrzymanych pomiędzy heartbetami</xhtml>
+              </documentation>
+            </variable>
+          </inOutVars>
+          <localVars>
+            <variable name="fbTransmitter">
+              <type>
+                <derived name="fbBroadcaster" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> definicja drivera wysyłającego broadcast pakietów UDP</xhtml>
+              </documentation>
+            </variable>
+            <variable name="udiTransmitterNBytes">
+              <type>
+                <UDINT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr drivera - ilość bajtów do wysłania</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xTransmitterClose">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr drivera - zamknięcie portu komunikacyjnego</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xTransmitterTrigger">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr drivera - uruchomienie wysłania telegramu</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sTransmitterTelegram">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> zmienna zawierająca telegram do wysłania</xhtml>
+              </documentation>
+            </variable>
+            <variable name="arTransmitterBuffer">
+              <type>
+                <array>
+                  <dimension lower="1" upper="512" />
+                  <baseType>
+                    <BYTE />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica WORD bufora wysyłkowego</xhtml>
+              </documentation>
+            </variable>
+            <variable name="pTransmitterBuffer">
+              <type>
+                <pointer>
+                  <baseType>
+                    <BYTE />
+                  </baseType>
+                </pointer>
+              </type>
+              <initialValue>
+                <simpleValue value="ADR(arTransmitterBuffer[1])" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr drivera - pointer do tablicy bufora dla drivera wysyłającego	</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbReceiver">
+              <type>
+                <derived name="fbUdpReceiver" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> definicja drivera odbierającego pakiety UDP</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xReceiverEnable">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr drivera - aktywacja działania drivera</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xReceiverOpen">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr drivera - otworzenie portu komunikacyjnego</xhtml>
+              </documentation>
+            </variable>
+            <variable name="sReceiverTelegram">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> zmienna zawierająca odebrany telegram</xhtml>
+              </documentation>
+            </variable>
+            <variable name="arReceiverBuffer">
+              <type>
+                <array>
+                  <dimension lower="1" upper="512" />
+                  <baseType>
+                    <BYTE />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="pReceiverBuffer">
+              <type>
+                <pointer>
+                  <baseType>
+                    <BYTE />
+                  </baseType>
+                </pointer>
+              </type>
+              <initialValue>
+                <simpleValue value="ADR(arReceiverBuffer[1])" />
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> parametr drivera - pointer do tablicy bufora dla drivera odbierającego</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intPetla">
+              <type>
+                <INT />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> zmienna tymczasowa używana dla pętli</xhtml>
+              </documentation>
+            </variable>
+            <variable name="arwHeartbeatTelegram">
+              <type>
+                <array>
+                  <dimension lower="1" upper="512" />
+                  <baseType>
+                    <WORD />
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="negUdpCommTxDone">
+              <type>
+                <derived name="F_TRIG" />
+              </type>
+            </variable>
+            <variable name="wCRC16_standard">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+            <variable name="intBlad">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="sDane">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="sWyslanyKomunikat">
+              <type>
+                <derived name="alSTRINGKomunikat" />
+              </type>
+            </variable>
+            <variable name="typKomunikat">
+              <type>
+                <derived name="typKomunikat" />
+              </type>
+            </variable>
+            <variable name="xCRC16PakietOdebranyPoprawny">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="arErrorKomunikat">
+              <type>
+                <array>
+                  <dimension lower="0" upper="20" />
+                  <baseType>
+                    <derived name="alSTRINGKomunikat" />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica przechowująca ostatni komunikat alarmu z danego kodu	</xhtml>
+              </documentation>
+            </variable>
+            <variable name="arErrorStan">
+              <type>
+                <array>
+                  <dimension lower="1" upper="20" />
+                  <baseType>
+                    <BOOL />
+                  </baseType>
+                </array>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> tablica przechowująca stany alarmowe</xhtml>
+              </documentation>
+            </variable>
+            <variable name="intTabelaKomunikatowZnacznikOdczytu">
+              <type>
+                <INT />
+              </type>
+              <initialValue>
+                <simpleValue value="1" />
+              </initialValue>
+            </variable>
+            <variable name="intEmergencyStopActiveZaraportowana">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="sWyslanyKomunikatDummy">
+              <type>
+                <string />
+              </type>
+            </variable>
+            <variable name="BlokadaKomunikacjiDetekcjaTriger">
+              <type>
+                <derived name="RS" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">Blokada wysylania komunikatów</xhtml>
+              </documentation>
+            </variable>
+            <variable name="BlokadaKomunikacjiDetekcjaTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="BlokadaKomunikacjiTriger">
+              <type>
+                <derived name="RS" />
+              </type>
+            </variable>
+            <variable name="fbBlokadaKomunikacjiTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Timer do cyklicznego wysyłania ramki z errorem blokady wysyłania ramek</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBlokadaKomunikacji">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Blokada komunikacji</xhtml>
+              </documentation>
+            </variable>
+            <variable name="BlokadaKomunikacjiTimeDiff">
+              <type>
+                <TIME />
+              </type>
+              <initialValue>
+                <simpleValue value="TIME#200m0s0ms" />
+              </initialValue>
+            </variable>
+            <variable name="xWyslijErrorBlokadyKomunikacji">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zmienna pomocniczna do fbWyslijErrorBlokadyKomunikacji</xhtml>
+              </documentation>
+            </variable>
+            <variable name="fbWyslijErrorBlokadyKomunikacji">
+              <type>
+                <derived name="F_TRIG" />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Zbocze opadające xWyslijErrorBlokadyKomunikacji</xhtml>
+              </documentation>
+            </variable>
+            <variable name="xBlokadaKomunikacjiReset">
+              <type>
+                <BOOL />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> Reset blokady komunikacji</xhtml>
+              </documentation>
+            </variable>
+            <variable name="timestamp">
+              <type>
+                <string />
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">obsługa debugowania problemów z komunikatami</xhtml>
+              </documentation>
+            </variable>
+            <variable name="dtCzasLokalny">
+              <type>
+                <DT />
+              </type>
+            </variable>
+            <variable name="dtCzasKomunikatu">
+              <type>
+                <DT />
+              </type>
+            </variable>
+            <variable name="tPrzesuniecie">
+              <type>
+                <TIME />
+              </type>
+              <initialValue>
+                <simpleValue value="TIME#5m0s0ms" />
+              </initialValue>
+            </variable>
+            <variable name="xPrzekroczony">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="FALSE" />
+              </initialValue>
+            </variable>
+            <variable name="arTablicaBlednychKomunikatow">
+              <type>
+                <derived name="alARRAYTablicaKomunikatowDebug" />
+              </type>
+            </variable>
+            <variable name="uintZnacznikTablicyBlednychKomunikatow">
+              <type>
+                <UINT />
+              </type>
+              <initialValue>
+                <simpleValue value="1" />
+              </initialValue>
+            </variable>
+            <variable name="intTablicaKomunikatowZnacznikWysylkiUDP_Pamiec">
+              <type>
+                <INT />
+              </type>
+              <initialValue>
+                <simpleValue value="-1" />
+              </initialValue>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">// jeśli wysyłanie telegramu zakończone OK wyczyść zmienną zawierającą telegram oraz wyzeruj licznik komunikatów wysłanych jeśli TO BYł heartbeat
+// 2019-04-01 - JC Dodanie blokady wysylania komunikatów w przypadku przekroczenia limitu
+// 2019-04-18 - AWy: Wysyłanie ramki z errorem blokady wysyłania ramek co minutę
+// 2019-04-19 - AWy: Poprawienie mechanizmu resetu blokady i usunięcie tBlokadaKomunikacjiOpoznienie
+// 2019-04-25 - AWy: Przeniesienie xBlokadaKomunikacjiReset z VAR_INPUT do VAR
+// 2019-10-24 - AWy: Zmiana tPrzesuniecie na 300 sekund
+IF NOT xTransmitterTrigger AND sTransmitterTelegram &lt;&gt; '' THEN
+	IF fnKomunikatTyp(sTransmitterTelegram) = 'H' THEN
+		intTransmitterLicznikKomunikatowWyslanych := 0;
+	END_IF
+	sTransmitterTelegram := '';
+END_IF
+
+IF sTransmitterTelegram = '' AND intTablicaKomunikatowZnacznikWysylkiUDP &lt;&gt; intTablicaKomunikatowZnacznikZapisu THEN
+	fnTablicaKomunikatowInkrementacja(intWskaznik := intTablicaKomunikatowZnacznikWysylkiUDP , intRozmiarTablicy := intTablicaKomunikatowRozmiar);
+	WHILE fnKomunikatMACAdres(arTablicaKomunikatow[intTablicaKomunikatowZnacznikWysylkiUDP]) &lt;&gt; sMACAdres AND intTablicaKomunikatowZnacznikWysylkiUDP &lt;&gt; intTablicaKomunikatowZnacznikZapisu DO
+		fnTablicaKomunikatowInkrementacja(intWskaznik := intTablicaKomunikatowZnacznikWysylkiUDP , intRozmiarTablicy := intTablicaKomunikatowRozmiar);
+ 	END_WHILE
+	IF fnKomunikatMACAdres(arTablicaKomunikatow[intTablicaKomunikatowZnacznikWysylkiUDP]) = sMACAdres THEN
+		intTransmitterLicznikKomunikatowWyslanych := intTransmitterLicznikKomunikatowWyslanych + 1;
+		//////////////////////////////////
+		//Walidacja poprawności komunikatu
+		//////////////////////////////////
+		IF intTablicaKomunikatowZnacznikWysylkiUDP_Pamiec &lt;&gt; intTablicaKomunikatowZnacznikWysylkiUDP THEN
+			timestamp := fnKomunikatSprawdzTimeStamp( sKomunikat:= arTablicaKomunikatow[intTablicaKomunikatowZnacznikWysylkiUDP],dtDataCzasWKomunikacie:=dtCzasKomunikatu, dtDataCzasAktualny:=dtCzasLokalny);
+			IF(dtCzasKomunikatu + tPrzesuniecie) &lt; dtCzasLokalny THEN
+				xPrzekroczony := TRUE;
+				arTablicaBlednychKomunikatow[uintZnacznikTablicyBlednychKomunikatow].dtLokalnyCzasSterownika := dtCzasLokalny;
+				arTablicaBlednychKomunikatow[uintZnacznikTablicyBlednychKomunikatow].intGlobalnaLiczbaKomunikatowWBuforze := intTablicaKomunikatowLiczbaWBuforze;
+				arTablicaBlednychKomunikatow[uintZnacznikTablicyBlednychKomunikatow].intGlobalnyZnacznikOdczytu := intTablicaKomunikatowZnacznikOdczytu;
+				arTablicaBlednychKomunikatow[uintZnacznikTablicyBlednychKomunikatow].intGlobalnyZnacznikWysylkiUDP := intTablicaKomunikatowZnacznikWysylkiUDP;
+				arTablicaBlednychKomunikatow[uintZnacznikTablicyBlednychKomunikatow].intGlobalnyZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu;
+				arTablicaBlednychKomunikatow[uintZnacznikTablicyBlednychKomunikatow].sDane := arTablicaKomunikatow[intTablicaKomunikatowZnacznikWysylkiUDP];
+				IF uintZnacznikTablicyBlednychKomunikatow &lt; 99 THEN
+					uintZnacznikTablicyBlednychKomunikatow := uintZnacznikTablicyBlednychKomunikatow + 1;
+				ELSE
+					uintZnacznikTablicyBlednychKomunikatow := 1;
+				END_IF
+				//skasuj atrybuty
+				arTablicaKomunikatow[intTablicaKomunikatowZnacznikWysylkiUDP] := MID(arTablicaKomunikatow[intTablicaKomunikatowZnacznikWysylkiUDP], 82, 1);
+				arTablicaKomunikatow[intTablicaKomunikatowZnacznikWysylkiUDP] := CONCAT(arTablicaKomunikatow[intTablicaKomunikatowZnacznikWysylkiUDP], 'BLADRAMKI=2');
+			ELSE
+				xPrzekroczony := FALSE;
+			END_IF
+			intTablicaKomunikatowZnacznikWysylkiUDP_Pamiec := intTablicaKomunikatowZnacznikWysylkiUDP;
+		END_IF
+		//////////////////////////////////
+		fnAES256Szyfrowanie(	sKomunikat := arTablicaKomunikatow[intTablicaKomunikatowZnacznikWysylkiUDP] , 
+								sKlucz := sKluczSzyfrowania , 
+								intError := intBlad , 
+								sKomunikatZaszyfrowany := sTransmitterTelegram);
+		
+		fnCRC16Wysylanie(	sKomunikat :=  sTransmitterTelegram,
+							arTransmitterBuffer := arTransmitterBuffer ,
+							udiTransmitterNBytes := udiTransmitterNBytes);
+		xTransmitterTrigger := TRUE;
+	END_IF
+END_IF
+
+// driver wysyłający pakiety UDP
+
+// Blokada wysyłania komunikatów - po przekroczeniu iDetekcjaBlokadaKomunikacjiLimitIlosciRamek w czasie tDetekcjaBlokadaKomunikacjiLimitCzasu algorytm zatrzyma wysyłanie ramek, ale nie 
+// przestanie zapisywać ich do tablicy. Raz na minutę zostanie wysłana ramka E informująca o blokadzie. Funkcjonalność ma na celu zabezpieczenia systemu przed spamowaniem ramkami jako 
+// konsekwencji błędów programistycznych. 
+
+BlokadaKomunikacjiDetekcjaTriger(Set := (intTablicaKomunikatowZnacznikZapisu = (intTablicaKomunikatowRozmiar - iDetekcjaBlokadaKomunikacjiLimitIlosciRamek)),
+								 RESET1 := (intTablicaKomunikatowZnacznikZapisu = intTablicaKomunikatowRozmiar)); // Sprawdzenie następuje, gdy znacznik jest w połowie tablicy komunikatów
+IF BlokadaKomunikacjiDetekcjaTimer.ET &lt;&gt; T#0MS AND BlokadaKomunikacjiDetekcjaTriger.RESET1 = TRUE AND NOT xBlokadaKomunikacjiReset THEN
+	BlokadaKomunikacjiTimeDiff := BlokadaKomunikacjiDetekcjaTimer.ET; 
+END_IF
+
+IF xBlokadaKomunikacjiReset THEN
+	BlokadaKomunikacjiTimeDiff := T#200M;
+END_IF
+
+BlokadaKomunikacjiDetekcjaTimer(IN := BlokadaKomunikacjiDetekcjaTriger.Q1, PT := T#100S);
+ 
+BlokadaKomunikacjiTriger(Set := (BlokadaKomunikacjiTimeDiff &lt; tDetekcjaBlokadaKomunikacjiLimitCzasu), RESET1 := xBlokadaKomunikacjiReset, Q1 =&gt; xBlokadaKomunikacji); 
+
+IF NOT(xBlokadaKomunikacji) THEN
+	udiTransmitterNBytes := INT_TO_UDINT(LEN(sTransmitterTelegram)) + 2;
+	fbTransmitter(	sNetName := sAdresIP ,
+					wPort := wTransmitterPort , 
+					pTxBuffer := pTransmitterBuffer , 
+					udiTxNBytes := udiTransmitterNBytes , 
+					xClose := xTransmitterClose , 
+					xTxTrigger := xTransmitterTrigger);
+END_IF
+
+// driver nasłuchujący pakietów UDP
+
+fbReceiver(	wPort := wReceiverPort , 
+			pRxBuffer := pReceiverBuffer , 
+			udiRxBufferSize := 512 , 
+			xRxEnable := xReceiverEnable , 
+			xOpen := xReceiverOpen);
+
+// po otrzymaniu pakietu wykonanie zapisu danych kontroli CRC itd
+
+IF fbReceiver.xPacketReceived = TRUE THEN
+	sReceiverTelegram := LEFT(sReceiverTelegram , UDINT_TO_INT(fbReceiver.udiRxNBytes));
+	fnAES256Odszyfrowanie(	sKomunikatZaszyfrowany := sReceiverTelegram , 
+							sKlucz := sKluczSzyfrowania ,
+							intError := intBlad ,
+							sKomunikat := sReceiverTelegram);
+
+// sprawdzenie CRC otrzymanego komunikatu
+
+	xCRC16PakietOdebranyPoprawny := fnCRC16Odbieranie(	arReceiverBuffer := arReceiverBuffer ,
+														udiRxNBytes := fbReceiver.udiRxNBytes ,
+														sMACAdresAplikacji := sMACAdresAplikacji ,
+														abMACAdresAplikacji := abMACAdresAplikacji ,
+														sKomunikat := sReceiverTelegram);
+	IF xCRC16PakietOdebranyPoprawny THEN
+
+// CRC poprawne zapis komunikatu do tablicy komunikatów otrzymanych o nie jest to komunikat z tego sterownika
+
+		intReceiverLicznikKomunikatowOtrzymanych := intReceiverLicznikKomunikatowOtrzymanych + 1;
+
+		IF fnKomunikatMACAdres(sReceiverTelegram) &lt;&gt; sMACAdres THEN
+			fnZapiszKomunikat(	sCalyKomunikat := sReceiverTelegram ,
+								sTypKomunikatu := '' ,
+								sMnemonik := '' ,
+								sMACAdres := '' ,
+								sIDNadawcy := '' ,
+								sIDOdbiorcy := '' ,
+								sDaneZapasowe := '' ,
+								sDane := '' ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := sWyslanyKomunikat);
+		END_IF
+		
+// sprawdzenie statusu błędu jeśli błąd był zaraportowany zaraportowanie poprawnego CRC
+
+		IF arErrorStan[enumSystemErrorKlasa.BladCRCWKomunikacieZIZE] THEN
+			arErrorStan[enumSystemErrorKlasa.BladCRCWKomunikacieZIZE] := FALSE;
+			sDane := CONCAT('ACT=0;CLASS=' , INT_TO_STRING(enumSystemErrorKlasa.BladCRCWKomunikacieZIZE));
+			sDane := CONCAT(sDane , ';NUM=');
+			sDane := CONCAT(sDane , INT_TO_STRING(enumSystemError.BladCRCWKomunikacieZIZE));
+			sDane := CONCAT(sDane , ';E');
+			sDane := CONCAT(sDane , fnKonwersjaINT_STRING(intWartosc := enumSystemError.BladCRCWKomunikacieZIZE , intIloscZnakow := 3));
+			sDane := CONCAT(sDane , 'ACT=0');
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'E' ,
+								sMnemonik :=  sMnemonik ,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdSterownika ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := arErrorKomunikat[enumSystemError.BladCRCWKomunikacieZIZE]);
+			END_IF
+		ELSE
+
+// jeżeli był błąd w CRC komunikatu i poprzednie komunikaty były bez błędu zaraportuj ten błąd z powrotem do IZE
+
+		IF NOT arErrorStan[enumSystemErrorKlasa.BladCRCWKomunikacieZIZE] THEN
+			arErrorStan[enumSystemErrorKlasa.BladCRCWKomunikacieZIZE] := TRUE;
+			sDane := CONCAT('ACT=1;CLASS=' , INT_TO_STRING(enumSystemErrorKlasa.BladCRCWKomunikacieZIZE));
+			sDane := CONCAT(sDane , ';NUM=');
+			sDane := CONCAT(sDane , INT_TO_STRING(enumSystemError.BladCRCWKomunikacieZIZE));	
+			sDane := CONCAT(sDane , ';E');
+			sDane := CONCAT(sDane , fnKonwersjaINT_STRING(intWartosc := enumSystemError.BladCRCWKomunikacieZIZE , intIloscZnakow := 3));
+			sDane := CONCAT(sDane , 'ACT=1');
+			fnZapiszKomunikat(	sCalyKomunikat := '' ,
+								sTypKomunikatu := 'E' ,
+								sMnemonik :=  sMnemonik,
+								sMACAdres := sMACAdres ,
+								sIDNadawcy := sIdSterownika ,
+								sIDOdbiorcy := sIdAplikacji ,
+								sDaneZapasowe := sDaneZapasowe ,
+								sDane := sDane ,
+								arTablicaKomunikatow := arTablicaKomunikatow ,
+								intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+								intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+								sWyslanyKomunikat := arErrorKomunikat[enumSystemError.BladCRCWKomunikacieZIZE]);
+		END_IF
+	END_IF
+END_IF
+
+// obsługa alarmu przepełnienia bufora komunikatów
+
+intTablicaKomunikatowLiczbaWBuforze := intTablicaKomunikatowZnacznikZapisu - intTablicaKomunikatowZnacznikWysylkiUDP;
+
+IF intTablicaKomunikatowLiczbaWBuforze &lt; 0 THEN
+	intTablicaKomunikatowLiczbaWBuforze := intTablicaKomunikatowLiczbaWBuforze + intTablicaKomunikatowRozmiar;
+END_IF
+
+IF intTablicaKomunikatowLiczbaWBuforze &gt; intTablicaKomunikatowOverflow AND NOT arErrorStan[enumSystemError.ZaDuzaIloscKomunikatowWBuforze] THEN
+	arErrorStan[enumSystemError.ZaDuzaIloscKomunikatowWBuforze] := TRUE;
+	sDane := CONCAT('ACT=1;CLASS=' , INT_TO_STRING(enumSystemErrorKlasa.ZaDuzaIloscKomunikatowWBuforze));
+	sDane := CONCAT(sDane , ';NUM=');
+	sDane := CONCAT(sDane , INT_TO_STRING(enumSystemError.ZaDuzaIloscKomunikatowWBuforze));	
+	sDane := CONCAT(sDane , ';E');
+	sDane := CONCAT(sDane , fnKonwersjaINT_STRING(intWartosc := enumSystemError.ZaDuzaIloscKomunikatowWBuforze , intIloscZnakow := 3));
+	sDane := CONCAT(sDane , 'ACT=1');
+	fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'E' ,
+						sMnemonik :=  sMnemonik ,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdSterownika ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := arErrorKomunikat[enumSystemError.ZaDuzaIloscKomunikatowWBuforze]);						
+END_IF
+IF  intTablicaKomunikatowLiczbaWBuforze = 0 AND arErrorStan[enumSystemError.ZaDuzaIloscKomunikatowWBuforze] THEN
+	arErrorStan[enumSystemError.ZaDuzaIloscKomunikatowWBuforze] := FALSE;
+	sDane := CONCAT('ACT=0;CLASS=' , INT_TO_STRING(enumSystemErrorKlasa.ZaDuzaIloscKomunikatowWBuforze));
+	sDane := CONCAT(sDane , ';NUM=');
+	sDane := CONCAT(sDane , INT_TO_STRING(enumSystemError.ZaDuzaIloscKomunikatowWBuforze));	
+	sDane := CONCAT(sDane , ';E');
+	sDane := CONCAT(sDane , fnKonwersjaINT_STRING(intWartosc := enumSystemError.ZaDuzaIloscKomunikatowWBuforze , intIloscZnakow := 3));
+	sDane := CONCAT(sDane , 'ACT=0');
+	fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'E' ,
+						sMnemonik :=  sMnemonik,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdSterownika ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := arErrorKomunikat[enumSystemError.ZaDuzaIloscKomunikatowWBuforze]);
+END_IF
+
+
+// obsługa alarmu - blokada wysyłania komunikatów ze względu na za dużą ilość wysyłanych ramek (wysyłanie ramki co 1 minutę)
+
+IF xBlokadaKomunikacji THEN
+	arErrorStan[enumSystemError.BlokadaWysylaniaRamek] := TRUE;
+	fbBlokadaKomunikacjiTimer(IN := xWyslijErrorBlokadyKomunikacji, PT := T#1M);
+	xWyslijErrorBlokadyKomunikacji := TRUE;
+	IF fbBlokadaKomunikacjiTimer.Q  THEN														// Wyślij error zaraz co 1 minutę
+		xWyslijErrorBlokadyKomunikacji := FALSE;
+		intTablicaKomunikatowZnacznikWysylkiUDP := intTablicaKomunikatowZnacznikZapisu;			// Ustaw znacznik wysyłania na aktualnie zapisywanej ramce
+		// Sklejenie ramki z komunikatem o błędzie
+		sDane := CONCAT('ACT=1;CLASS=' , INT_TO_STRING(enumSystemErrorKlasa.BlokadaWysylaniaRamek));
+		sDane := CONCAT(sDane , ';NUM=');
+		sDane := CONCAT(sDane , INT_TO_STRING(enumSystemError.BlokadaWysylaniaRamek));	
+		sDane := CONCAT(sDane , ';E');
+		sDane := CONCAT(sDane , fnKonwersjaINT_STRING(intWartosc := enumSystemError.BlokadaWysylaniaRamek , intIloscZnakow := 3));
+		sDane := CONCAT(sDane , 'ACT=1');
+		fnZapiszKomunikat(	sCalyKomunikat := '' ,
+							sTypKomunikatu := 'E' ,
+							sMnemonik :=  sMnemonik ,
+							sMACAdres := sMACAdres ,
+							sIDNadawcy := sIdSterownika ,
+							sIDOdbiorcy := sIdAplikacji ,
+							sDaneZapasowe := sDaneZapasowe ,
+							sDane := sDane ,
+							arTablicaKomunikatow := arTablicaKomunikatow ,
+							intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+							intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+							sWyslanyKomunikat := arErrorKomunikat[enumSystemError.BlokadaWysylaniaRamek]);
+		sTransmitterTelegram := arErrorKomunikat[enumSystemError.BlokadaWysylaniaRamek];	
+	END_IF
+	fbWyslijErrorBlokadyKomunikacji(CLK := xWyslijErrorBlokadyKomunikacji);
+	IF fbWyslijErrorBlokadyKomunikacji.Q THEN
+		// Wysłanie ramki		
+		fnCRC16Wysylanie(	sKomunikat :=  sTransmitterTelegram,
+							arTransmitterBuffer := arTransmitterBuffer ,
+							udiTransmitterNBytes := udiTransmitterNBytes);				
+		udiTransmitterNBytes := INT_TO_UDINT(LEN(sTransmitterTelegram)) + 2;
+		fbTransmitter(	sNetName := sAdresIP ,
+						wPort := wTransmitterPort , 
+						pTxBuffer := pTransmitterBuffer , 
+						udiTxNBytes := udiTransmitterNBytes , 
+						xClose := xTransmitterClose , 
+						xTxTrigger := xTransmitterTrigger);
+	END_IF
+END_IF
+IF  NOT (BlokadaKomunikacjiTriger.Q1) AND arErrorStan[enumSystemError.BlokadaWysylaniaRamek] THEN
+	arErrorStan[enumSystemError.BlokadaWysylaniaRamek] := FALSE;
+	sDane := CONCAT('ACT=0;CLASS=' , INT_TO_STRING(enumSystemErrorKlasa.BlokadaWysylaniaRamek));
+	sDane := CONCAT(sDane , ';NUM=');
+	sDane := CONCAT(sDane , INT_TO_STRING(enumSystemError.BlokadaWysylaniaRamek));	
+	sDane := CONCAT(sDane , ';E');
+	sDane := CONCAT(sDane , fnKonwersjaINT_STRING(intWartosc := enumSystemError.BlokadaWysylaniaRamek , intIloscZnakow := 3));
+	sDane := CONCAT(sDane , 'ACT=0');
+	fnZapiszKomunikat(	sCalyKomunikat := '' ,
+						sTypKomunikatu := 'E' ,
+						sMnemonik :=  sMnemonik,
+						sMACAdres := sMACAdres ,
+						sIDNadawcy := sIdSterownika ,
+						sIDOdbiorcy := sIdAplikacji ,
+						sDaneZapasowe := sDaneZapasowe ,
+						sDane := sDane ,
+						arTablicaKomunikatow := arTablicaKomunikatow ,
+						intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+						intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+						sWyslanyKomunikat := arErrorKomunikat[enumSystemError.BlokadaWysylaniaRamek]);
+END_IF
+
+
+//????????
+IF intTabelaKomunikatowZnacznikOdczytu &lt;&gt; intTablicaKomunikatowZnacznikZapisu THEN
+	fnTablicaKomunikatowInkrementacja(intRozmiarTablicy := intTablicaKomunikatowRozmiar , intWskaznik := intTabelaKomunikatowZnacznikOdczytu);
+	IF fnIDOdbiorcyMatch(arTablicaKomunikatow[intTabelaKomunikatowZnacznikOdczytu] , sIDSterownika) THEN
+		IF fnKomunikatTyp(arTablicaKomunikatow[intTabelaKomunikatowZnacznikOdczytu]) = 'Q' THEN
+//			IF fnKomunikatDaneSzukajZmiennej(arTablicaKomunikatow[intTabelaKomunikatowZnacznikOdczytu] , 'ALARM') OR 
+//				fnKomunikatDaneSzukajZmiennej(arTablicaKomunikatow[intTabelaKomunikatowZnacznikOdczytu] , 'ALL') THEN
+//				FOR intPetla := 1 TO 20 BY 1 DO
+//					IF arErrorKomunikat[intPetla] &lt;&gt; '' THEN
+//						fnZapiszKomunikat(	sCalyKomunikat := arErrorKomunikat[intPetla] ,
+//											sTypKomunikatu := '' ,
+//											sMnemonik := '' ,
+//											sMACAdres := '' ,
+//											sIDNadawcy := '' ,
+//											sIDOdbiorcy := '' ,
+//											sDaneZapasowe := '' ,
+//											sDane := '' ,
+//											arTablicaKomunikatow := arTablicaKomunikatow ,
+//											intTablicaKomunikatowZnacznikZapisu := intTablicaKomunikatowZnacznikZapisu ,
+//											intTablicaKomunikatowRozmiar := intTablicaKomunikatowRozmiar ,
+//											sWyslanyKomunikat := sWyslanyKomunikat);
+//					END_IF
+//				END_FOR
+//			END_IF	
+///wrzucic nowy Q
+		END_IF
+	END_IF
+END_IF</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

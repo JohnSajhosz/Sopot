@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:22:40.9919411" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-24T14:40:07.960949" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+    <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation>
+          <property name="Author" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="Company" type="string">3S - Smart Software Solutions GmbH</property>
+          <property name="DefaultNamespace" type="string">TMP</property>
+          <property name="Description" type="string">Library project template with all possible element types, docu and a sample project structure</property>
+          <property name="IsEndUserLibrary" type="boolean">false</property>
+          <property name="LanguageModelAttribute" type="string">qualified-access-only</property>
+          <property name="Placeholder" type="string">PlaceholderTemplate</property>
+          <property name="Project" type="string">SOLWENA_Biblioteka - MASTER</property>
+          <property name="Title" type="string">CoDeSys External Library Template</property>
+          <property name="Version" type="version">3.5.5.30</property>
+          <property name="library-category-list" type="library-category-list">Intern|CAA|Guidelines</property>
+        </ProjectInformation>
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="fnZlozenieBitowWRejestr16Bit" pouType="function">
+        <interface>
+          <returnType>
+            <BOOL />
+          </returnType>
+          <inputVars>
+            <variable name="xBit0">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit1">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit2">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit3">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit4">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit5">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit6">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit7">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit8">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit9">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit10">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit11">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit12">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit13">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit14">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="xBit15">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="wRejestr16Bit">
+              <type>
+                <WORD />
+              </type>
+            </variable>
+          </outputVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml">(*			
+Autor:					Paweł Kąkol, 
+Prawa majątkowe: 		Solwena Sp. z o.o., 
+Aktualizacje:			2017-12-13-09:30-PK - stworzenie
+
+Opis:					Funkcja do składania rejestru 16-bitowego typu WORD z pojedynczych zmiennych BOOL,
+						Nalezy pamietac, ze numeracja bitow jest zgodna z odpowiadajacymi wykladnikami potegi liczby 2
+*)
+wRejestr16Bit := 0;
+//sprawdzanie stanu bitow
+IF xBit0 THEN
+	wRejestr16Bit := 1;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 2;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 4;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 8;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 16;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 32;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 64;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 128;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 256;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 512;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 1024;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 2048;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 4096;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 8192;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 16384;	
+END_IF
+IF xBit1 THEN
+	wRejestr16Bit := wRejestr16Bit + 32768;	
+END_IF</xhtml>
+          </ST>
+        </body>
+        <addData />
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>
