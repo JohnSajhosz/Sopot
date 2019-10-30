@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://www.plcopen.org/xml/tc6_0200">
-  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T12:37:19.6441613" />
-  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-29T12:36:39.3744516" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
+  <fileHeader companyName="WAGO" productName="e!COCKPIT" productVersion="e!COCKPIT" creationDateTime="2019-10-29T14:38:30.855626" />
+  <contentHeader name="CoDeSys External Library Template" version="3.5.5.30" modificationDateTime="2019-10-29T14:38:06.5373783" organization="3S - Smart Software Solutions GmbH" author="3S - Smart Software Solutions GmbH">
     <Comment>Library project template with all possible element types, docu and a sample project structure</Comment>
     <coordinateInfo>
       <fbd>
@@ -1649,7 +1649,7 @@ fbInicjalizacyjnyTimer(IN := NOT xPoInicjalizacji , PT := tCzasOpoznieniaRestart
 IF fbInicjalizacyjnyTimer.Q THEN
 	rNapiecieL1Zaraportowana := rNapiecieL1;
 	rNapiecieL2Zaraportowana := rNapiecieL2;
-	rNapiecieL3Zaraportowana := rNapiecieL3;
+	rNapiecieL3Zaraportowana :=sdfsdgsdf rNapiecieL3;
 	rNapiecieL1L2Zaraportowana := rNapiecieL1L2;
 	rNapiecieL2L3Zaraportowana := rNapiecieL2L3;
 	rNapiecieL3L1Zaraportowana := rNapiecieL3L1;
@@ -1696,6 +1696,7 @@ IF fbInicjalizacyjnyTimer.Q THEN
 	rTHDPraduL3Zaraportowana := rTHDPraduL3;
 	intStatusZaraportowana := intStatus;
 	xPoInicjalizacji := TRUE;
+	dupa dupa dupa
 END_IF
 
 // Włącz autonomizację jeśli sterownik jest w stanie inicjalizacji lub nastąpiło wymuszenie autonomizacji
@@ -3454,7 +3455,7 @@ fbMocBiernaL2(	rWartoscWejsciowa := DINT_TO_REAL(SHL(wMocBiernaL2Hi, 16) OR wMoc
 				
 fbMocBiernaL3(	rWartoscWejsciowa := DINT_TO_REAL(SHL(wMocBiernaL3Hi, 16) OR wMocBiernaL3Lo),
 				rWartoscWejsciowaZaraportowana := rMocBiernaL3Zaraportowana,
-				rDeadband := 50,
+				rDeadband := 50,sdfgsdfg
 				tCzasMinimalny := tMinimalnyCzasRaportowania,
 				tCzasMaksymalny := tMaksymalnyCzasRaportowania,
 				rWynikMnoznik := 10,
